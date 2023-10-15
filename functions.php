@@ -32,4 +32,19 @@ if (isset($_POST['login_staff'])) {
 }
 
 
+
+
+
+
+
+
+
+
+if (isset($_POST['profilmurid']))
+{
+    $_SESSION['idmurid'] =$_POST['studentid'];
+    header('location: profilmurid.php');
+
+}
+
 ?>

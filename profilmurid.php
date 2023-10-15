@@ -150,7 +150,7 @@
       <div class="row">
         <div class="col-xl-4">
           <?php
-          $id = $_POST['studentid'];
+          $id =  $_SESSION['idmurid'];
           $query = "SELECT * FROM murid WHERE id='$id' ";
           $result = mysqli_query($db, $query);
 

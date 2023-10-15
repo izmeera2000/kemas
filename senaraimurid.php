@@ -78,9 +78,9 @@
                         <?php echo $row['tarikh_mula'] ?>
                       </td>
                       <td>
-                        <form method="post" action="student-profile.php">
+                        <form method="post" action="?profilmurid">
                           <input type="hidden" id="studentid" name="studentid" value="<?php echo $row['id'] ?>">
-                          <button type="submit" class="btn btn-success"><i class="bi bi-check-circle"></i></button>
+                          <button type="submit" name="profilmurid" class="btn btn-success"><i class="bi bi-check-circle"></i></button>
                         </form>
                       </td>
                     </tr>
