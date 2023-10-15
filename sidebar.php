@@ -13,7 +13,7 @@
         
   <li class="nav-item">
   <a class="nav-link " href="studentlist.php">
-          <i class="bi bi-circle"></i><span>Data Tables</span>
+          <i class="bi bi-circle"></i><span>Senarai Murid</span>
         </a>
   </li><!-- End Dashboard Nav -->
   <li class="nav-item">
