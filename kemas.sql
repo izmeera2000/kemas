@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 15, 2023 at 08:05 AM
+-- Generation Time: Oct 24, 2023 at 03:16 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -24,6 +24,49 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `keluarga`
+--
+
+DROP TABLE IF EXISTS `keluarga`;
+CREATE TABLE IF NOT EXISTS `keluarga` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `murid_name` text,
+  `nama` text,
+  `kad_pengenalan` text,
+  `tarikh_lahir` text,
+  `tempat_lahir` text,
+  `warganegara` text,
+  `keturunan` text,
+  `pekerjaan` text,
+  `status` text,
+  `pendapatan_sebulan` text,
+  `no_telefon_pejabat` text,
+  `nama_majikan` text,
+  `alamat_majikan` text,
+  `file_pengesahan` text,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `keluarga_tanggungan`
+--
+
+DROP TABLE IF EXISTS `keluarga_tanggungan`;
+CREATE TABLE IF NOT EXISTS `keluarga_tanggungan` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `murid_name` text,
+  `nama` text,
+  `perhubungan` text,
+  `nama_institusi` text,
+  `nilai_biasiswa` text,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `murid`
 --
 
@@ -32,18 +75,33 @@ CREATE TABLE IF NOT EXISTS `murid` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` text,
   `age` text,
-  `ic` text,
+  `no_kad_pengenalan` text,
   `tarikh_mula` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `warganegara` text,
+  `bangsa` text,
+  `tarikh_lahir` datetime DEFAULT NULL,
+  `no_sijil_lahir` text,
+  `tempat_lahir` text,
+  `jantina` text,
+  `alamat_rumah` text,
+  `saizbaju` text,
+  `penyakit` text,
+  `tinggi` text,
+  `berat` text,
+  `masalah_makanan` text,
+  `kecacatan` text,
+  `nama_penjaga` text,
+  `alamat_rumah_penjaga` text,
+  `telefen_penjaga` text,
+  `hubungan_penjaga` text,
+  `gambar` text,
+  `file_mykid` text,
+  `file_sijil` text,
+  `file_rekod_kesihatan` text,
+  `status_kemasukan` int DEFAULT NULL,
+  `status_kemasukan_text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `murid`
---
-
-INSERT INTO `murid` (`id`, `name`, `age`, `ic`, `tarikh_mula`) VALUES
-(1, 'sarah', '20', '0702323232', '2023-10-09 23:17:31'),
-(2, 'sdfsfssdasd', '20', '0702323232', '2023-10-09 23:17:31');
 
 -- --------------------------------------------------------
 
@@ -57,6 +115,7 @@ CREATE TABLE IF NOT EXISTS `pemarkahan` (
   `murid_id` int NOT NULL,
   `subjek` text,
   `kategori` text,
+  `tafsiran` text,
   `tarikh` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

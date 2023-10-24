@@ -150,7 +150,7 @@
       <div class="row">
         <div class="col-xl-4">
           <?php
-          $id =  $_SESSION['idmurid'];
+          $id = $_SESSION['idmurid'];
           $query = "SELECT * FROM murid WHERE id='$id' ";
           $result = mysqli_query($db, $query);
 
@@ -261,12 +261,129 @@
                     <div class="col-lg-3 col-md-4 label">Saiz Baju</div>
                     <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
                   </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Jenis Penyakit</div>
+                    <div class="col-lg-9 col-md-8">Lelah</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Tinggi</div>
+                    <div class="col-lg-9 col-md-8">Lorem</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Berat</div>
+                    <div class="col-lg-9 col-md-8">Lorem</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Masalah Makanan</div>
+                    <div class="col-lg-9 col-md-8">Lorem</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Kecacatan</div>
+                    <div class="col-lg-9 col-md-8">Lorem</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Emergency Contact</div>
+                    <div class="row col-lg-9 col-md-8">
+                      <div class="">Lorem</div>
+                      <div class="">Lorem</div>
+                      <div class="">Lorem</div>
+                      <div class="">Lorem</div>
+                    </div>
+
+                  </div>
                 </div>
 
-                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                <div class="tab-pane fade profile-overview pt-3" id="profile-edit">
 
+
+
+
+                  <h5 class="card-title">Pendapatan Keluarga</h5>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label ">Nama</div>
+                    <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Nama Ibu/bapa atau penjaga</div>
+                    <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Warganegara</div>
+                    <div class="col-lg-9 col-md-8">Web Designer</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Bangsa/Keturunan</div>
+                    <div class="col-lg-9 col-md-8">USA</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Tarikh Lahir</div>
+                    <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Umur</div>
+                    <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">No. Sijil Lahir</div>
+                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Tempat Lahir</div>
+                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Jantina</div>
+                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Alamat Rumah</div>
+                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Saiz Baju</div>
+                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Jenis Penyakit</div>
+                    <div class="col-lg-9 col-md-8">Lelah</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Tinggi</div>
+                    <div class="col-lg-9 col-md-8">Lorem</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Berat</div>
+                    <div class="col-lg-9 col-md-8">Lorem</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Masalah Makanan</div>
+                    <div class="col-lg-9 col-md-8">Lorem</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Kecacatan</div>
+                    <div class="col-lg-9 col-md-8">Lorem</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Emergency Contact</div>
+                    <div class="row col-lg-9 col-md-8">
+                      <div class="">Lorem</div>
+                      <div class="">Lorem</div>
+                      <div class="">Lorem</div>
+                      <div class="">Lorem</div>
+                    </div>
+
+                  </div>
                   <!-- Profile Edit Form -->
-                  <form>
+                  <!-- <form>
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
@@ -374,7 +491,8 @@
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
-                  </form><!-- End Profile Edit Form -->
+                  </form> -->
+                  <!-- End Profile Edit Form -->
 
                 </div>
 

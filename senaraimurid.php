@@ -72,7 +72,7 @@
                         <?php echo $row['name'] ?>
                       </td>
                       <td>
-                        <?php echo $row['ic'] ?>
+                        <?php echo $row['no_kad_pengenalan'] ?>
                       </td>
                       <td>
                         <?php echo $row['tarikh_mula'] ?>
