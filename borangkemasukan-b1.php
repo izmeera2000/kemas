@@ -68,71 +68,56 @@
                     <!-- <p class="text-center small">Enter your username & password to login</p> -->
                     <ul class="nav nav-tabs nav-tabs-bordered d-flex" id="borderedTabJustified" role="tablist">
                       <li class="nav-item flex-fill" role="presentation">
-                        <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab"
+                        <button class="nav-link w-100 disabled" id="home-tab" data-bs-toggle="tab"
                           data-bs-target="#borangkemasukan-a" type="button" role="tab" aria-controls="home"
                           aria-selected="true">BAHAGIAN A</button>
                       </li>
                       <li class="nav-item flex-fill" role="presentation">
-                        <div class="nav-link w-100" id="contact-tab" type="button" role="tab" aria-selected="false">
-                          BAHAGIAN B</div>
+                        <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab"
+                          data-bs-target="#borangkemasukan-b" type="button" role="tab" aria-controls="home"
+                          aria-selected="true">BAHAGIAN B</button>
                       </li>
                       <li class="nav-item flex-fill" role="presentation">
-                        <div class="nav-link w-100" id="contact-tab" type="button" role="tab" aria-selected="false">
-                          BAHAGIAN C</div>
+                        <button class="nav-link w-100 disabled" id="home-tab" data-bs-toggle="tab"
+                          data-bs-target="#borangkemasukan-a" type="button" role="tab" aria-controls="home"
+                          aria-selected="true">BAHAGIAN C</button>
                       </li>
                       <li class="nav-item flex-fill" role="presentation">
-                        <div class="nav-link w-100" id="contact-tab" type="button" role="tab">BAHAGIAN D</div>
+                        <button class="nav-link w-100 disabled" id="home-tab" data-bs-toggle="tab"
+                          data-bs-target="#borangkemasukan-a" type="button" role="tab" aria-controls="home"
+                          aria-selected="true">BAHAGIAN D</button>
                       </li>
 
 
                     </ul>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3 needs-validation" method="post" action="?">
+                    <h5 class="card-title">PENDAPATAN KELUARGA (Diisi oleh ibu bapa/penjaga)</h5>
 
+                    <div class="col-12 mt-3">
+                      <label class="col-form-label">Hubungan</label>
+                      <select class="form-select" aria-label="Default select example" name="hubunganA">
+                        <option selected disabled>Open this select menu</option>
+                        <option value="Bapa">Bapa</option>
+                        <option value="Ibu">Ibu</option>
+                        <option value="Penjaga">Penjaga</option>
+                      </select>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourUsername" class="form-label">Nama</label>
+                      <div class="input-group has-validation">
+                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+                        <input type="text" name="namaA" class="form-control" id="namaA" >
+                        <!-- <div class="invalid-feedback">S</div>   -->
+                      </div>
+                    </div>
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Nombor Kad Pengenalan</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="ic" class="form-control" id="ic" required>
-                        <!-- <div class="invalid-feedback">S</div>   -->
-                      </div>
-                    </div>
-
-                    <div class="col-12">
-                      <label for="yourUsername" class="form-label">Nama Kanak-Kanak</label>
-                      <div class="input-group has-validation">
-                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="nama" class="form-control" id="nama" required>
-                        <!-- <div class="invalid-feedback">S</div>   -->
-                      </div>
-                    </div>
-
-                    <div class="col-12">
-                      <label for="yourUsername" class="form-label">Warganegara</label>
-                      <div class="input-group has-validation">
-                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="warganegara" class="form-control" id="warganegara" required>
-                        <!-- <div class="invalid-feedback">S</div>   -->
-                      </div>
-                    </div>
-
-                    <div class="col-12">
-                      <label for="yourUsername" class="form-label">Bangsa/Keturunan</label>
-                      <div class="input-group has-validation">
-                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="bangsa" class="form-control" id="bangsa" required>
-                        <!-- <div class="invalid-feedback">S</div>   -->
-                      </div>
-                    </div>
-
-
-
-                    <div class="col-12">
-                      <label for="yourUsername" class="form-label">Nombor Sijil Lahir</label>
-                      <div class="input-group has-validation">
-                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="nosijillahir" class="form-control" id="nosijillahir" required>
+                        <input type="text" name="icA" class="form-control" id="icA" >
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
@@ -141,43 +126,93 @@
                       <label for="yourUsername" class="form-label">Tempat Lahir</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="tempatlahir" class="form-control" id="tempatlahir" required>
+                        <input type="text" name="tempatlahirA" class="form-control" id="tempatlahirA" >
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Jantina</label>
+                      <label for="yourUsername" class="form-label">Warganegara</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="jantina" class="form-control" id="jantina" required>
+                        <input type="text" name="warganegaraA" class="form-control" id="warganegaraA" >
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Alamat Rumah</label>
+                      <label for="yourUsername" class="form-label">Bangsa/Keturunan</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="alamat" class="form-control" id="alamat" required>
+                        <input type="text" name="bangsaA" class="form-control" id="bangsaA" >
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
 
+
+
+                    <div class="col-12">
+                      <label for="yourUsername" class="form-label">Pekerjaan</label>
+                      <div class="input-group has-validation">
+                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+                        <input type="text" name="pekerjaanA" class="form-control" id="pekerjaanA" >
+                        <!-- <div class="invalid-feedback">S</div>   -->
+                      </div>
+                    </div>
 
                     <div class="col-12 mt-3">
-                      <label class="col-form-label">Saiz Baju</label>
-                      <select class="form-select" aria-label="Default select example" name="saizbaju">
+                      <label class="col-form-label">Status</label>
+                      <select class="form-select" aria-label="Default select example" name="statusA">
                         <option selected disabled>Open this select menu</option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
+                        <option value="Kahwin">Kahwin</option>
+                        <option value="Duda">Duda</option>
+                        <option value="Bujang">Bujang</option>
                       </select>
                     </div>
 
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit" name="borangkemasukan-a">Seterusnya</button>
+                      <label for="yourUsername" class="form-label">Pendapatan Sebulan</label>
+                      <div class="input-group has-validation">
+                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+                        <input type="text" name="pendapatanA" class="form-control" id="pendapatanA" >
+                        <!-- <div class="invalid-feedback">S</div>   -->
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourUsername" class="form-label">Nombor Telefon Pejabat</label>
+                      <div class="input-group has-validation">
+                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+                        <input type="text" name="notelpejabatA" class="form-control" id="notelpejabatA" >
+                        <!-- <div class="invalid-feedback">S</div>   -->
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourUsername" class="form-label">Nama Majikan</label>
+                      <div class="input-group has-validation">
+                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+                        <input type="text" name="namamajikanA" class="form-control" id="namamajikanA" >
+                        <!-- <div class="invalid-feedback">S</div>   -->
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourUsername" class="form-label">Alamat Majikan</label>
+                      <div class="input-group has-validation">
+                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+                        <input type="text" name="alamatmajikanA" class="form-control" id="alamatmajikanA" >
+                        <!-- <div class="invalid-feedback">S</div>   -->
+                      </div>
+                    </div>
+
+
+
+                    <div class="col-12">
+                      <a class="btn btn-primary w-100" href="borangkemasukan-b2.php">Skip</a>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" type="submit" name="borangkemasukan-b1">Seterusnya</button>
                     </div>
                     <!-- <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>
