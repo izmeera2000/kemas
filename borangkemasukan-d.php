@@ -219,7 +219,7 @@
                       <b class="">Muat naik Gambar Berukuran Passport Kanak-Kanak
                       </b>
                       <div class="col-12">
-                        <input class="form-control" type="file" id="gambarpassport" name="gambarpassport" required>
+                        <input class="form-control" type="file" id="gambarpassport"  accept="image/png,image/jpeg"  name="gambarpassport" required>
                       </div>
                     </div>
 
@@ -227,7 +227,7 @@
                       <b class="">Muat naik Salinan MyKID
                       </b>
                       <div class="col-12">
-                        <input class="form-control" type="file" id="mykid" name="mykid" required>
+                        <input class="form-control" type="file" id="mykid" name="mykid"  accept="application/pdf"  required>
                       </div>
                     </div>
 
@@ -236,24 +236,18 @@
                       <b class="">Muat naik Sijil Kelahiran Kanak-Kanak
                       </b>
                       <div class="col-12">
-                        <input class="form-control" type="file" id="sijillahir" name="sijillahir" required>
+                        <input class="form-control" type="file" id="sijillahir" name="sijillahir"  accept="application/pdf"  required>
                       </div>
                     </div>
 
-                    <div class="row mt-3">
-                      <b class="">Muat naik Slip Gaji Ibubapa/Penjaga
-                      </b>
-                      <div class="col-12">
-                        <input class="form-control" type="file" id="slipgaji" name="slipgaji" required>
-                      </div>
-                    </div>
+
 
 
                     <div class="row mt-3">
                       <b class="">Muat naik Salinan Rekod Kesihatan Kanak-Kanak
                       </b>
                       <div class="col-12">
-                        <input class="form-control" type="file" id="kesihatan" name="kesihatan" required>
+                        <input class="form-control" type="file" id="kesihatan"  accept="application/pdf"  name="kesihatan" required>
                       </div>
                     </div>
 

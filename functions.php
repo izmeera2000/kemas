@@ -145,12 +145,13 @@ if (isset($_POST['borangkemasukan-a'])) {
         $usera = mysqli_fetch_assoc($resulta);
         if ($usera > 1) {
             header('location: borangkemasukan-b2.php');
+            exit();
 
         } else {
             header('location: borangkemasukan-b1.php');
+            exit();
 
         }
-        exit();
     }
 }
 
@@ -274,12 +275,16 @@ if (isset($_POST['borangkemasukan-c'])) {
 
     debug_to_console($_FILES["bahagianc"]["tmp_name"]);
     debug_to_console($_FILES["bahagianc"]["name"]);
-    move_uploaded_file($_FILES["bahagianc"]["tmp_name"], "assets/murid/" . $_SESSION["ic"] . "/" . $_FILES["bahagianc"]["name"]);
-    $filename = $_FILES["bahagianc"]["name"];
+    move_uploaded_file($_FILES["bahagianc"]["tmp_name"], "assets/murid/" . $ic . "/" . "bahagianc.pdf");
+    $filename = "bahagianc.pdf";
 
-    $query = "UPDATE keluarga SET file_pengesahan='$filename' WHERE no_kad_pengenalan_murid='$ic'";
+    move_uploaded_file($_FILES["slipgaji"]["tmp_name"], "assets/murid/" . $ic . "/" . "slipgaji.pdf");
+    $filename4 = "slipgaji.pdf";
+
+    $query = "UPDATE keluarga SET file_pengesahan='$filename' , file_sipgaji='$filename4' WHERE no_kad_pengenalan_murid='$ic'";
     $result = mysqli_query($db, $query);
-
+    $query = "UPDATE murid SET status_kemasukan_text='c' WHERE no_kad_pengenalan_murid='$ic'";
+    $result = mysqli_query($db, $query);
     // echo "Stored in: " . "assets/murid/". $_SESSION["ic"] ."/". $_FILES["bahagianc"]["name"];
 
     header('location: borangkemasukan-d.php');
@@ -304,31 +309,41 @@ if (isset($_POST['borangkemasukan-d'])) {
     }
     $ic = $_SESSION['ic'];
 
+    if (isset($_POST['a'])) {
+        $geran = 1;
+    }
+    else{
+        $geran = 0;
+
+    }
     // debug_to_console($_FILES["bahagianc"]["tmp_name"]);
     // debug_to_console($_FILES["bahagianc"]["name"]);
-    move_uploaded_file($_FILES["gambarpassport"]["tmp_name"], "assets/murid/" . $_SESSION["ic"] . "/" . "gambarpassport.jpg");
-    $filename1 = $_FILES["gambarpassport"]["name"];
+    $file_ext = substr($_FILES["gambarpassport"]["name"], strripos($_FILES["gambarpassport"]["name"], '.'));
+    move_uploaded_file($_FILES["gambarpassport"]["tmp_name"], "assets/murid/" . $ic . "/" . "gambar" . $file_ext);
+    $filename1 = "gambar" . $file_ext;
 
-    move_uploaded_file($_FILES["mykid"]["tmp_name"], "assets/murid/" . $_SESSION["ic"] . "/" . "mykid.pdf");
-    $filename2 = $_FILES["mykid"]["name"];
+    move_uploaded_file($_FILES["mykid"]["tmp_name"], "assets/murid/" . $ic . "/" . "mykid.pdf");
+    $filename2 = "mykid.pdf";
 
-    move_uploaded_file($_FILES["sijillahir"]["tmp_name"], "assets/murid/" . $_SESSION["ic"] . "/" . "sijillahir.pdf");
-    $filename3 = $_FILES["sijillahir"]["name"];
-
-    move_uploaded_file($_FILES["slipgaji"]["tmp_name"], "assets/murid/" . $_SESSION["ic"] . "/" . "slipgaji.pdf");
-    $filename4 = $_FILES["slipgaji"]["name"];
-
-    move_uploaded_file($_FILES["kesihatan"]["tmp_name"], "assets/murid/" . $_SESSION["ic"] . "/" . "kesihatan.pdf");
-    $filename5 = $_FILES["kesihatan"]["name"];
+    move_uploaded_file($_FILES["sijillahir"]["tmp_name"], "assets/murid/" . $ic . "/" . "sijillahir.pdf");
+    $filename3 = "sijillahir.pdf";
 
 
-    // $query = "UPDATE keluarga SET file_pengesahan='$filename' WHERE no_kad_pengenalan_murid='$ic'";
-    // $result = mysqli_query($db, $query);
+
+    move_uploaded_file($_FILES["kesihatan"]["tmp_name"], "assets/murid/" . $ic . "/" . "kesihatan.pdf");
+    $filename5 = "kesihatan.pdf";
+
+
+    $query = "UPDATE murid SET gambar='$filename1', file_mykid='mykid.pdf', file_sijil='sijillahir.pdf' , file_rekod_kesihatan='kesihatan.pdf',geran='$geran', status_kemasukan='0' WHERE no_kad_pengenalan='$ic'";
+    $result = mysqli_query($db, $query);
+
+    $query = "UPDATE murid SET status_kemasukan_text='d' WHERE no_kad_pengenalan_murid='$ic'";
+    $result = mysqli_query($db, $query);
 
     // echo "Stored in: " . "assets/murid/". $_SESSION["ic"] ."/". $_FILES["bahagianc"]["name"];
 
-    // header('location: borangkemasukan-menunggu.php');
-    // exit();
+    header('location: borangkemasukan-menunggu.php');
+    exit();
 }
 
 ?>

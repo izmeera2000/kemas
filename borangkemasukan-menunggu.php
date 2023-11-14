@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>KEMAS - Borang Kemasukan Bahagian C</title>
+  <title>KEMAS - Borang Kemasukan Tamat</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -64,9 +64,8 @@
                 <div class="card-body">
                   <form method="post" action="?" enctype="multipart/form-data">
 
-                    <div class="pt-4 pb-4 ">
+                    <!-- <div class="pt-4 pb-4 ">
                       <h5 class="card-title text-center pb-0 fs-4">Borang Kemasukan</h5>
-                      <!-- <p class="text-center small">Enter your username & password to login</p> -->
                       <ul class="nav nav-tabs nav-tabs-bordered d-flex" id="borderedTabJustified" role="tablist">
                         <li class="nav-item flex-fill" role="presentation">
                           <button class="nav-link w-100 disabled" id="home-tab" data-bs-toggle="tab"
@@ -91,25 +90,25 @@
 
 
                       </ul>
-                    </div>
+                    </div> -->
 
-                    <h5 class="card-title">PERAKUAN DAN PENGESAHAN PENDAPATAN</h5>
-                    <b class="">Sila muat turun fail .pdf tersebut dan memuat naik semula dalam bentuk .pdf
+                    <h5 class="card-title">Borang Kemasukan Kanak-kanak Anda Sedang Diproses</h5>
+                    <b class=" text-center">Sila tunggu
                     </b>
 
                     <div class="row">
                       <div class="col-12 mt-3 d-flex flex-column align-items-center">
 
-                        <i class="bi bi-file-earmark-pdf " style="font-size: 70px;"></i>
-                        <p>bahagianC.pdf</p>
-                        <a href="assets/pdf/kemasukan/bahagianC.pdf" class="btn btn-primary" download>
+                        <div class="spinner-border" role="status"></div>
+                        <!-- <p>bahagianC.pdf</p> -->
+                        <!-- <a href="assets/pdf/kemasukan/bahagianC.pdf" class="btn btn-primary" download>
                           Muat Turun <i class="bi bi-file-earmark-arrow-down"></i>
-                        </a>
+                        </a> -->
                       </div>
 
                     </div>
 
-                    <div class="row mt-3">
+                    <!-- <div class="row mt-3">
                       <b class="">Muat naik Perakuan
                       </b>
                       <div class="col-12">
@@ -123,11 +122,10 @@
                       <div class="col-12">
                         <input class="form-control" type="file" id="slipgaji" name="slipgaji"  accept="application/pdf" required>
                       </div>
-                    </div>
+                    </div> -->
 
                     <div class="col-12 mt-3">
-                      <button class="btn btn-primary w-100" type="submit" 
-                        name="borangkemasukan-c">Seterusnya</button>
+                      <a class="btn btn-primary w-100" href="lamanutama.php">Seterusnya</a>
                     </div>
                   </form>
 
