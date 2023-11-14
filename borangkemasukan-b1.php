@@ -92,7 +92,7 @@
                     </ul>
                   </div>
 
-                  <form class="row g-3 needs-validation" method="post" action="?">
+                  <form class="row g-3 " method="post" action="?" enctype="multipart/form-data">
                     <h5 class="card-title">PENDAPATAN KELUARGA (Diisi oleh ibu bapa/penjaga)</h5>
 
                     <div class="col-12 mt-3">
@@ -208,10 +208,10 @@
 
 
 
-                    <div class="col-12">
+                    <div class="col-6">
                       <a class="btn btn-primary w-100" href="borangkemasukan-b2.php">Skip</a>
                     </div>
-                    <div class="col-12">
+                    <div class="col-6">
                       <button class="btn btn-primary w-100" type="submit" name="borangkemasukan-b1">Seterusnya</button>
                     </div>
                     <!-- <div class="col-12">

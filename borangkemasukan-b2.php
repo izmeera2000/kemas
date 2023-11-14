@@ -116,20 +116,52 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Brandon Jacob</td>
-                        <td>16</td>
-                        <td>Abang</td>
-                        <td>ADTEC TAIPING</td>
-                        <td>Tiada</td>
-                      </tr>
+                      <?php
+
+                      $ic = $_SESSION['ic'];
+                      $query = "SELECT * FROM keluarga_tanggungan WHERE no_kad_pengenalan_murid='$ic' ";
+                      $result = mysqli_query($db, $query);
+
+                      while ($row = mysqli_fetch_assoc($result)) { ?>
+
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>
+                            <?php echo $row['nama'] ?>
+                          </td>
+                          <td>
+                            <?php echo $row['umur'] ?>
+                          </td>
+                          <td>
+                            <?php echo $row['perhubungan'] ?>
+                          </td>
+                          <td>
+                            <?php echo $row['nama_institusi'] ?>
+                          </td>
+                          <td>
+                            <?php
+
+                            if ($row['nilai_biasiswa'] != '') {
+                              echo "RM " . $row['nilai_biasiswa'];
+                            } else {
+                              echo "Tiada";
+                            }
+                            ?>
+                          </td>
+                        </tr>
+
+                        <?php
+                      }
+                      ?>
+
+
 
                     </tbody>
                   </table>
 
                   <div class="col-12">
-                    <a class="btn btn-primary w-100" href="borangkemasukan-c.php" name="borangkemasukan-b2">Seterusnya</a>
+                    <a class="btn btn-primary w-100" href="borangkemasukan-c.php"
+                      name="borangkemasukan-b2">Seterusnya</a>
                   </div>
 
 
@@ -145,71 +177,75 @@
                           <h5 class="modal-title">Tanggungan Ibu / Bapa / Penjaga <br />(termasuk pemohon)</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form class="row g-3 needs-validation" method="post" action="?">
+                        <form class="row g-3 needs-validation" method="post" action="?" enctype="multipart/form-data">
 
                           <div class="modal-body">
-
-                            <div class="col-12">
-                              <label for="yourUsername" class="form-label">Nama</label>
-                              <div class="input-group has-validation">
-                                <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                                <input type="text" name="nama" class="form-control" id="nama">
-                                <!-- <div class="invalid-feedback">S</div>   -->
+                            <div class="container">
+                              <div class="col-12">
+                                <label for="yourUsername" class="form-label">Nama</label>
+                                <div class="input-group has-validation">
+                                  <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+                                  <input type="text" name="nama" class="form-control" id="nama">
+                                  <!-- <div class="invalid-feedback">S</div>   -->
+                                </div>
                               </div>
-                            </div>
-                            <div class="col-12">
-                              <label for="yourUsername" class="form-label">Umur</label>
-                              <div class="input-group has-validation">
-                                <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                                <input type="text" name="umur" class="form-control" id="umur">
-                                <!-- <div class="invalid-feedback">S</div>   -->
+                              <div class="col-12">
+                                <label for="yourUsername" class="form-label">Umur</label>
+                                <div class="input-group has-validation">
+                                  <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+                                  <input type="text" name="umur" class="form-control" id="umur">
+                                  <!-- <div class="invalid-feedback">S</div>   -->
+                                </div>
                               </div>
-                            </div>
 
-                            <div class="col-12">
-                              <label for="yourUsername" class="form-label">Perhubungan</label>
-                              <div class="input-group has-validation">
-                                <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                                <input type="text" name="perhubungan" class="form-control" id="perhubungan">
-                                <!-- <div class="invalid-feedback">S</div>   -->
+                              <div class="col-12">
+                                <label for="yourUsername" class="form-label">Perhubungan</label>
+                                <div class="input-group has-validation">
+                                  <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+                                  <input type="text" name="perhubungan" class="form-control" id="perhubungan">
+                                  <!-- <div class="invalid-feedback">S</div>   -->
+                                </div>
                               </div>
-                            </div>
 
-                            <div class="col-12">
-                              <label for="yourUsername" class="form-label">Nama Institusi (Sekolah, Kolej, IPTA, IPTS
-                                dll
-                                )
-                              </label>
-                              <div class="input-group has-validation">
-                                <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                                <input type="text" name="institusi" class="form-control" id="institusi">
-                                <!-- <div class="invalid-feedback">S</div>   -->
+                              <div class="col-12">
+                                <label for="yourUsername" class="form-label">Nama Institusi (Sekolah, Kolej, IPTA, IPTS
+                                  dll
+                                  )
+                                </label>
+                                <div class="input-group has-validation">
+                                  <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+                                  <input type="text" name="institusi" class="form-control" id="institusi">
+                                  <!-- <div class="invalid-feedback">S</div>   -->
+                                </div>
                               </div>
-                            </div>
 
-                            <div class="col-12">
-                              <label for="yourUsername" class="form-label">Nilai Biasiswa / Bantuan Setahuan (jika
-                                ada)</label>
-                              <div class="input-group has-validation">
-                                <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                                <input type="text" name="biasiswa" class="form-control" id="biasiswa">
-                                <!-- <div class="invalid-feedback">S</div>   -->
+                              <div class="col-12">
+                                <label for="yourUsername" class="form-label">Nilai Biasiswa / Bantuan Setahuan (jika
+                                  ada)</label>
+                                <div class="input-group has-validation">
+                                  <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+                                  <span class="input-group-text" id="inputGroupPrepend">RM</span>
+
+                                  <input type="text" name="biasiswa" class="form-control" id="biasiswa">
+
+                                  <!-- <div class="invalid-feedback">S</div>   -->
+                                </div>
                               </div>
+
+
+
+
+
+
+
                             </div>
+                            <div class="modal-footer">
+                              <div class="col-12">
+                                <button class="btn btn-primary w-100" type="submit"
+                                  name="borangkemasukan-b2-tambah">Tambah</button>
+                              </div>
 
-
-
-
-
-
-
-                          </div>
-                          <div class="modal-footer">
-                            <div class="col-12">
-                              <button class="btn btn-primary w-100" type="submit"
-                                name="borangkemasukan-b2-tambah">Tambah</button>
                             </div>
-
                           </div>
                         </form>
                       </div>
