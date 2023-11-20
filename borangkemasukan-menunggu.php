@@ -125,7 +125,7 @@
                     </div> -->
 
                     <div class="col-12 mt-3">
-                      <a class="btn btn-primary w-100" href="lamanutama.php">Seterusnya</a>
+                      <a class="btn btn-primary w-100" href="lamanutama.php">Pergi Ke Laman Utama</a>
                     </div>
                   </form>
 

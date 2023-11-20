@@ -10,12 +10,12 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <?php include('head.php') ?>
+  <?php include('head.php')?>
 
 </head>
 
 <body>
-  <?php include('topnav.php') ?>
+<?php include('topnav.php') ?>
 
 
   <?php include('sidebar.php') ?>
@@ -58,7 +58,7 @@
 
                   <?php
 
-                  $query = "SELECT * FROM murid WHERE status_kemasukan='1' ";
+                  $query = "SELECT * FROM murid WHERE (status_kemasukan='0' OR status_kemasukan='2') AND status_kemasukan_text='d' ";
                   $result = mysqli_query($db, $query);
 
                   while ($row = mysqli_fetch_assoc($result)) { ?>
@@ -80,8 +80,7 @@
                       <td>
                         <form method="post" action="?profilmurid">
                           <input type="hidden" id="studentid" name="studentid" value="<?php echo $row['id'] ?>">
-                          <button type="submit" name="profilmurid" class="btn btn-success"><i
-                              class="bi bi-check-circle"></i></button>
+                          <button type="submit" name="profilmurid" class="btn btn-success"><i class="bi bi-check-circle"></i></button>
                         </form>
                       </td>
                     </tr>

@@ -34,7 +34,7 @@ if (isset($_POST['login_staff'])) {
 if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['username']);
-    header("location: login.php");
+    header("location: lamanutama.php");
 }
 
 
@@ -283,7 +283,7 @@ if (isset($_POST['borangkemasukan-c'])) {
 
     $query = "UPDATE keluarga SET file_pengesahan='$filename' , file_sipgaji='$filename4' WHERE no_kad_pengenalan_murid='$ic'";
     $result = mysqli_query($db, $query);
-    $query = "UPDATE murid SET status_kemasukan_text='c' WHERE no_kad_pengenalan_murid='$ic'";
+    $query = "UPDATE murid SET status_kemasukan_text='c' WHERE no_kad_pengenalan='$ic'";
     $result = mysqli_query($db, $query);
     // echo "Stored in: " . "assets/murid/". $_SESSION["ic"] ."/". $_FILES["bahagianc"]["name"];
 
@@ -337,7 +337,7 @@ if (isset($_POST['borangkemasukan-d'])) {
     $query = "UPDATE murid SET gambar='$filename1', file_mykid='mykid.pdf', file_sijil='sijillahir.pdf' , file_rekod_kesihatan='kesihatan.pdf',geran='$geran', status_kemasukan='0' WHERE no_kad_pengenalan='$ic'";
     $result = mysqli_query($db, $query);
 
-    $query = "UPDATE murid SET status_kemasukan_text='d' WHERE no_kad_pengenalan_murid='$ic'";
+    $query = "UPDATE murid SET status_kemasukan_text='d' WHERE no_kad_pengenalan='$ic'";
     $result = mysqli_query($db, $query);
 
     // echo "Stored in: " . "assets/murid/". $_SESSION["ic"] ."/". $_FILES["bahagianc"]["name"];

@@ -156,14 +156,42 @@
 
           while ($row = mysqli_fetch_assoc($result)) {
 
-
             $nama = $row['name'];
+            $umur = $row['age'];
+            $ic = $row['no_kad_pengenalan'];
+            $tarikh_mula = $row['tarikh_mula'];
+            $warganegara = $row['warganegara'];
+            $bangsa = $row['bangsa'];
+            $tarikh_lahir = $row['tarikh_lahir'];
+            $no_sijil_lahir = $row['no_sijil_lahir'];
+            $tempat_lahir = $row['tempat_lahir'];
+            $jantina = $row['jantina'];
+            $alamat_rumah = $row['alamat_rumah'];
+            $saizbaju = $row['saizbaju'];
+            $penyakit = $row['penyakit'];
+            $tinggi = $row['tinggi'];
+            $berat = $row['berat'];
+            $masalah_makanan = $row['masalah_makanan'];
+            $kecacatan = $row['kecacatan'];
+            $nama_penjaga = $row['nama_penjaga'];
+            $alamat_rumah_penjaga = $row['alamat_rumah_penjaga'];
+            $telefon_penjaga = $row['telefon_penjaga'];
+            $hubungan_penjaga = $row['hubungan_penjaga'];
+
+            $gambar = $row['gambar'];
+            $file_mykid = $row['file_mykid'];
+            $file_sijil = $row['file_sijil'];
+            $file_rekod_kesihatan = $row['file_rekod_kesihatan'];
+            $geran = $row['geran'];
+
           }
+
+
           ?>
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+              <img src="assets/murid/<?php echo $ic; ?>/<?php echo $gambar; ?>" alt="Profile" class="">
               <h2>
                 <?php echo $nama; ?>
               </h2>
@@ -201,94 +229,130 @@
                 </li>
 
               </ul>
-              <div class="tab-content pt-2">
+              <div class="tab-content pt-3">
 
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                  <h5 class="card-title">About</h5>
+                  <!-- <h5 class="card-title">About</h5>
                   <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque
                     temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem
-                    eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
+                    eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p> -->
 
-                  <h5 class="card-title">Profile Details</h5>
+                  <h5 class="card-title">Maklumat Kanak-kanak</h5>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Nama</div>
-                    <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php echo $nama ?>
+                    </div>
                   </div>
 
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Nama Ibu/bapa atau penjaga</div>
-                    <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
-                  </div>
+
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Warganegara</div>
-                    <div class="col-lg-9 col-md-8">Web Designer</div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php echo $warganegara ?>
+                    </div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Bangsa/Keturunan</div>
-                    <div class="col-lg-9 col-md-8">USA</div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php echo $bangsa ?>
+                    </div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Tarikh Lahir</div>
-                    <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php echo $tarikh_lahir ?>
+                    </div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Umur</div>
-                    <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php echo $umur ?>
+                    </div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">No. Sijil Lahir</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php echo $no_sijil_lahir ?>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Tempat Lahir</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php echo $tempat_lahir ?>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Jantina</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php echo $jantina ?>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Alamat Rumah</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php echo $alamat_rumah ?>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Saiz Baju</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php echo $saizbaju ?>
+                    </div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Jenis Penyakit</div>
-                    <div class="col-lg-9 col-md-8">Lelah</div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php echo $penyakit ?>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Tinggi</div>
-                    <div class="col-lg-9 col-md-8">Lorem</div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php echo $tinggi ?>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Berat</div>
-                    <div class="col-lg-9 col-md-8">Lorem</div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php echo $berat ?>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Masalah Makanan</div>
-                    <div class="col-lg-9 col-md-8">Lorem</div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php echo $masalah_makanan ?>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Kecacatan</div>
-                    <div class="col-lg-9 col-md-8">Lorem</div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php echo $kecacatan ?>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Emergency Contact</div>
                     <div class="row col-lg-9 col-md-8">
-                      <div class="">Lorem</div>
-                      <div class="">Lorem</div>
-                      <div class="">Lorem</div>
-                      <div class="">Lorem</div>
+                      <div class="">
+                        <?php echo $nama_penjaga ?>
+                      </div>
+                      <div class="">
+                        <?php echo $alamat_rumah_penjaga ?>
+                      </div>
+                      <div class="">
+                        <?php echo $telefon_penjaga ?>
+                      </div>
+                      <div class="">
+                        <?php echo $hubungan_penjaga ?>
+                      </div>
+
                     </div>
 
                   </div>
@@ -299,284 +363,147 @@
 
 
 
-                  <h5 class="card-title">Pendapatan Keluarga</h5>
+                  <?php
 
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Nama</div>
-                    <div class="col-lg-9 col-md-8">Kevin Anderson</div>
-                  </div>
 
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Nama Ibu/bapa atau penjaga</div>
-                    <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
-                  </div>
 
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Warganegara</div>
-                    <div class="col-lg-9 col-md-8">Web Designer</div>
-                  </div>
+                  $query = "SELECT * FROM keluarga WHERE no_kad_pengenalan_murid='$ic' ORDER BY id ASC ";
+                  $result = mysqli_query($db, $query);
 
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Bangsa/Keturunan</div>
-                    <div class="col-lg-9 col-md-8">USA</div>
-                  </div>
+                  while ($row = mysqli_fetch_assoc($result)) { ?>
 
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Tarikh Lahir</div>
-                    <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
-                  </div>
+                    <h5 class="card-title">Maklumat <?php echo $row['hubungan'] ?></h5>
 
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Umur</div>
-                    <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">No. Sijil Lahir</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Tempat Lahir</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Jantina</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Alamat Rumah</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Saiz Baju</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Jenis Penyakit</div>
-                    <div class="col-lg-9 col-md-8">Lelah</div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Tinggi</div>
-                    <div class="col-lg-9 col-md-8">Lorem</div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Berat</div>
-                    <div class="col-lg-9 col-md-8">Lorem</div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Masalah Makanan</div>
-                    <div class="col-lg-9 col-md-8">Lorem</div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Kecacatan</div>
-                    <div class="col-lg-9 col-md-8">Lorem</div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Emergency Contact</div>
-                    <div class="row col-lg-9 col-md-8">
-                      <div class="">Lorem</div>
-                      <div class="">Lorem</div>
-                      <div class="">Lorem</div>
-                      <div class="">Lorem</div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label ">Nama</div>
+                      <div class="col-lg-9 col-md-8"><?php echo $row['nama'] ?></div>
                     </div>
 
-                  </div>
-                  <!-- Profile Edit Form -->
-                  <!-- <form>
-                    <div class="row mb-3">
-                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-                      <div class="col-md-8 col-lg-9">
-                        <img src="assets/img/profile-img.jpg" alt="Profile">
-                        <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i
-                              class="bi bi-upload"></i></a>
-                          <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i
-                              class="bi bi-trash"></i></a>
-                        </div>
-                      </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label ">No Kad Pengenalan</div>
+                      <div class="col-lg-9 col-md-8"><?php echo $row['kad_pengenalan'] ?></div>
                     </div>
-
-                    <div class="row mb-3">
-                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
-                      </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label ">Warganegara</div>
+                      <div class="col-lg-9 col-md-8"><?php echo $row['warganegara'] ?></div>
                     </div>
-
-                    <div class="row mb-3">
-                      <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
-                      <div class="col-md-8 col-lg-9">
-                        <textarea name="about" class="form-control" id="about"
-                          style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
-                      </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label ">Keturunan</div>
+                      <div class="col-lg-9 col-md-8"><?php echo $row['keturunan'] ?></div>
                     </div>
-
-                    <div class="row mb-3">
-                      <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="company" type="text" class="form-control" id="company"
-                          value="Lueilwitz, Wisoky and Leuschke">
-                      </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label ">Pekerjaan</div>
+                      <div class="col-lg-9 col-md-8"><?php echo $row['pekerjaan'] ?></div>
                     </div>
-
-                    <div class="row mb-3">
-                      <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
-                      </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label ">Status</div>
+                      <div class="col-lg-9 col-md-8"><?php echo $row['status'] ?></div>
                     </div>
-
-                    <div class="row mb-3">
-                      <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="country" type="text" class="form-control" id="Country" value="USA">
-                      </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label ">Pendapatan Sebulan</div>
+                      <div class="col-lg-9 col-md-8"><?php echo $row['pendapatan_sebulan'] ?></div>
                     </div>
-
-                    <div class="row mb-3">
-                      <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="address" type="text" class="form-control" id="Address"
-                          value="A108 Adam Street, New York, NY 535022">
-                      </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label ">No Telefon Pejabat</div>
+                      <div class="col-lg-9 col-md-8"><?php echo $row['no_telefon_pejabat'] ?></div>
                     </div>
-
-                    <div class="row mb-3">
-                      <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
-                      </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label ">Nama Majikan</div>
+                      <div class="col-lg-9 col-md-8"><?php echo $row['nama_majikan'] ?></div>
                     </div>
-
-                    <div class="row mb-3">
-                      <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
-                      </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label ">Alamat Majikan</div>
+                      <div class="col-lg-9 col-md-8"><?php echo $row['alamat_majikan'] ?></div>
                     </div>
-
-                    <div class="row mb-3">
-                      <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="twitter" type="text" class="form-control" id="Twitter"
-                          value="https://twitter.com/#">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="facebook" type="text" class="form-control" id="Facebook"
-                          value="https://facebook.com/#">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="instagram" type="text" class="form-control" id="Instagram"
-                          value="https://instagram.com/#">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="linkedin" type="text" class="form-control" id="Linkedin"
-                          value="https://linkedin.com/#">
-                      </div>
-                    </div>
-
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </div>
-                  </form> -->
-                  <!-- End Profile Edit Form -->
-
+                    <?php
+                  }
+                  ?>
                 </div>
 
-                <div class="tab-pane fade pt-3" id="profile-settings">
 
-                  <!-- Settings Form -->
-                  <form>
 
-                    <div class="row mb-3">
-                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Notifications</label>
-                      <div class="col-md-8 col-lg-9">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="changesMade" checked>
-                          <label class="form-check-label" for="changesMade">
-                            Changes made to your account
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="newProducts" checked>
-                          <label class="form-check-label" for="newProducts">
-                            Information on new products and services
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="proOffers">
-                          <label class="form-check-label" for="proOffers">
-                            Marketing and promo offers
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="securityNotify" checked disabled>
-                          <label class="form-check-label" for="securityNotify">
-                            Security alerts
-                          </label>
+                  <div class="tab-pane fade pt-3" id="profile-settings">
+
+                    <!-- Settings Form -->
+                    <form>
+
+                      <div class="row mb-3">
+                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Notifications</label>
+                        <div class="col-md-8 col-lg-9">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="changesMade" checked>
+                            <label class="form-check-label" for="changesMade">
+                              Changes made to your account
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="newProducts" checked>
+                            <label class="form-check-label" for="newProducts">
+                              Information on new products and services
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="proOffers">
+                            <label class="form-check-label" for="proOffers">
+                              Marketing and promo offers
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="securityNotify" checked disabled>
+                            <label class="form-check-label" for="securityNotify">
+                              Security alerts
+                            </label>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </div>
-                  </form><!-- End settings Form -->
-
-                </div>
-
-                <div class="tab-pane fade pt-3" id="profile-change-password">
-                  <!-- Change Password Form -->
-                  <form>
-
-                    <div class="row mb-3">
-                      <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="password" type="password" class="form-control" id="currentPassword">
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
                       </div>
-                    </div>
+                    </form><!-- End settings Form -->
 
-                    <div class="row mb-3">
-                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="newpassword" type="password" class="form-control" id="newPassword">
+                  </div>
+
+                  <div class="tab-pane fade pt-3" id="profile-change-password">
+                    <!-- Change Password Form -->
+                    <form>
+
+                      <div class="row mb-3">
+                        <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="password" type="password" class="form-control" id="currentPassword">
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="row mb-3">
-                      <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                      <div class="row mb-3">
+                        <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="newpassword" type="password" class="form-control" id="newPassword">
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Change Password</button>
-                    </div>
-                  </form><!-- End Change Password Form -->
+                      <div class="row mb-3">
+                        <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New
+                          Password</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                        </div>
+                      </div>
 
-                </div>
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Change Password</button>
+                      </div>
+                    </form><!-- End Change Password Form -->
 
-              </div><!-- End Bordered Tabs -->
+                  </div>
 
+                </div><!-- End Bordered Tabs -->
+
+              </div>
             </div>
-          </div>
 
+          </div>
         </div>
-      </div>
     </section>
 
   </main><!-- End #main -->

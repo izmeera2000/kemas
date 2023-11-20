@@ -11,7 +11,7 @@ if (!isset($_SESSION['username'])) {
 <head>
 
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>KEMAS</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
