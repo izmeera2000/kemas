@@ -95,7 +95,7 @@
                   <form class="row g-3 needs-validation" method="post" action="?">
                     <?php include('errors.php'); ?>
 
-                  <h5 class="card-title mt-3">Maklumat Murid</h5>
+                    <h5 class="card-title mt-3">Maklumat Murid</h5>
 
 
                     <div class="col-12">

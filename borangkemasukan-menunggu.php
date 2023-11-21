@@ -1,5 +1,8 @@
 <?php include('functions.php') ?>
+<?php 
+// header( "refresh:5;url=lamanutama.php" );
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 

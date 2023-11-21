@@ -59,6 +59,58 @@ if (isset($_POST['profilmurid'])) {
     header('location: profilmurid.php');
 
 }
+if (isset($_POST['pemarkahan'])) {
+    $_SESSION['idmurid'] = $_POST['studentid'];
+    header('location: pemarkahan.php');
+
+}
+
+if (isset($_POST['tambahpemarkahan'])) {
+    // $_SESSION['idmurid'] = $_POST['studentid'];
+    // header('location: pemarkahan.php');
+    foreach ($_POST as $key => $value) {
+        // echo "Field ".htmlspecialchars($key)." is ".htmlspecialchars($value)."<br>";
+        debug_to_console($key . " : " . $value);
+    }
+    $ic = $_POST['murid_id'];
+    // $tarikh = $_POST['tarikh'];
+
+    $bm1 = $_POST['bm1'];
+    $bm2 = $_POST['bm2'];
+    $bm3 = $_POST['bm3'];
+    $bi1 = $_POST['bi1'];
+    $bi2 = $_POST['bi2'];
+    $bi3 = $_POST['bi3'];
+    $pi1 = $_POST['pi1'];
+    $pi2 = $_POST['pi2'];
+    $pi3 = $_POST['pi3'];
+    $pi4 = $_POST['pi4'];
+    $pi5 = $_POST['pi5'];
+    $pi6 = $_POST['pi6'];
+    $keterampilan = $_POST['keterampilan'];
+    $perkem1 = $_POST['perkem1'];
+    $perkem2 = $_POST['perkem2'];
+    $perkem3 = $_POST['perkem3'];
+    $perkem4 = $_POST['perkem4'];
+    $perkem5 = $_POST['perkem5'];
+    $perkem6 = $_POST['perkem6'];
+    $kreativ1 = $_POST['kreativ1'];
+    $kreativ2 = $_POST['kreativ2'];
+    $sainsawal1 = $_POST['sainsawal1'];
+    $sainsawal2 = $_POST['sainsawal2'];
+    $matematikawal1 = $_POST['matematikawal1'];
+    $matematikawal2 = $_POST['matematikawal2'];
+    $matematikawal3 = $_POST['matematikawal3'];
+    $matematikawal4 = $_POST['matematikawal4'];
+    $matematikawal5 = $_POST['matematikawal5'];
+    $matematikawal6 = $_POST['matematikawal6'];
+    $kemanusiaan = $_POST['kemanusiaan'];
+    $catatan = $_POST['catatan'];
+
+    $query = "INSERT INTO pemarkahan  (murid_id,bm1,bm2,bm3,bi1,b2,b3,pi1,pi2,pi3,pi4,pi5,pi6,keterampilan,perkem1,perkem2,perkem3,perkem4,perkem5,perkem6,kreativ1,kreativ2,sansawal1,sainsawal2,matematikawal1,matematikawal2,matematikawal3,matematikawal4,matematikawal5,matematikawal6,kemanusiaan,catatan)
+    VALUES('$ic', '$bm1','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic',)";
+    $result = mysqli_query($db, $query);
+}
 
 if (isset($_POST['borangkemasukan-a'])) {
     // $_SESSION['idmurid'] =$_POST['studentid'];
@@ -113,7 +165,7 @@ if (isset($_POST['borangkemasukan-a'])) {
     debug_to_console($umur);
 
 
-    $datebirth =  date("Y-m-d", strtotime("$tahunlahir-$bulanlahir-$harilahir"));
+    $datebirth = date("Y-m-d", strtotime("$tahunlahir-$bulanlahir-$harilahir"));
 
 
     $user_check_query = "SELECT * FROM murid WHERE no_kad_pengenalan='$ic'";
@@ -178,7 +230,7 @@ if (isset($_POST['borangkemasukan-b1'])) {
 
     $ic = $_SESSION['ic'];
 
-    $datebirth =  date("Y-m-d", strtotime("$tahunlahir-$bulanlahir-$harilahir"));
+    $datebirth = date("Y-m-d", strtotime("$tahunlahir-$bulanlahir-$harilahir"));
 
     $hubunganA = $db->real_escape_string($_POST['hubunganA']);
     $namaA = $db->real_escape_string($_POST['namaA']);
@@ -208,7 +260,7 @@ if (isset($_POST['borangkemasukan-b1'])) {
     VALUES( '$ic','$hubunganA','$icA','$namaA','$datebirth','$tempatlahirA','$warganegaraA','$bangsaA','$pekerjaanA','$statusA','$pendapatanA','$notelpejabatA','$namamajikanA','$alamatmajikanA')";
         $result = mysqli_query($db, $query);
         if (!empty($result)) {
-            
+
             // echo ("Error description: " . mysqli_error($db));
 
         } else {
@@ -216,7 +268,7 @@ if (isset($_POST['borangkemasukan-b1'])) {
             // echo ("Error description: " . mysqli_error($db));
 
         }
-        $query4="UPDATE murid SET status_kemasukan_text='b1' WHERE no_kad_pengenalan='$ic'";
+        $query4 = "UPDATE murid SET status_kemasukan_text='b1' WHERE no_kad_pengenalan='$ic'";
         echo ("Error description: " . mysqli_error($db));
         $result4 = mysqli_query($db, $query4);
         header('location: borangkemasukan-b1.php');
@@ -281,7 +333,7 @@ if (isset($_POST['borangkemasukan-c'])) {
     move_uploaded_file($_FILES["slipgaji"]["tmp_name"], "assets/murid/" . $ic . "/" . "slipgaji.pdf");
     $filename4 = "slipgaji.pdf";
 
-    $query = "UPDATE keluarga SET file_pengesahan='$filename' , file_sipgaji='$filename4' WHERE no_kad_pengenalan_murid='$ic'";
+    $query = "UPDATE keluarga SET file_pengesahan='$filename' , file_slipgaji='$filename4' WHERE no_kad_pengenalan_murid='$ic'";
     $result = mysqli_query($db, $query);
     $query = "UPDATE murid SET status_kemasukan_text='c' WHERE no_kad_pengenalan='$ic'";
     $result = mysqli_query($db, $query);
@@ -311,8 +363,7 @@ if (isset($_POST['borangkemasukan-d'])) {
 
     if (isset($_POST['a'])) {
         $geran = 1;
-    }
-    else{
+    } else {
         $geran = 0;
 
     }
@@ -346,4 +397,18 @@ if (isset($_POST['borangkemasukan-d'])) {
     exit();
 }
 
+
+if (isset($_POST['kemasukan-layak'])) {
+    $ic = $_POST['ic'];
+    $query = "UPDATE murid SET status_kemasukan='1' WHERE no_kad_pengenalan='$ic'";
+    $result = mysqli_query($db, $query);
+
+
+}
+if (isset($_POST['kemasukan-tidaklayak'])) {
+    $ic = $_POST['ic'];
+
+    $query = "UPDATE murid SET status_kemasukan='0' WHERE no_kad_pengenalan='$ic'";
+    $result = mysqli_query($db, $query);
+}
 ?>

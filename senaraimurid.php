@@ -80,8 +80,10 @@
                       <td>
                         <form method="post" action="?profilmurid">
                           <input type="hidden" id="studentid" name="studentid" value="<?php echo $row['id'] ?>">
-                          <button type="submit" name="profilmurid" class="btn btn-success"><i
-                              class="bi bi-check-circle"></i></button>
+                          <button type="submit" name="profilmurid" class="btn btn-primary"><i
+                              class="bi bi-person"></i></button>
+                          <button type="submit" name="pemarkahan" class="btn btn-primary"><i
+                              class="bi bi-card-checklist"></i></button>
                         </form>
                       </td>
                     </tr>
