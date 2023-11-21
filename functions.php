@@ -107,8 +107,8 @@ if (isset($_POST['tambahpemarkahan'])) {
     $kemanusiaan = $_POST['kemanusiaan'];
     $catatan = $_POST['catatan'];
 
-    $query = "INSERT INTO pemarkahan  (murid_id,bm1,bm2,bm3,bi1,b2,b3,pi1,pi2,pi3,pi4,pi5,pi6,keterampilan,perkem1,perkem2,perkem3,perkem4,perkem5,perkem6,kreativ1,kreativ2,sansawal1,sainsawal2,matematikawal1,matematikawal2,matematikawal3,matematikawal4,matematikawal5,matematikawal6,kemanusiaan,catatan)
-    VALUES('$ic', '$bm1','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic','$ic',)";
+    $query = "INSERT INTO pemarkahan  (murid_id,bm1,bm2,bm3,bi1,bi2,bi3,pi1,pi2,pi3,pi4,pi5,pi6,keterampilan,perkem1,perkem2,perkem3,perkem4,perkem5,perkem6,kreativ1,kreativ2,sainsawal1,sainsawal2,matematikawal1,matematikawal2,matematikawal3,matematikawal4,matematikawal5,matematikawal6,kemanusiaan,catatan)
+    VALUES('$ic', '$bm1','$bm2','$bm3','$bi1','$bi2','$bi3','$pi1','$pi2','$pi3','$pi4','$pi5','$pi6','$keterampilan','$perkem1','$perkem2','$perkem3','$perkem4','$perkem5','$perkem6','$kreativ1','$kreativ2','$sainsawal1','$sainsawal2','$matematikawal1','$matematikawal2','$matematikawal3','$matematikawal4','$matematikawal5','$matematikawal6','$kemanusiaan','$catatan')";
     $result = mysqli_query($db, $query);
 }
 
@@ -411,4 +411,15 @@ if (isset($_POST['kemasukan-tidaklayak'])) {
     $query = "UPDATE murid SET status_kemasukan='0' WHERE no_kad_pengenalan='$ic'";
     $result = mysqli_query($db, $query);
 }
+
+if (isset($_POST['download-pdf'])) {
+    require('assets/vendor/fpdf/fpdf.php');
+
+$pdf = new FPDF();
+$pdf->AddPage();
+$pdf->SetFont('Arial','B',16);
+$pdf->Cell(40,10,'Hello World!');
+$pdf->Output();
+}
+
 ?>

@@ -148,6 +148,12 @@
                     eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p> -->
 
                   <h5 class="card-title">Tahun</h5>
+                  <form method="post">
+                    <button type="submit" name="download-pdf" class="btn btn-primary">Download</button>
+                  </form>
+
+
+                  <h5 class="card-title">B</h5>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Nama</div>
@@ -298,7 +304,7 @@
                 <label for="yourUsername" class="form-label fw-bold fw-bold">Mendengar Dan Bertutur</label>
                 <div class="input-group has-validation">
                   <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                  <textarea class="form-control" name="bm1" style="height: auto;" ></textarea>
+                  <textarea class="form-control" name="bm1" style="height: auto;"></textarea>
                   <!-- <div class="invalid-feedback">S</div>   -->
                 </div>
               </div>
