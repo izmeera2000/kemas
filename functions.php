@@ -18,23 +18,86 @@ if (isset($_POST['login_staff'])) {
 
 
 
-    // $password = md5($password);
+    $password = md5($password);
     $query = "SELECT * FROM staf WHERE idpengguna='$username' AND katalaluan='$password'";
     $results = mysqli_query($db, $query);
+
     if (mysqli_num_rows($results) == 1) {
         $_SESSION['username'] = $username;
+
         while ($row = mysqli_fetch_assoc($results)) {
 
-        $_SESSION['level'] = $row['level'];
+            $_SESSION['level'] = $row['level'];
         }
-        $_SESSION['success'] = "You are now logged in";
-        header('location: index.php');
+        // $_SESSION['success'] = "You are now logged in";
+        if ($password != md5($username)) {
+            header('location: index.php');
+        } else {
+
+            header('location: tukarkatalaluan.php');
+
+        }
+
     } else {
         array_push($errors, "Wrong username/password combination");
     }
 
 }
 
+if (isset($_POST['tambahstaf'])) {
+
+    $id = mysqli_real_escape_string($db, $_POST['id']);
+    $level = mysqli_real_escape_string($db, $_POST['level']);
+    $nama = mysqli_real_escape_string($db, $_POST['nama']);
+    $umur = mysqli_real_escape_string($db, $_POST['umur']);
+
+
+    $user_check_query = "SELECT * FROM staf WHERE idpengguna='$id'  LIMIT 1";
+    $result = mysqli_query($db, $user_check_query);
+    $row = mysqli_fetch_assoc($result);
+
+    if ($row) { // if user exists
+        if ($row['idpengguna'] === $id) {
+            array_push($errors, "ID Pengguna wujud");
+        }
+    }
+    echo count($errors);
+    echo "thisds";
+    if (count($errors) == 0) {
+        $password = md5($id); //encrypt the password before saving in the database
+
+        $query = "INSERT INTO staf (idpengguna, katalaluan) 
+                          VALUES('$id', '$password')";
+        mysqli_query($db, $query);
+
+        $query = "INSERT INTO staf_profile (idpengguna, nama,umur) 
+                          VALUES('$id', '$nama','$umur')";
+        mysqli_query($db, $query);
+
+
+    }
+
+}
+if (isset($_POST['tukarkatalaluan'])) {
+
+    $password_1 = mysqli_real_escape_string($db, $_POST['password1']);
+    $password_2 = mysqli_real_escape_string($db, $_POST['password2']);
+    $id = mysqli_real_escape_string($db, $_POST['id']);
+
+    if ($password_1 != $password_2) {
+        array_push($errors, "The two passwords do not match");
+    }
+    if (count($errors) == 0) {
+        $password = md5($password_1); //encrypt the password before saving in the database
+
+        $query = "UPDATE staf  
+                      SET katalaluan='$password'
+                      WHERE idpengguna='$id';";
+        mysqli_query($db, $query);
+
+        header('location: index.php');
+    }
+}
 
 if (isset($_POST['login_ibubapa'])) {
 
@@ -46,11 +109,11 @@ if (isset($_POST['login_ibubapa'])) {
         $_SESSION['username'] = $ic;
         while ($row = mysqli_fetch_assoc($results)) {
 
-            if ($row['status_kemasukan'] != 1){
-                if ($row['status_kemasukan_text'] == "d"){
+            if ($row['status_kemasukan'] != 1) {
+                if ($row['status_kemasukan_text'] == "d") {
                     header('location: borangkemasukan-d.php');
                 }
-            }else{
+            } else {
                 $_SESSION['level'] = 0;
                 $_SESSION['idmurid'] = $row['id'];
                 header('location: profilmurid.php');
@@ -148,7 +211,7 @@ if (isset($_POST['tambahpemarkahan'])) {
             $namastaf = $row['nama'];
 
         }
-    } 
+    }
     $query = "INSERT INTO pemarkahan  (murid_id,idpengguna,bm1,bm2,bm3,bi1,bi2,bi3,pi1,pi2,pi3,pi4,pi5,pi6,keterampilan,perkem1,perkem2,perkem3,perkem4,perkem5,perkem6,kreativ1,kreativ2,sainsawal1,sainsawal2,matematikawal1,matematikawal2,matematikawal3,matematikawal4,matematikawal5,matematikawal6,kemanusiaan,catatan)
     VALUES('$ic','$namastaf', '$bm1','$bm2','$bm3','$bi1','$bi2','$bi3','$pi1','$pi2','$pi3','$pi4','$pi5','$pi6','$keterampilan','$perkem1','$perkem2','$perkem3','$perkem4','$perkem5','$perkem6','$kreativ1','$kreativ2','$sainsawal1','$sainsawal2','$matematikawal1','$matematikawal2','$matematikawal3','$matematikawal4','$matematikawal5','$matematikawal6','$kemanusiaan','$catatan')";
     $result = mysqli_query($db, $query);

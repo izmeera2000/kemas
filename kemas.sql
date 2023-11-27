@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 27, 2023 at 03:13 PM
+-- Generation Time: Nov 27, 2023 at 03:52 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -192,17 +192,18 @@ CREATE TABLE IF NOT EXISTS `staf` (
   `id` int NOT NULL AUTO_INCREMENT,
   `idpengguna` text,
   `katalaluan` text,
-  `level` int DEFAULT NULL,
+  `level` int DEFAULT '2',
   `tarikh` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `staf`
 --
 
 INSERT INTO `staf` (`id`, `idpengguna`, `katalaluan`, `level`, `tarikh`) VALUES
-(2, 'test', 'test', 1, '2023-11-27 14:01:43');
+(4, 'asdasd', '7815696ecbf1c96e6894b779456d330e', 2, '2023-11-27 15:51:07'),
+(3, '123', '811584043b844704c9bb9a6e99dd05d3', 1, '2023-11-27 15:34:23');
 
 -- --------------------------------------------------------
 
@@ -216,15 +217,18 @@ CREATE TABLE IF NOT EXISTS `staf_profile` (
   `idpengguna` text,
   `nama` text,
   `umur` int NOT NULL,
+  `gambar` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `staf_profile`
 --
 
-INSERT INTO `staf_profile` (`id`, `idpengguna`, `nama`, `umur`) VALUES
-(1, 'test', NULL, 0);
+INSERT INTO `staf_profile` (`id`, `idpengguna`, `nama`, `umur`, `gambar`) VALUES
+(1, 'test', NULL, 0, NULL),
+(2, '123', '123', 123, NULL),
+(6, 'asdasd', 'asd', 12312, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

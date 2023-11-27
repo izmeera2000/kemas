@@ -70,7 +70,7 @@
                   $result = mysqli_query($db, $query);
 
                   while ($row = mysqli_fetch_assoc($result)) {
-                    $idpengguna = $row['idpengguna'];
+                    $idpengguna2 = $row['idpengguna'];
                     ?>
 
 
@@ -82,7 +82,7 @@
                         <?php echo $row['idpengguna'] ?>
                       </td>
                       <?php
-                      $query2 = "SELECT * FROM staf_profile WHERE idpengguna='$idpengguna' ";
+                      $query2 = "SELECT * FROM staf_profile WHERE idpengguna='$idpengguna2' ";
                       $result2 = mysqli_query($db, $query2);
 
                       while ($row2 = mysqli_fetch_assoc($result2)) { ?>
@@ -101,10 +101,10 @@
                       <td>
                         <form method="post" action="?profilmurid">
                           <input type="hidden" id="studentid" name="studentid" value="<?php echo $row['id'] ?>">
-                          <button type="submit" name="profilmurid" class="btn btn-primary"><i
-                              class="bi bi-person"></i></button>
+                          <!-- <button type="submit" name="profilmurid" class="btn btn-primary"><i
+                              class="bi bi-person"></i></button> -->
                           <button type="submit" name="deletestaf" class="btn btn-primary"><i
-                              class="bi bi-card-checklist"></i></button>
+                              class="bi bi-trash"></i></button>
                         </form>
                       </td>
                     </tr>
@@ -132,51 +132,41 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body profile-card">
-              
-
-
-              
-
+            
 
             
-              <h5 class="card-title mt-3">Sains Awal</h5>
+              <h5 class="card-title mt-3">ID Pengguna</h5>
               <div class="col-12 mt-1">
-                <label for="yourUsername" class="form-label fw-bold">Proses Sains</label>
                 <div class="input-group has-validation">
                   <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                  <textarea class="form-control" name="sainsawal1" style="height: auto;"></textarea>
+                  <textarea class="form-control" name="id" style="height: auto;"></textarea>
                   <!-- <div class="invalid-feedback">S</div>   -->
                 </div>
               </div>
+
+              <h5 class="card-title mt-3">Level</h5>
               <div class="col-12 mt-1">
-                <label for="yourUsername" class="form-label fw-bold">Penerokaan</label>
                 <div class="input-group has-validation">
                   <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                  <textarea class="form-control" name="sainsawal2" style="height: auto;"></textarea>
+                  <textarea class="form-control" name="level" style="height: auto;"></textarea>
                   <!-- <div class="invalid-feedback">S</div>   -->
                 </div>
               </div>
 
-
-          
-
-
-              <h5 class="card-title mt-3">Kemanusiaan</h5>
-              <div class="col-12 ">
-                <!-- <label for="yourUsername" class="form-label fw-bold">Pengalaman Pranombor</label> -->
+              <h5 class="card-title mt-3">Nama</h5>
+              <div class="col-12 mt-1">
                 <div class="input-group has-validation">
                   <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                  <textarea class="form-control" name="kemanusiaan" style="height: auto;"></textarea>
+                  <textarea class="form-control" name="nama" style="height: auto;"></textarea>
                   <!-- <div class="invalid-feedback">S</div>   -->
                 </div>
               </div>
 
-              <h5 class="card-title mt-3">Catatan</h5>
-              <div class="col-12 ">
-                <!-- <label for="yourUsername" class="form-label fw-bold">Pengalaman Pranombor</label> -->
+              <h5 class="card-title mt-3">Umur</h5>
+              <div class="col-12 mt-1">
                 <div class="input-group has-validation">
                   <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                  <textarea class="form-control" name="catatan" style="height: auto;"></textarea>
+                  <textarea class="form-control" name="umur" style="height: auto;"></textarea>
                   <!-- <div class="invalid-feedback">S</div>   -->
                 </div>
               </div>
@@ -184,7 +174,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary" name="tambahpemarkahan">Save changes</button>
+              <button type="submit" class="btn btn-primary" name="tambahstaf">Save changes</button>
             </div>
           </div>
 
