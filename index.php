@@ -1,7 +1,7 @@
 <?php include('functions.php') ;
 if (!isset($_SESSION['username'])) {
   // $_SESSION['msg'] = "You must log in first";
-  header('location: LoginStaff');
+  header('location: lamanutama.php');
 }
 ?>
 

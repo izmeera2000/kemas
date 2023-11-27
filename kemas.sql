@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 21, 2023 at 04:37 PM
+-- Generation Time: Nov 27, 2023 at 03:13 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -139,6 +139,7 @@ CREATE TABLE IF NOT EXISTS `pemarkahan` (
   `id` int NOT NULL AUTO_INCREMENT,
   `murid_id` int NOT NULL,
   `tarikh` datetime DEFAULT CURRENT_TIMESTAMP,
+  `idpengguna` text,
   `bm1` text,
   `bm2` text,
   `bm3` text,
@@ -171,7 +172,14 @@ CREATE TABLE IF NOT EXISTS `pemarkahan` (
   `kemanusiaan` text,
   `catatan` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `pemarkahan`
+--
+
+INSERT INTO `pemarkahan` (`id`, `murid_id`, `tarikh`, `idpengguna`, `bm1`, `bm2`, `bm3`, `bi1`, `bi2`, `bi3`, `pi1`, `pi2`, `pi3`, `pi4`, `pi5`, `pi6`, `keterampilan`, `perkem1`, `perkem2`, `perkem3`, `perkem4`, `perkem5`, `perkem6`, `kreativ1`, `kreativ2`, `sainsawal1`, `sainsawal2`, `matematikawal1`, `matematikawal2`, `matematikawal3`, `matematikawal4`, `matematikawal5`, `matematikawal6`, `kemanusiaan`, `catatan`) VALUES
+(9, 2, '2023-11-27 22:50:11', '', 'asd', 'asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -184,6 +192,8 @@ CREATE TABLE IF NOT EXISTS `staf` (
   `id` int NOT NULL AUTO_INCREMENT,
   `idpengguna` text,
   `katalaluan` text,
+  `level` int DEFAULT NULL,
+  `tarikh` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -191,8 +201,30 @@ CREATE TABLE IF NOT EXISTS `staf` (
 -- Dumping data for table `staf`
 --
 
-INSERT INTO `staf` (`id`, `idpengguna`, `katalaluan`) VALUES
-(2, 'test', 'test');
+INSERT INTO `staf` (`id`, `idpengguna`, `katalaluan`, `level`, `tarikh`) VALUES
+(2, 'test', 'test', 1, '2023-11-27 14:01:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staf_profile`
+--
+
+DROP TABLE IF EXISTS `staf_profile`;
+CREATE TABLE IF NOT EXISTS `staf_profile` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `idpengguna` text,
+  `nama` text,
+  `umur` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `staf_profile`
+--
+
+INSERT INTO `staf_profile` (`id`, `idpengguna`, `nama`, `umur`) VALUES
+(1, 'test', NULL, 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

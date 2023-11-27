@@ -28,19 +28,19 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Profile</h1>
+      <h1>Pemarkahan</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Users</li>
-          <li class="breadcrumb-item active">Profile</li>
+          <li class="breadcrumb-item">Murid</li>
+          <li class="breadcrumb-item active">Pemarkahan</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
     <section class="section profile">
-      <div class="row">
-        <div class="col-xl-4">
+      <div class="row mb-4">
+        <div class="col-4">
           <?php
           $id = $_SESSION['idmurid'];
           $query = "SELECT * FROM murid WHERE id='$id' ";
@@ -82,7 +82,7 @@
 
 
           ?>
-          <div class="card">
+          <div class="card h-100">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
               <img src="assets/murid/<?php echo $ic; ?>/<?php echo $gambar; ?>" alt="Profile" class="">
@@ -96,50 +96,33 @@
           </div>
 
 
-          <?php
-          if ($status_kemasukan == 0) {
-            ?>
-            <div class="card">
-              <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                <!-- <img src="assets/murid/<?php echo $ic; ?>/<?php echo $gambar; ?>" alt="Profile" class=""> -->
-                <h2>
-                  Terima Kemasukan
-                </h2>
-                <!-- <div class="social-links mt-2">
-
-              </div> -->
-                <form action="" method="post">
-                  <input type="hidden" name="ic" value="<?php echo $ic; ?>">
-                  <button class="btn btn-primary " type="submit" name="kemasukan-layak">Terima</button>
-                  <button class="btn btn-danger " type="submit" name="kemasukan-tidaklayak">Tidak Terima</button>
-                </form>
-              </div>
-            </div>
-            <?php
-          }
-          ?>
 
         </div>
 
-        <div class="col-xl-8">
+        <div class="col-8">
 
-          <div class="card">
+          <div class="card h-100">
             <div class="card-body pt-3">
               <!-- Bordered Tabs -->
               <ul class="nav nav-tabs nav-tabs-bordered">
 
                 <li class="nav-item">
                   <button class="nav-link active" data-bs-toggle="tab"
-                    data-bs-target="#profile-overview">Overview</button>
+                    data-bs-target="#profile-overview">Tarikh</button>
                 </li>
-                <li class="nav-item">
-                  <button class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#modalDialogScrollable">Tambah</button>
-                </li>
+                <?php
 
+                if (($_SESSION['level']) == 1) {
+                  ?>
+                  <li class="nav-item">
+                    <button class="btn btn-primary" data-bs-toggle="modal"
+                      data-bs-target="#modalDialogScrollable">Tambah</button>
+                  </li>
+                <?php }
+                ?>
               </ul>
-              <div class="tab-content pt-3">
+              <div class="tab-content pt-3 ">
 
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                   <!-- <h5 class="card-title">About</h5>
@@ -149,129 +132,37 @@
 
                   <h5 class="card-title">Tahun</h5>
                   <form method="post">
-                    <button type="submit" name="download-pdf" class="btn btn-primary">Download</button>
+                    <div class="col-12 mt-3">
+                      <div class="input-group has-validation">
+
+                        <select class="form-select" aria-label="Default select example" name="tahun" required>
+                          <option selected disabled>Pilih Tahun</option>
+                          <?php
+                          $id = $_SESSION['idmurid'];
+                          $query = "SELECT DATE_FORMAT(tarikh,'%Y') as tarikh2 FROM pemarkahan WHERE murid_id='$id' ";
+                          $result = mysqli_query($db, $query);
+                          while ($row = mysqli_fetch_assoc($result)) { ?>
+                            <option value="<?php echo $row['tarikh2'] ?>" name="tahun">
+                              <?php echo $row['tarikh2'] ?>
+                            </option>
+
+                            <?php
+
+                          }
+                          ?>
+                        </select>
+                        <button type="submit" name="tahunpemarkahan"
+                          class="btn btn-primary input-group-text">Pilih</button>
+
+                      </div>
+                    </div>
                   </form>
 
 
-                  <h5 class="card-title">B</h5>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Nama</div>
-                    <div class="col-lg-9 col-md-8">
-                      <?php echo $nama ?>
-                    </div>
-                  </div>
 
 
 
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Warganegara</div>
-                    <div class="col-lg-9 col-md-8">
-                      <?php echo $warganegara ?>
-                    </div>
-                  </div>
 
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Bangsa/Keturunan</div>
-                    <div class="col-lg-9 col-md-8">
-                      <?php echo $bangsa ?>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Tarikh Lahir</div>
-                    <div class="col-lg-9 col-md-8">
-                      <?php echo $tarikh_lahir ?>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Umur</div>
-                    <div class="col-lg-9 col-md-8">
-                      <?php echo $umur ?>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">No. Sijil Lahir</div>
-                    <div class="col-lg-9 col-md-8">
-                      <?php echo $no_sijil_lahir ?>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Tempat Lahir</div>
-                    <div class="col-lg-9 col-md-8">
-                      <?php echo $tempat_lahir ?>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Jantina</div>
-                    <div class="col-lg-9 col-md-8">
-                      <?php echo $jantina ?>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Alamat Rumah</div>
-                    <div class="col-lg-9 col-md-8">
-                      <?php echo $alamat_rumah ?>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Saiz Baju</div>
-                    <div class="col-lg-9 col-md-8">
-                      <?php echo $saizbaju ?>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Jenis Penyakit</div>
-                    <div class="col-lg-9 col-md-8">
-                      <?php echo $penyakit ?>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Tinggi</div>
-                    <div class="col-lg-9 col-md-8">
-                      <?php echo $tinggi ?>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Berat</div>
-                    <div class="col-lg-9 col-md-8">
-                      <?php echo $berat ?>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Masalah Makanan</div>
-                    <div class="col-lg-9 col-md-8">
-                      <?php echo $masalah_makanan ?>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Kecacatan</div>
-                    <div class="col-lg-9 col-md-8">
-                      <?php echo $kecacatan ?>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Emergency Contact</div>
-                    <div class="row col-lg-9 col-md-8">
-                      <div class="">
-                        <?php echo $nama_penjaga ?>
-                      </div>
-                      <div class="">
-                        <?php echo $alamat_rumah_penjaga ?>
-                      </div>
-                      <div class="">
-                        <?php echo $telefon_penjaga ?>
-                      </div>
-                      <div class="">
-                        <?php echo $hubungan_penjaga ?>
-                      </div>
-
-                    </div>
-
-                  </div>
                 </div>
 
 
@@ -282,6 +173,282 @@
 
         </div>
       </div>
+      <?php
+      if (isset($_SESSION['tahundipilih'])) {
+        $id = $_SESSION['idmurid'];
+        $tarikh = $_SESSION['tahundipilih'];
+
+        $query = "SELECT * FROM pemarkahan WHERE murid_id='$id' AND tarikh LIKE '%$tarikh%' LIMIT 1 ";
+        $result = mysqli_query($db, $query);
+        while ($row = mysqli_fetch_assoc($result)) { ?>
+          <div class="row">
+
+            <div class="col-12">
+
+              <div class="card">
+                <div class="card-body pt-3">
+                  <!-- Bordered Tabs -->
+
+                  <div class="tab-content pt-3">
+
+                    <div class="tab-pane fade show active profile-overview" id="profile-overview">
+
+
+
+
+
+                      <form method="post">
+                        <input type="hidden" name="tahun" value="<?php echo $row['tarikh'] ?>">
+                        <input type="hidden" name="id" value="<?php echo $id ?>">
+                        <button type="submit" name="download-pdf" class="btn btn-primary mt-2">Download</button>
+                      </form>
+                      <h5 class="card-title">Bahasa Melayu</h5>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">MENDENGAR DAN BERTUTUR</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['bm1'] ?>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">MEMBACA</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['bm2'] ?>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">MENULIS</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['bm3'] ?>
+                        </div>
+                      </div>
+
+
+                      <h5 class="card-title">Bahasa Inggeris</h5>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">LISTENING AND SPEAKING</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['bi1'] ?>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">READING</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['bi2'] ?>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">WRITING</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['bi3'] ?>
+                        </div>
+                      </div>
+
+
+                      <h5 class="card-title">Pedidikan Islam</h5>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">AL-QURAN</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['pi1'] ?>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">AKIDAH</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['pi2'] ?>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">IBADAH</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['pi3'] ?>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">SIRAH</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['pi4'] ?>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">AKHLAK</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['pi5'] ?>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">JAWI</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['pi6'] ?>
+                        </div>
+                      </div>
+
+                      <h5 class="card-title">Keterampilan Diri</h5>
+
+                      <div class="row">
+                        <div class="col">
+                          <?php echo $row['keterampilan'] ?>
+                        </div>
+                      </div>
+
+
+
+                      <h5 class="card-title">Perkembangan Fizikal Dan Penjagaan Kesihatan</h5>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">PERKEMBANGAN MOTOR HALUS</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['perkem1'] ?>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">PERKEMBANGAN MOTOR KASAR</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['perkem2'] ?>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">MANIPULASI</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['perkem3'] ?>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">PERGERAKAN BERIRAMA</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['perkem4'] ?>
+                        </div>
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">PENDIDIKAN KESIHATAN REPRODUKTIF DAN SOSIAL (PEERS)</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['perkem5'] ?>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">PEMAKANAN</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['perkem6'] ?>
+                        </div>
+                      </div>
+
+                      <h5 class="card-title">Kreativiti Dan Estetika</h5>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">MUZIK</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['kreativ1'] ?>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">SENI VISUAL</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['kreativ2'] ?>
+                        </div>
+                      </div>
+
+                      <h5 class="card-title">Sains Awal</h5>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">PROSES SAINS</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['sainsawal1'] ?>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">PENEROKAAN</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['sainsawal2'] ?>
+                        </div>
+                      </div>
+
+
+                      <h5 class="card-title">Matematik Awal</h5>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">PENGALAMAN PRANOMBOR</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['matematikawal1'] ?>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">KONSEP NOMBOR</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['matematikawal2'] ?>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">OPERASI NOMBOR</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['matematikawal3'] ?>
+                        </div>
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">NILAI WANG</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['matematikawal4'] ?>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">MASA DAN WAKTU</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['matematikawal5'] ?>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">BENTUK DAN RUANG</div>
+                        <div class="col-lg-9 col-md-8">
+                          <?php echo $row['matematikawal6'] ?>
+                        </div>
+                      </div>
+
+                      <h5 class="card-title">Kemanusiaan</h5>
+                      <div class="row">
+                        <!-- <div class="col-lg-3 col-md-4 label ">BENTUK DAN RUANG</div> -->
+                        <div class="col">
+                          <?php echo $row['kemanusiaan'] ?>
+                        </div>
+                      </div>
+
+
+                      <h5 class="card-title">Catatan</h5>
+                      <div class="row">
+                        <!-- <div class="col-lg-3 col-md-4 label ">BENTUK DAN RUANG</div> -->
+                        <div class="col">
+                          <?php echo $row['catatan'] ?>
+                        </div>
+                      </div>
+
+
+                    </div><!-- End Bordered Tabs -->
+
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <?php
+        }
+      }
+      ?>
     </section>
     <!-- Modal Dialog Scrollable -->
     <form class="row g-3 needs-validation" method="post" action="?">
