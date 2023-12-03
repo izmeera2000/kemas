@@ -11,7 +11,7 @@
   <meta content="" name="keywords">
 
 
-<?php include('head.php')?>
+  <?php include('head.php') ?>
 
 
 </head>
@@ -24,46 +24,46 @@
 
   <?php include('sidebar.php') ?>
   <?php
-          $id = $_SESSION['idmurid'];
-          $query = "SELECT * FROM murid WHERE id='$id' ";
-          $result = mysqli_query($db, $query);
+  $id = $_SESSION['idmurid'];
+  $query = "SELECT * FROM murid WHERE id='$id' ";
+  $result = mysqli_query($db, $query);
 
-          while ($row = mysqli_fetch_assoc($result)) {
+  while ($row = mysqli_fetch_assoc($result)) {
 
-            $nama = $row['name'];
-            $umur = $row['age'];
-            $ic = $row['no_kad_pengenalan'];
-            $tarikh_mula = $row['tarikh_mula'];
-            $warganegara = $row['warganegara'];
-            $bangsa = $row['bangsa'];
-            $tarikh_lahir = $row['tarikh_lahir'];
-            $no_sijil_lahir = $row['no_sijil_lahir'];
-            $tempat_lahir = $row['tempat_lahir'];
-            $jantina = $row['jantina'];
-            $alamat_rumah = $row['alamat_rumah'];
-            $saizbaju = $row['saizbaju'];
-            $penyakit = $row['penyakit'];
-            $tinggi = $row['tinggi'];
-            $berat = $row['berat'];
-            $masalah_makanan = $row['masalah_makanan'];
-            $kecacatan = $row['kecacatan'];
-            $nama_penjaga = $row['nama_penjaga'];
-            $alamat_rumah_penjaga = $row['alamat_rumah_penjaga'];
-            $telefon_penjaga = $row['telefon_penjaga'];
-            $hubungan_penjaga = $row['hubungan_penjaga'];
+    $nama = $row['name'];
+    $umur = $row['age'];
+    $ic = $row['no_kad_pengenalan'];
+    $tarikh_mula = $row['tarikh_mula'];
+    $warganegara = $row['warganegara'];
+    $bangsa = $row['bangsa'];
+    $tarikh_lahir = $row['tarikh_lahir'];
+    $no_sijil_lahir = $row['no_sijil_lahir'];
+    $tempat_lahir = $row['tempat_lahir'];
+    $jantina = $row['jantina'];
+    $alamat_rumah = $row['alamat_rumah'];
+    $saizbaju = $row['saizbaju'];
+    $penyakit = $row['penyakit'];
+    $tinggi = $row['tinggi'];
+    $berat = $row['berat'];
+    $masalah_makanan = $row['masalah_makanan'];
+    $kecacatan = $row['kecacatan'];
+    $nama_penjaga = $row['nama_penjaga'];
+    $alamat_rumah_penjaga = $row['alamat_rumah_penjaga'];
+    $telefon_penjaga = $row['telefon_penjaga'];
+    $hubungan_penjaga = $row['hubungan_penjaga'];
 
-            $gambar = $row['gambar'];
-            $file_mykid = $row['file_mykid'];
-            $file_sijil = $row['file_sijil'];
-            $file_rekod_kesihatan = $row['file_rekod_kesihatan'];
-            $geran = $row['geran'];
-
-
-            $status_kemasukan = $row['status_kemasukan'];
-          }
+    $gambar = $row['gambar'];
+    $file_mykid = $row['file_mykid'];
+    $file_sijil = $row['file_sijil'];
+    $file_rekod_kesihatan = $row['file_rekod_kesihatan'];
+    $geran = $row['geran'];
 
 
-          ?>
+    $status_kemasukan = $row['status_kemasukan'];
+  }
+
+
+  ?>
 
   <main id="main" class="main">
 
@@ -73,16 +73,15 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
           <?php
-          if ($status_kemasukan != 1 ) {?>
-          <li class="breadcrumb-item">Kemasukan</li>
+          if ($status_kemasukan != 1) { ?>
+            <li class="breadcrumb-item">Kemasukan</li>
 
-<?php  }
-          else{?>
-          <li class="breadcrumb-item">Murid</li>
+          <?php } else { ?>
+            <li class="breadcrumb-item">Murid</li>
 
-<?php     }
+          <?php }
 
-?>
+          ?>
           <li class="breadcrumb-item active">Profile</li>
         </ol>
       </nav>
@@ -107,14 +106,13 @@
 
 
           <?php
-          if ($status_kemasukan != 1 ) {
+          if ($status_kemasukan != 1) {
             ?>
             <div class="card">
               <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-              <form method="post">
-                        <input type="hidden" name="id" value="<?php echo $ic ?>">
-                        <button type="submit" name="download-pdf-borang" class="btn btn-primary mt-2">PDF</button>
-                      </form>
+                <form method="post">
+
+                </form>
                 <!-- <img src="assets/murid/<?php echo $ic; ?>/<?php echo $gambar; ?>" alt="Profile" class=""> -->
                 <h2>
                   Terima Kemasukan
@@ -123,9 +121,16 @@
 
               </div> -->
                 <form action="" method="post">
-                  <input type="hidden" name="ic" value="<?php echo $ic; ?>">
+                  <input type="hidden" name="id" value="<?php echo $ic ?>">
+                  <div class="row mb-2">
+                    <input type="hidden" name="ic" value="<?php echo $ic; ?>">
+
+                    <button type="submit" name="download-pdf-borang" class="btn btn-primary ">PDF</button>
+                  </div>
+
                   <button class="btn btn-primary " type="submit" name="kemasukan-layak">Terima</button>
                   <button class="btn btn-danger " type="submit" name="kemasukan-tidaklayak">Tidak Terima</button>
+
                 </form>
               </div>
             </div>
@@ -143,8 +148,7 @@
               <ul class="nav nav-tabs nav-tabs-bordered">
 
                 <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab"
-                    data-bs-target="#profile-overview">Murid</button>
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Murid</button>
                 </li>
 
                 <li class="nav-item">
@@ -156,7 +160,8 @@
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Fail & Perakuan</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Fail &
+                    Perakuan</button>
                 </li>
 
               </ul>
@@ -386,11 +391,11 @@
                   $result = mysqli_query($db, $query);
                   $count = 1;
                   while ($row = mysqli_fetch_assoc($result)) {
-                     ?>
+                    ?>
 
                     <h5 class="card-title">Maklumat -
                       <?php echo $count;
-              
+
                       ?>
 
                     </h5>
