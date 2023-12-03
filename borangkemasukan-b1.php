@@ -1,4 +1,15 @@
-<?php include('functions.php') ?>
+<?php include('functions.php');
+    $ic = $_SESSION['ic'];
+
+$user_check_query = "SELECT * FROM keluarga WHERE no_kad_pengenalan_murid='$ic'";
+$resulta = mysqli_query($db, $user_check_query);
+$usera = mysqli_num_rows($resulta);
+debug_to_console($usera);
+if ($usera >= 2) {
+  header('location: borangkemasukan-b2.php');
+
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,10 +63,11 @@
           <div class="row justify-content-center">
             <div class="col-lg-12 col-md-12 d-flex flex-column align-items-center justify-content-center">
 
-              <div class="d-flex justify-content-center py-4">
-                <a href="index" class="logo d-flex align-items-center w-auto">
-                  <img src="assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">Kemas</span>
+
+            <div class="d-flex justify-content-center py-4">
+                <a href="index.php" class="d-flex align-items-center w-auto">
+                <img src="assets/img/kemaslogo.png" alt="">
+
                 </a>
               </div><!-- End Logo -->
 
@@ -99,9 +111,30 @@
                       <label class="col-form-label">Hubungan</label>
                       <select class="form-select" aria-label="Default select example" name="hubunganA">
                         <option selected disabled>Open this select menu</option>
-                        <option value="Bapa">Bapa</option>
-                        <option value="Ibu">Ibu</option>
-                        <option value="Penjaga">Penjaga</option>
+
+
+                        <?php
+                        $ic = $_SESSION['ic'];
+
+                        $user_check_query = "SELECT * FROM keluarga WHERE no_kad_pengenalan_murid='$ic'  ";
+                        $result = mysqli_query($db, $user_check_query);
+                        $row = mysqli_fetch_assoc($result);
+                        $hubunganarray = array("Bapa", "Ibu", "Penjaga");
+
+                        foreach ($hubunganarray as $hubungan1) {
+
+                          if ($row["hubungan"] != $hubungan1) { ?>
+                            <option value="<?php echo $hubungan1 ?>">
+                              <?php echo $hubungan1 ?>
+                            </option>
+                          <?php
+                          }
+                        }
+
+
+
+
+                        ?>
                       </select>
                     </div>
 
@@ -109,7 +142,7 @@
                       <label for="yourUsername" class="form-label">Nama</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="namaA" class="form-control" id="namaA" >
+                        <input type="text" name="namaA" class="form-control" id="namaA">
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
@@ -117,7 +150,7 @@
                       <label for="yourUsername" class="form-label">Nombor Kad Pengenalan</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="icA" class="form-control" id="icA" >
+                        <input type="text" name="icA" class="form-control" id="icA">
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
@@ -126,7 +159,7 @@
                       <label for="yourUsername" class="form-label">Tempat Lahir</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="tempatlahirA" class="form-control" id="tempatlahirA" >
+                        <input type="text" name="tempatlahirA" class="form-control" id="tempatlahirA">
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
@@ -135,7 +168,7 @@
                       <label for="yourUsername" class="form-label">Warganegara</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="warganegaraA" class="form-control" id="warganegaraA" >
+                        <input type="text" name="warganegaraA" class="form-control" id="warganegaraA">
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
@@ -144,7 +177,7 @@
                       <label for="yourUsername" class="form-label">Bangsa/Keturunan</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="bangsaA" class="form-control" id="bangsaA" >
+                        <input type="text" name="bangsaA" class="form-control" id="bangsaA">
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
@@ -155,7 +188,7 @@
                       <label for="yourUsername" class="form-label">Pekerjaan</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="pekerjaanA" class="form-control" id="pekerjaanA" >
+                        <input type="text" name="pekerjaanA" class="form-control" id="pekerjaanA">
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
@@ -174,7 +207,7 @@
                       <label for="yourUsername" class="form-label">Pendapatan Sebulan</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="pendapatanA" class="form-control" id="pendapatanA" >
+                        <input type="text" name="pendapatanA" class="form-control" id="pendapatanA">
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
@@ -183,7 +216,7 @@
                       <label for="yourUsername" class="form-label">Nombor Telefon Pejabat</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="notelpejabatA" class="form-control" id="notelpejabatA" >
+                        <input type="text" name="notelpejabatA" class="form-control" id="notelpejabatA">
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
@@ -192,7 +225,7 @@
                       <label for="yourUsername" class="form-label">Nama Majikan</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="namamajikanA" class="form-control" id="namamajikanA" >
+                        <input type="text" name="namamajikanA" class="form-control" id="namamajikanA">
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
@@ -201,19 +234,35 @@
                       <label for="yourUsername" class="form-label">Alamat Majikan</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="alamatmajikanA" class="form-control" id="alamatmajikanA" >
+                        <input type="text" name="alamatmajikanA" class="form-control" id="alamatmajikanA">
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
 
 
+                    <?php
+                    $ic = $_SESSION['ic'];
 
-                    <div class="col-6">
-                      <a class="btn btn-primary w-100" href="borangkemasukan-b2.php">Skip</a>
-                    </div>
-                    <div class="col-6">
-                      <button class="btn btn-primary w-100" type="submit" name="borangkemasukan-b1">Seterusnya</button>
-                    </div>
+                    $user_check_query = "SELECT * FROM keluarga WHERE no_kad_pengenalan_murid='$ic'  LIMIT 1";
+                    $result = mysqli_query($db, $user_check_query);
+                    $row = mysqli_fetch_assoc($result);
+
+                    if ($row) { // if user exists
+                      ?>
+                      <div class="col-6">
+                        <a class="btn btn-primary w-100" href="borangkemasukan-b2.php">Skip</a>
+                      </div>
+                      <div class="col-6">
+                        <button class="btn btn-primary w-100" type="submit" name="borangkemasukan-b1">Seterusnya</button>
+                      </div>
+
+                      <?php
+                    } else {
+                      ?>
+                      <div class="col-12">
+                        <button class="btn btn-primary w-100" type="submit" name="borangkemasukan-b1">Seterusnya</button>
+                      </div>
+                    <?php } ?>
                     <!-- <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>
                     </div> -->

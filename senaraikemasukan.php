@@ -10,12 +10,12 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <?php include('head.php')?>
+  <?php include('head.php') ?>
 
 </head>
 
 <body>
-<?php include('topnav.php') ?>
+  <?php include('topnav.php') ?>
 
 
   <?php include('sidebar.php') ?>
@@ -24,10 +24,10 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Student</h1>
+      <h1>Kemasukan</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
           <!-- <li class="breadcrumb-item">Tables</li> -->
           <li class="breadcrumb-item active">Senarai</li>
         </ol>
@@ -78,9 +78,24 @@
                         <?php echo $row['tarikh_mula'] ?>
                       </td>
                       <td>
+
+
                         <form method="post" action="?profilmurid">
                           <input type="hidden" id="studentid" name="studentid" value="<?php echo $row['id'] ?>">
-                          <button type="submit" name="profilmurid" class="btn btn-success"><i class="bi bi-check-circle"></i></button>
+                          <?php
+
+                          if ($row['status_kemasukan'] != 2) { ?>
+                            <button type="submit" name="profilmurid" class="btn btn-success"><i
+                                class="bi bi-check-circle"></i></button>
+
+                            <?php
+                          } else { ?>
+                            <button type="submit" name="profilmurid" class="btn btn-danger"><i
+                                class="bi bi-check-circle"></i></button>
+
+                            <?php
+                          }
+                          ?>
                         </form>
                       </td>
                     </tr>

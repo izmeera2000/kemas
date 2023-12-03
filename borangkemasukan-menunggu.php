@@ -55,10 +55,10 @@
           <div class="row justify-content-center">
             <div class="col-lg-12 col-md-12 d-flex flex-column align-items-center justify-content-center">
 
-              <div class="d-flex justify-content-center py-4">
-                <a href="index" class="logo d-flex align-items-center w-auto">
-                  <img src="assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">Kemas</span>
+            <div class="d-flex justify-content-center py-4">
+                <a href="index.php" class="d-flex align-items-center w-auto">
+                <img src="assets/img/kemaslogo.png" alt="">
+
                 </a>
               </div><!-- End Logo -->
 
@@ -95,8 +95,8 @@
                       </ul>
                     </div> -->
 
-                    <h5 class="card-title">Borang Kemasukan Kanak-kanak Anda Sedang Diproses</h5>
-                    <b class=" text-center">Sila tunggu
+                    <h5 class="card-title">Permohonan Kemasukan Anak Anda Sedang Dinilai</h5>
+                    <b class=" text-center">Sila tunggu sementara sehingga permohonan anda diluluskan
                     </b>
 
                     <div class="row">

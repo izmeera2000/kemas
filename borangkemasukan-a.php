@@ -53,9 +53,9 @@
             <div class="col-lg-12 col-md-12 d-flex flex-column align-items-center justify-content-center">
 
               <div class="d-flex justify-content-center py-4">
-                <a href="index" class="logo d-flex align-items-center w-auto">
-                  <img src="assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">Kemas</span>
+                <a href="index.php" class="d-flex align-items-center w-auto">
+                <img src="assets/img/kemaslogo.png" alt="">
+
                 </a>
               </div><!-- End Logo -->
 
@@ -154,15 +154,16 @@
                       </div>
                     </div>
 
-                    <div class="col-12">
-                      <label for="yourUsername" class="form-label">Jantina</label>
-                      <div class="input-group has-validation">
-                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="jantina" class="form-control" id="jantina" required>
-                        <!-- <div class="invalid-feedback">S</div>   -->
-                      </div>
-                    </div>
 
+                    <div class="col-12 mt-3">
+                      <label class="col-form-label">Jantina</label>
+                      <select class="form-select" aria-label="Default select example" name="jantina" required>
+                        <option selected disabled>Open this select menu</option>
+                        <option value="Lelaki">Lelaki</option>
+                        <option value="Perempuan">Perempuan</option>
+
+                      </select>
+                    </div>
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Alamat Rumah</label>
                       <div class="input-group has-validation">
@@ -234,7 +235,7 @@
                     </div>
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Kecacatan</label>
+                      <label for="yourUsername" class="form-label">Kecacatan (jika ada)</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
                         <input type="text" name="kecacatan" class="form-control" id="kecacatan" required>

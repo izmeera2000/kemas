@@ -113,7 +113,7 @@
                 </li>
                 <?php
 
-                if (($_SESSION['level']) == 1) {
+                if (($_SESSION['level']) >= 1) {
                   ?>
                   <li class="nav-item">
                     <button class="btn btn-primary" data-bs-toggle="modal"

@@ -23,25 +23,7 @@
 
 
   <?php include('sidebar.php') ?>
-
-
-  <main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>Profile</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Murid</li>
-          <li class="breadcrumb-item active">Profile</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-
-    <section class="section profile">
-      <div class="row">
-        <div class="col-xl-4">
-          <?php
+  <?php
           $id = $_SESSION['idmurid'];
           $query = "SELECT * FROM murid WHERE id='$id' ";
           $result = mysqli_query($db, $query);
@@ -82,6 +64,34 @@
 
 
           ?>
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Profile</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <?php
+          if ($status_kemasukan != 1 ) {?>
+          <li class="breadcrumb-item">Kemasukan</li>
+
+<?php  }
+          else{?>
+          <li class="breadcrumb-item">Murid</li>
+
+<?php     }
+
+?>
+          <li class="breadcrumb-item active">Profile</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+      <div class="row">
+        <div class="col-xl-4">
+
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
@@ -97,11 +107,14 @@
 
 
           <?php
-          if ($status_kemasukan == 0) {
+          if ($status_kemasukan != 1 ) {
             ?>
             <div class="card">
               <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
+              <form method="post">
+                        <input type="hidden" name="id" value="<?php echo $ic ?>">
+                        <button type="submit" name="download-pdf-borang" class="btn btn-primary mt-2">PDF</button>
+                      </form>
                 <!-- <img src="assets/murid/<?php echo $ic; ?>/<?php echo $gambar; ?>" alt="Profile" class=""> -->
                 <h2>
                   Terima Kemasukan
@@ -131,26 +144,25 @@
 
                 <li class="nav-item">
                   <button class="nav-link active" data-bs-toggle="tab"
-                    data-bs-target="#profile-overview">Overview</button>
+                    data-bs-target="#profile-overview">Murid</button>
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Ibu Bapa</button>
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Keluarga</button>
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change
-                    Password</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Fail & Perakuan</button>
                 </li>
 
               </ul>
               <div class="tab-content pt-3">
 
-                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                <div class="tab-pane fade show active profile-overview  pt-3" id="profile-overview">
                   <!-- <h5 class="card-title">About</h5>
                   <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque
                     temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem
@@ -372,14 +384,13 @@
 
                   $query = "SELECT * FROM keluarga_tanggungan WHERE no_kad_pengenalan_murid='$ic' ORDER BY id ASC ";
                   $result = mysqli_query($db, $query);
-
+                  $count = 1;
                   while ($row = mysqli_fetch_assoc($result)) {
-                    $count = 1; ?>
-
+                     ?>
 
                     <h5 class="card-title">Maklumat -
                       <?php echo $count;
-                      $count++;
+              
                       ?>
 
                     </h5>
@@ -417,6 +428,7 @@
                     </div>
 
                     <?php
+                    $count += 1;
                   }
                   ?>
                 </div>
