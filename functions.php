@@ -958,7 +958,7 @@ if (isset($_POST['download-pdf-borang'])) {
     $query2 = "SELECT * FROM keluarga WHERE no_kad_pengenalan_murid='$ic' ORDER BY id ASC ";
     $result2 = mysqli_query($db, $query2);
 
-
+    $Rows = array ();
     $countrows = mysqli_num_rows($result2);
     $ds = 0;
     while ($row = mysqli_fetch_array($result2)) {
