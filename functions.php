@@ -960,13 +960,20 @@ if (isset($_POST['download-pdf-borang'])) {
 
 
     $countrows = mysqli_num_rows($result2);
+    $ds = 0;
+    while ($row = mysqli_fetch_array($result2)) {
+        $Rows[$ds] = $row;
+        $ds++;
+    }
 
     $tablebahB1 = new easyTable($pdf, '%{4,48,48}', 'border:1;font-size:8; ');
     $tablebahB1->easyCell('Bil', 'bgcolor:#BFBFBF');
-    while ($row1 = mysqli_fetch_array($result2)) {
+
+    foreach ($Rows as $row1) {
         $tablebahB1->easyCell('Maklumat : ' . $row1["hubungan"], 'valign:L;  align:L;colspan:1;bgcolor:#BFBFBF');
+
     }
-    mysqli_data_seek($result2, 0);
+
     $tablebahB1->printRow(true);
 
 
@@ -975,95 +982,94 @@ if (isset($_POST['download-pdf-borang'])) {
 
 
     $tablebahB1->easyCell('a', 'valign:M;  align:C;paddingY:2');
-    while ($row1 = mysqli_fetch_array($result2)) {
+
+    foreach ($Rows as $row1) {
         $tablebahB1->easyCell('Nama : ' . $row1['nama'], 'valign:L;  align:L;paddingY:2');
+
     }
-    mysqli_data_seek($result2, 0);
     $tablebahB1->printRow();
 
     $tablebahB1->easyCell('b', 'valign:M;  align:C;paddingY:2');
-    while ($row1 = mysqli_fetch_array($result2)) {
+
+    foreach ($Rows as $row1) {
         $tablebahB1->easyCell('No. K.P : ' . $row1["kad_pengenalan"], 'valign:L;  align:L;paddingY:2');
+
     }
-    mysqli_data_seek($result2, 0);
     $tablebahB1->printRow();
 
     $tablebahB1->easyCell('c', 'valign:M;  align:C;paddingY:2;rowspan:2');
-    while ($row1 = mysqli_fetch_array($result2)) {
+
+    foreach ($Rows as $row1) {
         $tablebahB1->easyCell('Tarikh Lahir : ' . $row1["tarikh_lahir"], 'valign:L;  align:L;paddingY:2;colspan:1');
     }
     if ($countrows != "2") {
         $tablebahB1->easyCell('', 'border:0');
     }
-    mysqli_data_seek($result2, 0);
     $tablebahB1->printRow();
 
-    while ($row1 = mysqli_fetch_array($result2)) {
+
+    foreach ($Rows as $row1) {
         $tablebahB1->easyCell('Tempat Lahir : ' . $row1["tempat_lahir"], 'valign:L;  align:L;paddingY:2;');
     }
-    mysqli_data_seek($result2, 0);
     $tablebahB1->printRow();
 
     $tablebahB1->easyCell('d', 'valign:M;  align:C;paddingY:2');
-    while ($row1 = mysqli_fetch_array($result2)) {
+    foreach ($Rows as $row1) {
         $tablebahB1->easyCell('Warganegara : ' . $row1["warganegara"], 'valign:L;  align:L;paddingY:2');
     }
-    mysqli_data_seek($result2, 0);
     $tablebahB1->printRow();
 
     $tablebahB1->easyCell('e', 'valign:M;  align:C;paddingY:2');
-    while ($row1 = mysqli_fetch_array($result2)) {
+
+    foreach ($Rows as $row1) {
         $tablebahB1->easyCell('Keturunan : ' . $row1["keturunan"], 'valign:L;  align:L;paddingY:2');
     }
-    mysqli_data_seek($result2, 0);
     $tablebahB1->printRow();
 
     $tablebahB1->easyCell('f', 'valign:M;  align:C;paddingY:2');
-    while ($row1 = mysqli_fetch_array($result2)) {
+
+    foreach ($Rows as $row1) {
         $tablebahB1->easyCell('Pekerjaan : ' . $row1["pekerjaan"], 'valign:L;  align:L;paddingY:2');
     }
-    mysqli_data_seek($result2, 0);
     $tablebahB1->printRow();
 
     $tablebahB1->easyCell('g', 'valign:M;  align:C;paddingY:2');
 
-    while ($row1 = mysqli_fetch_array($result2)) {
+    foreach ($Rows as $row1) {
         $tablebahB1->easyCell('Status : ' . $row1["status"], 'valign:L;  align:L;paddingY:2');
     }
-    mysqli_data_seek($result2, 0);
     $tablebahB1->printRow();
 
     $tablebahB1->easyCell('h', 'valign:M;  align:C;paddingY:2');
-    while ($row1 = mysqli_fetch_array($result2)) {
+
+    foreach ($Rows as $row1) {
         $tablebahB1->easyCell('Pendapatan Sebulan : RM ' . $row1["pendapatan_sebulan"], 'valign:L;  align:L;paddingY:2');
     }
-    mysqli_data_seek($result2, 0);
     $tablebahB1->printRow();
 
 
     $tablebahB1->easyCell('h', 'valign:M;  align:C;paddingY:2');
-    while ($row1 = mysqli_fetch_array($result2)) {
+
+    foreach ($Rows as $row1) {
         $tablebahB1->easyCell('No. Telefon Pejabat : ' . $row1["no_telefon_pejabat"], 'valign:L;  align:L;paddingY:2');
     }
-    mysqli_data_seek($result2, 0);
     $tablebahB1->printRow();
 
 
     $tablebahB1->easyCell('j', 'valign:M;  align:C;paddingY:2;rowspan:2');
-    while ($row1 = mysqli_fetch_array($result2)) {
+    foreach ($Rows as $row1) {
         $tablebahB1->easyCell('Nama Majikan : ' . $row1["nama_majikan"], 'valign:L;  align:L;paddingY:2;');
     }
-    mysqli_data_seek($result2, 0);
+
     if ($countrows != "2") {
         $tablebahB1->easyCell('', 'border:0');
     }
     $tablebahB1->printRow();
 
-    while ($row1 = mysqli_fetch_array($result2)) {
+
+    foreach ($Rows as $row1) {
         $tablebahB1->easyCell('Alamat Majikan : ' . $row1["alamat_majikan"], 'valign:L;  align:L;paddingY:2;');
     }
-    mysqli_data_seek($result2, 0);
-
     $tablebahB1->printRow();
 
     $tablebahB1->endTable(5);
