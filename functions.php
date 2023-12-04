@@ -960,106 +960,112 @@ if (isset($_POST['download-pdf-borang'])) {
 
 
     $countrows = mysqli_num_rows($result2);
-    if ($countrows == 2) {
 
-        $tablebahB1 = new easyTable($pdf, '%{4,48,48}', 'border:1;font-size:8; ');
-        $tablebahB1->easyCell('Bil','bgcolor:#BFBFBF');
-        while ($row1 = mysqli_fetch_array($result2)) {
-            $tablebahB1->easyCell('Maklumat : ' . $row1["hubungan"], 'valign:L;  align:L;colspan:1;bgcolor:#BFBFBF');
-        }
-        mysqli_data_seek($result2, 0);
-        $tablebahB1->printRow(true);
-
-
-
-
-
-
-        $tablebahB1->easyCell('a', 'valign:L;  align:M;paddingY:2');
-        while ($row1 = mysqli_fetch_array($result2)) {
-            $tablebahB1->easyCell('Nama : ' . $row1['nama'], 'valign:L;  align:L;paddingY:2');
-        }
-        mysqli_data_seek($result2, 0);
-        $tablebahB1->printRow();
-
-        $tablebahB1->easyCell('b', 'valign:L;  align:M;paddingY:2');
-        while ($row1 = mysqli_fetch_array($result2)) {
-            $tablebahB1->easyCell('No. K.P : ' . $row1["kad_pengenalan"], 'valign:L;  align:L;paddingY:2');
-        }
-        mysqli_data_seek($result2, 0);
-        $tablebahB1->printRow();
-
-        $tablebahB1->easyCell('c', 'valign:L;  align:M;paddingY:2;rowspan:2');
-        while ($row1 = mysqli_fetch_array($result2)) {
-            $tablebahB1->easyCell('Tarikh Lahir : ' . $row1["tarikh_lahir"], 'valign:L;  align:L;paddingY:2;');
-        }
-        mysqli_data_seek($result2, 0);
-        $tablebahB1->printRow();
-
-        while ($row1 = mysqli_fetch_array($result2)) {
-            $tablebahB1->easyCell('Tempat Lahir : ' . $row1["tempat_lahir"], 'valign:L;  align:L;paddingY:2;');
-        }
-        mysqli_data_seek($result2, 0);
-        $tablebahB1->printRow();
-
-        $tablebahB1->easyCell('d', 'valign:L;  align:M;paddingY:2');
-        while ($row1 = mysqli_fetch_array($result2)) {
-            $tablebahB1->easyCell('Warganegara : '. $row1["warganegara"], 'valign:L;  align:L;paddingY:2');
-        }
-        mysqli_data_seek($result2, 0);
-        $tablebahB1->printRow();
-
-        $tablebahB1->easyCell('e', 'valign:L;  align:M;paddingY:2');
-        while ($row1 = mysqli_fetch_array($result2)) {
-            $tablebahB1->easyCell('Keturunan : '. $row1["keturunan"], 'valign:L;  align:L;paddingY:2');
-        }
-        mysqli_data_seek($result2, 0);
-        $tablebahB1->printRow();
-
-        $tablebahB1->easyCell('f', 'valign:L;  align:M;paddingY:2');
-        while ($row1 = mysqli_fetch_array($result2)) {
-            $tablebahB1->easyCell('Pekerjaan : '. $row1["pekerjaan"], 'valign:L;  align:L;paddingY:2');
-        }
-        mysqli_data_seek($result2, 0);
-        $tablebahB1->printRow();
-
-        $tablebahB1->easyCell('g', 'valign:L;  align:M;paddingY:2');
-
-        while ($row1 = mysqli_fetch_array($result2)) {
-            $tablebahB1->easyCell('Status : '. $row1["status"], 'valign:L;  align:L;paddingY:2');
-        }
-        mysqli_data_seek($result2, 0);
-        $tablebahB1->printRow();
-
-        $tablebahB1->easyCell('h', 'valign:L;  align:M;paddingY:2');
-        while ($row1 = mysqli_fetch_array($result2)) {
-            $tablebahB1->easyCell('Pendapatan Sebulan : RM '. $row1["pendapatan_sebulan"], 'valign:L;  align:L;paddingY:2');
-        }
-        mysqli_data_seek($result2, 0);
-        $tablebahB1->printRow();
-
-
-        $tablebahB1->easyCell('h', 'valign:L;  align:M;paddingY:2');
-        while ($row1 = mysqli_fetch_array($result2)) {
-            $tablebahB1->easyCell('No. Telefon Pejabat : '. $row1["no_telefon_pejabat"], 'valign:L;  align:L;paddingY:2');
-        }
-        mysqli_data_seek($result2, 0);
-        $tablebahB1->printRow();
-
-
-        $tablebahB1->easyCell('j', 'valign:L;  align:M;paddingY:2;rowspan:2');
-        while ($row1 = mysqli_fetch_array($result2)) {
-            $tablebahB1->easyCell('Nama Majikan : '. $row1["nama_majikan"], 'valign:L;  align:L;paddingY:2;');
-        }
-        mysqli_data_seek($result2, 0);
-        $tablebahB1->printRow();
-
-        while ($row1 = mysqli_fetch_array($result2)) {
-            $tablebahB1->easyCell('Alamat Majikan : '. $row1["alamat_majikan"], 'valign:L;  align:L;paddingY:2;');
-        }
-        mysqli_data_seek($result2, 0);
-        $tablebahB1->printRow();
+    $tablebahB1 = new easyTable($pdf, '%{4,48,48}', 'border:1;font-size:8; ');
+    $tablebahB1->easyCell('Bil', 'bgcolor:#BFBFBF');
+    while ($row1 = mysqli_fetch_array($result2)) {
+        $tablebahB1->easyCell('Maklumat : ' . $row1["hubungan"], 'valign:L;  align:L;colspan:1;bgcolor:#BFBFBF');
     }
+    mysqli_data_seek($result2, 0);
+    $tablebahB1->printRow(true);
+
+
+
+
+
+
+    $tablebahB1->easyCell('a', 'valign:M;  align:C;paddingY:2');
+    while ($row1 = mysqli_fetch_array($result2)) {
+        $tablebahB1->easyCell('Nama : ' . $row1['nama'], 'valign:L;  align:L;paddingY:2');
+    }
+    mysqli_data_seek($result2, 0);
+    $tablebahB1->printRow();
+
+    $tablebahB1->easyCell('b', 'valign:M;  align:C;paddingY:2');
+    while ($row1 = mysqli_fetch_array($result2)) {
+        $tablebahB1->easyCell('No. K.P : ' . $row1["kad_pengenalan"], 'valign:L;  align:L;paddingY:2');
+    }
+    mysqli_data_seek($result2, 0);
+    $tablebahB1->printRow();
+
+    $tablebahB1->easyCell('c', 'valign:M;  align:C;paddingY:2;rowspan:2');
+    while ($row1 = mysqli_fetch_array($result2)) {
+        $tablebahB1->easyCell('Tarikh Lahir : ' . $row1["tarikh_lahir"], 'valign:L;  align:L;paddingY:2;colspan:1');
+    }
+    if ($countrows != "2") {
+        $tablebahB1->easyCell('', 'border:0');
+    }
+    mysqli_data_seek($result2, 0);
+    $tablebahB1->printRow();
+
+    while ($row1 = mysqli_fetch_array($result2)) {
+        $tablebahB1->easyCell('Tempat Lahir : ' . $row1["tempat_lahir"], 'valign:L;  align:L;paddingY:2;');
+    }
+    mysqli_data_seek($result2, 0);
+    $tablebahB1->printRow();
+
+    $tablebahB1->easyCell('d', 'valign:M;  align:C;paddingY:2');
+    while ($row1 = mysqli_fetch_array($result2)) {
+        $tablebahB1->easyCell('Warganegara : ' . $row1["warganegara"], 'valign:L;  align:L;paddingY:2');
+    }
+    mysqli_data_seek($result2, 0);
+    $tablebahB1->printRow();
+
+    $tablebahB1->easyCell('e', 'valign:M;  align:C;paddingY:2');
+    while ($row1 = mysqli_fetch_array($result2)) {
+        $tablebahB1->easyCell('Keturunan : ' . $row1["keturunan"], 'valign:L;  align:L;paddingY:2');
+    }
+    mysqli_data_seek($result2, 0);
+    $tablebahB1->printRow();
+
+    $tablebahB1->easyCell('f', 'valign:M;  align:C;paddingY:2');
+    while ($row1 = mysqli_fetch_array($result2)) {
+        $tablebahB1->easyCell('Pekerjaan : ' . $row1["pekerjaan"], 'valign:L;  align:L;paddingY:2');
+    }
+    mysqli_data_seek($result2, 0);
+    $tablebahB1->printRow();
+
+    $tablebahB1->easyCell('g', 'valign:M;  align:C;paddingY:2');
+
+    while ($row1 = mysqli_fetch_array($result2)) {
+        $tablebahB1->easyCell('Status : ' . $row1["status"], 'valign:L;  align:L;paddingY:2');
+    }
+    mysqli_data_seek($result2, 0);
+    $tablebahB1->printRow();
+
+    $tablebahB1->easyCell('h', 'valign:M;  align:C;paddingY:2');
+    while ($row1 = mysqli_fetch_array($result2)) {
+        $tablebahB1->easyCell('Pendapatan Sebulan : RM ' . $row1["pendapatan_sebulan"], 'valign:L;  align:L;paddingY:2');
+    }
+    mysqli_data_seek($result2, 0);
+    $tablebahB1->printRow();
+
+
+    $tablebahB1->easyCell('h', 'valign:M;  align:C;paddingY:2');
+    while ($row1 = mysqli_fetch_array($result2)) {
+        $tablebahB1->easyCell('No. Telefon Pejabat : ' . $row1["no_telefon_pejabat"], 'valign:L;  align:L;paddingY:2');
+    }
+    mysqli_data_seek($result2, 0);
+    $tablebahB1->printRow();
+
+
+    $tablebahB1->easyCell('j', 'valign:M;  align:C;paddingY:2;rowspan:2');
+    while ($row1 = mysqli_fetch_array($result2)) {
+        $tablebahB1->easyCell('Nama Majikan : ' . $row1["nama_majikan"], 'valign:L;  align:L;paddingY:2;');
+    }
+    mysqli_data_seek($result2, 0);
+    if ($countrows != "2") {
+        $tablebahB1->easyCell('', 'border:0');
+    }
+    $tablebahB1->printRow();
+
+    while ($row1 = mysqli_fetch_array($result2)) {
+        $tablebahB1->easyCell('Alamat Majikan : ' . $row1["alamat_majikan"], 'valign:L;  align:L;paddingY:2;');
+    }
+    mysqli_data_seek($result2, 0);
+
+    $tablebahB1->printRow();
+
     $tablebahB1->endTable(5);
 
     $query3 = "SELECT * FROM keluarga_tanggungan WHERE no_kad_pengenalan_murid='$ic' ORDER BY id ASC ";
@@ -1073,18 +1079,18 @@ if (isset($_POST['download-pdf-borang'])) {
     $tablebahB1->easyCell('Nama Institusi', 'valign:M;  align:C;colspan:1;bgcolor:#BFBFBF');
     $tablebahB1->easyCell('Nilai Biasiswa/ Bantuan Setahun', 'valign:M;  align:C;colspan:1;bgcolor:#BFBFBF');
     $tablebahB1->printRow(true);
-$i = 1;
+    $i = 1;
     while ($row3 = mysqli_fetch_array($result3)) {
 
 
-    $tablebahB1->easyCell($i, 'valign:L;  align:C;paddingY:2');
-    $tablebahB1->easyCell($row3["nama"], 'valign:M;  align:C;colspan:1');
-    $tablebahB1->easyCell($row3["umur"], 'valign:M;  align:C;colspan:1');
-    $tablebahB1->easyCell($row3["perhubungan"], 'valign:M;  align:C;colspan:1');
-    $tablebahB1->easyCell($row3["nama_institusi"], 'valign:M;  align:C;colspan:1');
-    $tablebahB1->easyCell("RM".$row3["nilai_biasiswa"], 'valign:M;  align:C;colspan:1');
-    $tablebahB1->printRow();
-    $i += 1;
+        $tablebahB1->easyCell($i, 'valign:L;  align:C;paddingY:2');
+        $tablebahB1->easyCell($row3["nama"], 'valign:M;  align:C;colspan:1');
+        $tablebahB1->easyCell($row3["umur"], 'valign:M;  align:C;colspan:1');
+        $tablebahB1->easyCell($row3["perhubungan"], 'valign:M;  align:C;colspan:1');
+        $tablebahB1->easyCell($row3["nama_institusi"], 'valign:M;  align:C;colspan:1');
+        $tablebahB1->easyCell("RM" . $row3["nilai_biasiswa"], 'valign:M;  align:C;colspan:1');
+        $tablebahB1->printRow();
+        $i += 1;
     }
 
     $tablebahB1->endTable(5);
@@ -1143,6 +1149,27 @@ $i = 1;
 
     $tablebahB1->endTable();
 
+
+    $pdf->AddPage();
+    $pdf->setSourceFile("assets/murid/" . $ic . "/kesihatan.pdf");
+    $tplId = $pdf->importPage(1);
+    $pdf->useTemplate($tplId, 0, 0);
+
+
+    $pdf->AddPage();
+    $pdf->setSourceFile("assets/murid/" . $ic . "/mykid.pdf");
+    $tplId = $pdf->importPage(1);
+    $pdf->useTemplate($tplId, 0, 0);
+
+    $pdf->AddPage();
+    $pdf->setSourceFile("assets/murid/" . $ic . "/sijillahir.pdf");
+    $tplId = $pdf->importPage(1);
+    $pdf->useTemplate($tplId, 0, 0);
+
+    $pdf->AddPage();
+    $pdf->setSourceFile("assets/murid/" . $ic . "/slipgaji.pdf");
+    $tplId = $pdf->importPage(1);
+    $pdf->useTemplate($tplId, 0, 0);
     $pdf->Output();
 
 
