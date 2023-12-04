@@ -589,10 +589,10 @@ if (isset($_POST['tahunpemarkahan'])) {
 
 if (isset($_POST['download-pdf'])) {
     require('assets/vendor/fpdf/fpdf.php');
+    require('assets/vendor/fpdi/src/autoload.php');
 
     require('assets/vendor/fpdf/exfpdf.php');
     require('assets/vendor/fpdf/easyTable.php');
-    require('assets/vendor/fpdi/src/autoload.php');
 
 
 
