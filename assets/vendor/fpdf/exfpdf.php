@@ -9,7 +9,7 @@ use setasign\Fpdi\Fpdi;
  * Require  FPDF v1.81, formatedstring v1.0                                                *
  **********************************************************************/
  include 'formatedstring.php';
- class exFPDF extends Fpdi{
+ class exFPDF extends FPDI{
 
     public function PageBreak(){
        return $this->PageBreakTrigger;
