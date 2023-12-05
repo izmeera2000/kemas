@@ -28,7 +28,7 @@
   $query = "SELECT * FROM murid WHERE id='$id' ";
   $result = mysqli_query($db, $query);
 
-  while ($row = mysqli_fetch_assoc($result)) {
+  while($row = mysqli_fetch_assoc($result)) {
 
     $nama = $row['name'];
     $umur = $row['age'];
@@ -73,7 +73,7 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
           <?php
-          if ($status_kemasukan != 1) { ?>
+          if($status_kemasukan != 1) { ?>
             <li class="breadcrumb-item">Kemasukan</li>
 
           <?php } else { ?>
@@ -106,7 +106,7 @@
 
 
           <?php
-          if ($status_kemasukan != 1) {
+          if($status_kemasukan != "1") {
             ?>
             <div class="card">
               <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
@@ -163,7 +163,13 @@
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Fail &
                     Perakuan</button>
                 </li>
-
+                <?php
+                if($status_kemasukan == "1") { ?>
+                  <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password2">Edit</button>
+                  </li>
+                <?php }
+                ?>
               </ul>
               <div class="tab-content pt-3">
 
@@ -306,7 +312,7 @@
                   $query = "SELECT * FROM keluarga WHERE no_kad_pengenalan_murid='$ic' ORDER BY id ASC ";
                   $result = mysqli_query($db, $query);
 
-                  while ($row = mysqli_fetch_assoc($result)) { ?>
+                  while($row = mysqli_fetch_assoc($result)) { ?>
 
                     <h5 class="card-title">Maklumat
                       <?php echo $row['hubungan'] ?>
@@ -390,7 +396,7 @@
                   $query = "SELECT * FROM keluarga_tanggungan WHERE no_kad_pengenalan_murid='$ic' ORDER BY id ASC ";
                   $result = mysqli_query($db, $query);
                   $count = 1;
-                  while ($row = mysqli_fetch_assoc($result)) {
+                  while($row = mysqli_fetch_assoc($result)) {
                     ?>
 
                     <h5 class="card-title">Maklumat -
@@ -450,7 +456,7 @@
                   $query = "SELECT * FROM keluarga WHERE no_kad_pengenalan_murid='$ic' ORDER BY id ASC LIMIT 1 ";
                   $result = mysqli_query($db, $query);
 
-                  while ($row = mysqli_fetch_assoc($result)) {
+                  while($row = mysqli_fetch_assoc($result)) {
                     ?>
                     <div class="row">
                       <div class="col-lg-3 col-md-4 label ">File Slip Gaji</div>
@@ -477,7 +483,7 @@
                   $query = "SELECT * FROM murid WHERE no_kad_pengenalan='$ic' ORDER BY id ASC LIMIT 1 ";
                   $result = mysqli_query($db, $query);
 
-                  while ($row = mysqli_fetch_assoc($result)) {
+                  while($row = mysqli_fetch_assoc($result)) {
                     ?>
                     <div class="row">
                       <div class="col-lg-3 col-md-4 label ">File MyKid</div>
@@ -510,7 +516,7 @@
                       <div class="col-lg-3 col-md-4 label ">Geran Perkapita</div>
                       <div class="col-lg-9 col-md-8">
                         <?php
-                        if ($row['geran'] == 1) {
+                        if($row['geran'] == 1) {
                           echo "Layak";
                         } else {
                           echo "Tidak layak";
@@ -524,6 +530,59 @@
                   ?>
 
 
+
+                </div>
+
+
+                <div class="tab-pane fade pt-3" id="profile-change-password2">
+                  <!-- Change Password Form -->
+                  <form method="post" action="?">
+                    <input type="hidden" name="ic" value="<?php echo $ic ?>">
+                    <div class="row mb-3">
+                      <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Alamat Rumah</label>
+                      <div class="col-md-8 col-lg-9">
+
+                        <textarea name="alamat_rumah" class="form-control"
+                          id="currentPassword"><?php echo $alamat_rumah ?></textarea>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Nama Penjaga</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="nama_penjaga" class="form-control" id="newPassword"
+                          value="<?php echo $nama_penjaga ?>">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Alamat Rumah Penjaga</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="alamat_rumah_penjaga" class="form-control" id="newPassword"
+                          value="<?php echo $alamat_rumah_penjaga ?>">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Telefon Penjaga</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="telefon_penjaga" class="form-control" id="newPassword"
+                          value="<?php echo $telefon_penjaga ?>">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Hubungan Penjaga</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="hubungan_penjaga" class="form-control" id="newPassword"
+                          value="<?php echo $hubungan_penjaga ?>">
+                      </div>
+                    </div>
+
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary" type="submit" name="edit-profile">Simpan</button>
+                    </div>
+                  </form><!-- End Change Password Form -->
 
                 </div>
 

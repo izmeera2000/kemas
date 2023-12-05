@@ -12,7 +12,7 @@ $errors2 = array();
 $db = mysqli_connect('localhost', 'root', '', 'kemas');
 
 
-if (isset($_POST['login_staff'])) {
+if(isset($_POST['login_staff'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
@@ -23,15 +23,15 @@ if (isset($_POST['login_staff'])) {
     $query = "SELECT * FROM staf WHERE idpengguna='$username' AND katalaluan='$password'";
     $results = mysqli_query($db, $query);
 
-    if (mysqli_num_rows($results) == 1) {
+    if(mysqli_num_rows($results) == 1) {
         $_SESSION['username'] = $username;
 
-        while ($row = mysqli_fetch_assoc($results)) {
+        while($row = mysqli_fetch_assoc($results)) {
 
             $_SESSION['level'] = $row['level'];
         }
         // $_SESSION['success'] = "You are now logged in";
-        if ($password != md5($username)) {
+        if($password != md5($username)) {
             header('location: index.php');
         } else {
 
@@ -45,7 +45,7 @@ if (isset($_POST['login_staff'])) {
 
 }
 
-if (isset($_POST['tambahstaf'])) {
+if(isset($_POST['tambahstaf'])) {
 
     $id = mysqli_real_escape_string($db, $_POST['id']);
     $level = mysqli_real_escape_string($db, $_POST['level']);
@@ -57,14 +57,14 @@ if (isset($_POST['tambahstaf'])) {
     $result = mysqli_query($db, $user_check_query);
     $row = mysqli_fetch_assoc($result);
 
-    if ($row) { // if user exists
-        if ($row['idpengguna'] === $id) {
+    if($row) { // if user exists
+        if($row['idpengguna'] === $id) {
             array_push($errors, "ID Pengguna wujud");
         }
     }
     echo count($errors);
     echo "thisds";
-    if (count($errors) == 0) {
+    if(count($errors) == 0) {
         $password = md5($id); //encrypt the password before saving in the database
 
         $query = "INSERT INTO staf (idpengguna, katalaluan) 
@@ -79,16 +79,16 @@ if (isset($_POST['tambahstaf'])) {
     }
 
 }
-if (isset($_POST['tukarkatalaluan'])) {
+if(isset($_POST['tukarkatalaluan'])) {
 
     $password_1 = mysqli_real_escape_string($db, $_POST['password1']);
     $password_2 = mysqli_real_escape_string($db, $_POST['password2']);
     $id = mysqli_real_escape_string($db, $_POST['id']);
 
-    if ($password_1 != $password_2) {
+    if($password_1 != $password_2) {
         array_push($errors, "The two passwords do not match");
     }
-    if (count($errors) == 0) {
+    if(count($errors) == 0) {
         $password = md5($password_1); //encrypt the password before saving in the database
 
         $query = "UPDATE staf  
@@ -100,34 +100,34 @@ if (isset($_POST['tukarkatalaluan'])) {
     }
 }
 
-if (isset($_POST['login_ibubapa'])) {
+if(isset($_POST['login_ibubapa'])) {
 
     $ic = mysqli_real_escape_string($db, $_POST['ic']);
 
     $query = "SELECT * FROM murid WHERE no_kad_pengenalan='$ic' ";
     $results = mysqli_query($db, $query);
-    if (mysqli_num_rows($results) == 1) {
+    if(mysqli_num_rows($results) == 1) {
         $_SESSION['username'] = $ic;
-        while ($row = mysqli_fetch_assoc($results)) {
+        while($row = mysqli_fetch_assoc($results)) {
 
-            if ($row['status_kemasukan'] != 1) {
-                if ($row['status_kemasukan_text'] == "a") {
+            if($row['status_kemasukan'] != 1) {
+                if($row['status_kemasukan_text'] == "a") {
                     header('location: borangkemasukan-b1.php');
                     exit();
 
                 }
-                if ($row['status_kemasukan_text'] == "b1") {
+                if($row['status_kemasukan_text'] == "b1") {
                     header('location: borangkemasukan-b1.php');
                     exit();
 
                 }
-                if ($row['status_kemasukan_text'] == "b2") {
+                if($row['status_kemasukan_text'] == "b2") {
                     header('location: borangkemasukan-b2.php');
                     exit();
 
                 }
 
-                if ($row['status_kemasukan_text'] == "c") {
+                if($row['status_kemasukan_text'] == "c") {
 
                     header('location: borangkemasukan-d.php');
                     // array_push($errors, "Borang anda tidak lengkap");
@@ -135,7 +135,7 @@ if (isset($_POST['login_ibubapa'])) {
 
 
                 }
-                if ($row['status_kemasukan_text'] == "d") {
+                if($row['status_kemasukan_text'] == "d") {
                     header('location: borangkemasukan-menunggu.php');
                     exit();
 
@@ -152,20 +152,19 @@ if (isset($_POST['login_ibubapa'])) {
     }
 }
 
-if (isset($_GET['logout'])) {
+if(isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['username']);
     header("location: lamanutama.php");
 }
 
 
-function debug_to_console($data)
-{
+function debug_to_console($data) {
     $output = $data;
-    if (is_array($output))
+    if(is_array($output))
         $output = implode(',', $output);
 
-    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+    echo "<script>console.log('Debug Objects: ".$output."' );</script>";
 }
 
 
@@ -175,24 +174,24 @@ function debug_to_console($data)
 
 
 
-if (isset($_POST['profilmurid'])) {
+if(isset($_POST['profilmurid'])) {
     $_SESSION['idmurid'] = $_POST['studentid'];
     header('location: profilmurid.php');
 
 }
-if (isset($_POST['pemarkahan'])) {
+if(isset($_POST['pemarkahan'])) {
     $_SESSION['idmurid'] = $_POST['studentid'];
     header('location: pemarkahan.php');
 
 
 }
 
-if (isset($_POST['tambahpemarkahan'])) {
+if(isset($_POST['tambahpemarkahan'])) {
     // $_SESSION['idmurid'] = $_POST['studentid'];
     // header('location: pemarkahan.php');
-    foreach ($_POST as $key => $value) {
+    foreach($_POST as $key => $value) {
         // echo "Field ".htmlspecialchars($key)." is ".htmlspecialchars($value)."<br>";
-        debug_to_console($key . " : " . $value);
+        debug_to_console($key." : ".$value);
     }
     $ic = $_POST['murid_id'];
     // $tarikh = $_POST['tarikh'];
@@ -233,8 +232,8 @@ if (isset($_POST['tambahpemarkahan'])) {
 
     $query = "SELECT * FROM staf_profile WHERE idpengguna='$namastaf' ";
     $results = mysqli_query($db, $query);
-    if (mysqli_num_rows($results) == 1) {
-        while ($row = mysqli_fetch_assoc($results)) {
+    if(mysqli_num_rows($results) == 1) {
+        while($row = mysqli_fetch_assoc($results)) {
 
             $namastaf = $row['nama'];
 
@@ -248,11 +247,11 @@ if (isset($_POST['tambahpemarkahan'])) {
 
 }
 
-if (isset($_POST['borangkemasukan-a'])) {
+if(isset($_POST['borangkemasukan-a'])) {
     // $_SESSION['idmurid'] =$_POST['studentid'];
-    foreach ($_POST as $key => $value) {
+    foreach($_POST as $key => $value) {
         // echo "Field ".htmlspecialchars($key)." is ".htmlspecialchars($value)."<br>";
-        debug_to_console($key . " : " . $value);
+        debug_to_console($key." : ".$value);
     }
 
     $tahunlahir = substr($_POST['ic'], 0, 2);
@@ -293,7 +292,7 @@ if (isset($_POST['borangkemasukan-a'])) {
     $datenow = new DateTime(date('Y'));
     // debug_to_console($datenow);
     $tahunlahir = 2000;
-    $stringdate = $tahunlahir . "-00-00";
+    $stringdate = $tahunlahir."-00-00";
     $datebirth = new DateTime(date($stringdate));
     // debug_to_console($datebirth);
     $umur = (date_diff($datenow, $datebirth))->y;
@@ -310,28 +309,28 @@ if (isset($_POST['borangkemasukan-a'])) {
 
 
     // debug_to_console($ageofthem);
-    if ($usera) {
-        if ($usera["status_kemasukan_text"] == "a") {
+    if($usera) {
+        if($usera["status_kemasukan_text"] == "a") {
             header('location: borangkemasukan-b1.php');
             exit();
 
         }
-        if ($usera["status_kemasukan_text"] == "b1") {
+        if($usera["status_kemasukan_text"] == "b1") {
             header('location: borangkemasukan-b1.php');
             exit();
 
         }
-        if ($usera["status_kemasukan_text"] == "b2") {
+        if($usera["status_kemasukan_text"] == "b2") {
             header('location: borangkemasukan-b2.php');
             exit();
 
         }
-        if ($usera["status_kemasukan_text"] == "c") {
+        if($usera["status_kemasukan_text"] == "c") {
             header('location: borangkemasukan-d.php');
             exit();
 
         }
-        if ($usera["status_kemasukan_text"] == "d") {
+        if($usera["status_kemasukan_text"] == "d") {
             header('location: borangkemasukan-menunggu.php');
             exit();
 
@@ -342,9 +341,9 @@ if (isset($_POST['borangkemasukan-a'])) {
         $query = "INSERT INTO murid (no_kad_pengenalan,name,age,warganegara,bangsa,tarikh_lahir,no_sijil_lahir,tempat_lahir,jantina,alamat_rumah,saizbaju,penyakit,tinggi,berat,kecacatan,nama_penjaga,alamat_rumah_penjaga,telefon_penjaga,hubungan_penjaga,status_kemasukan_text) 
     VALUES('$ic','$nama','$umur','$warganegara','$bangsa','$datebirth','$nosijillahir','$tempatlahir','$jantina','$alamat','$saizbaju','$penyakit','$tinggi','$berat','$kecacatan','$kecemasannama','$kecemasanalamat','$kecemasantelefon','$kecemasanhubungan','a')";
         $result = mysqli_query($db, $query);
-        if (!empty($result)) {
+        if(!empty($result)) {
         } else {
-            echo ("Error description: " . mysqli_error($db));
+            echo ("Error description: ".mysqli_error($db));
 
         }
 
@@ -355,7 +354,7 @@ if (isset($_POST['borangkemasukan-a'])) {
         $user_check_query = "SELECT * FROM keluarga WHERE no_kad_pengenalan_murid='$ic'";
         $resulta = mysqli_query($db, $user_check_query);
         $usera = mysqli_fetch_assoc($resulta);
-        if ($usera > 1) {
+        if($usera > 1) {
             header('location: borangkemasukan-b2.php');
             exit();
 
@@ -368,17 +367,17 @@ if (isset($_POST['borangkemasukan-a'])) {
 }
 
 
-if (isset($_POST['borangkemasukan-b1'])) {
+if(isset($_POST['borangkemasukan-b1'])) {
     // $_SESSION['idmurid'] =$_POST['studentid'];
-    foreach ($_POST as $key => $value) {
+    foreach($_POST as $key => $value) {
         // echo "Field ".htmlspecialchars($key)." is ".htmlspecialchars($value)."<br>";
-        debug_to_console($key . " : " . $value);
+        debug_to_console($key." : ".$value);
     }
 
     $tahunlahir = substr($_POST['icA'], 0, 2);
     $bulanlahir = substr($_POST['icA'], 2, 2);
     $harilahir = substr($_POST['icA'], 4, 2);
-    if ($tahunlahir >= 30) {
+    if($tahunlahir >= 30) {
         $tahunlahir += 1900;
     } else {
         $tahunlahir += 2000;
@@ -412,14 +411,14 @@ if (isset($_POST['borangkemasukan-b1'])) {
     $usera = mysqli_num_rows($resulta);
     debug_to_console($usera);
 
-    if ($usera >= 2) {
+    if($usera >= 2) {
         header('location: borangkemasukan-b2.php');
 
     } else {
         $query = "INSERT INTO keluarga  (no_kad_pengenalan_murid,hubungan,kad_pengenalan,nama,tarikh_lahir,tempat_lahir,warganegara,keturunan,pekerjaan,status,pendapatan_sebulan,no_telefon_pejabat,nama_majikan,alamat_majikan) 
     VALUES( '$ic','$hubunganA','$icA','$namaA','$datebirth','$tempatlahirA','$warganegaraA','$bangsaA','$pekerjaanA','$statusA','$pendapatanA','$notelpejabatA','$namamajikanA','$alamatmajikanA')";
         $result = mysqli_query($db, $query);
-        if (!empty($result)) {
+        if(!empty($result)) {
 
             // echo ("Error description: " . mysqli_error($db));
 
@@ -429,7 +428,7 @@ if (isset($_POST['borangkemasukan-b1'])) {
 
         }
         $query4 = "UPDATE murid SET status_kemasukan_text='b1' WHERE no_kad_pengenalan='$ic'";
-        echo ("Error description: " . mysqli_error($db));
+        echo ("Error description: ".mysqli_error($db));
         $result4 = mysqli_query($db, $query4);
         header('location: borangkemasukan-b1.php');
 
@@ -442,11 +441,11 @@ if (isset($_POST['borangkemasukan-b1'])) {
 }
 
 
-if (isset($_POST['borangkemasukan-b2-tambah'])) {
+if(isset($_POST['borangkemasukan-b2-tambah'])) {
     // $_SESSION['idmurid'] =$_POST['studentid'];
-    foreach ($_POST as $key => $value) {
+    foreach($_POST as $key => $value) {
         // echo "Field ".htmlspecialchars($key)." is ".htmlspecialchars($value)."<br>";
-        debug_to_console($key . " : " . $value);
+        debug_to_console($key." : ".$value);
     }
 
     $nama = $db->real_escape_string($_POST['nama']);
@@ -459,13 +458,13 @@ if (isset($_POST['borangkemasukan-b2-tambah'])) {
     $query = "INSERT INTO keluarga_tanggungan (no_kad_pengenalan_murid,nama,umur,perhubungan,nama_institusi,nilai_biasiswa) 
     VALUES('$ic','$nama','$umur','$perhubungan','$institusi','$biasiswa')";
     $result = mysqli_query($db, $query);
-    if (!empty($result)) {
+    if(!empty($result)) {
     } else {
-        echo ("Error description: " . mysqli_error($db));
+        echo ("Error description: ".mysqli_error($db));
 
     }
     $query4 = "UPDATE murid SET status_kemasukan_text='b2' WHERE no_kad_pengenalan='$ic'";
-    echo ("Error description: " . mysqli_error($db));
+    echo ("Error description: ".mysqli_error($db));
     $result4 = mysqli_query($db, $query4);
     header('location: borangkemasukan-b2.php');
     exit();
@@ -474,26 +473,26 @@ if (isset($_POST['borangkemasukan-b2-tambah'])) {
 }
 
 
-if (isset($_POST['borangkemasukan-c'])) {
+if(isset($_POST['borangkemasukan-c'])) {
     // $_SESSION['idmurid'] =$_POST['studentid'];
 
     // debug_to_console("asasas");
 
-    foreach ($_POST as $key => $value) {
-        debug_to_console($key . " : " . $value);
+    foreach($_POST as $key => $value) {
+        debug_to_console($key." : ".$value);
     }
 
-    if (!is_dir("assets/murid/" . $_SESSION["ic"] . "/")) {
-        mkdir("assets/murid/" . $_SESSION["ic"] . "/");
+    if(!is_dir("assets/murid/".$_SESSION["ic"]."/")) {
+        mkdir("assets/murid/".$_SESSION["ic"]."/");
     }
     $ic = $_SESSION['ic'];
 
     debug_to_console($_FILES["bahagianc"]["tmp_name"]);
     debug_to_console($_FILES["bahagianc"]["name"]);
-    move_uploaded_file($_FILES["bahagianc"]["tmp_name"], "assets/murid/" . $ic . "/" . "bahagianc.pdf");
+    move_uploaded_file($_FILES["bahagianc"]["tmp_name"], "assets/murid/".$ic."/"."bahagianc.pdf");
     $filename = "bahagianc.pdf";
 
-    move_uploaded_file($_FILES["slipgaji"]["tmp_name"], "assets/murid/" . $ic . "/" . "slipgaji.pdf");
+    move_uploaded_file($_FILES["slipgaji"]["tmp_name"], "assets/murid/".$ic."/"."slipgaji.pdf");
     $filename4 = "slipgaji.pdf";
 
     $query = "UPDATE keluarga SET file_pengesahan='$filename' , file_slipgaji='$filename4' WHERE no_kad_pengenalan_murid='$ic'";
@@ -510,21 +509,21 @@ if (isset($_POST['borangkemasukan-c'])) {
 
 
 
-if (isset($_POST['borangkemasukan-d'])) {
+if(isset($_POST['borangkemasukan-d'])) {
     // $_SESSION['idmurid'] =$_POST['studentid'];
 
     // debug_to_console("asasas");
 
-    foreach ($_POST as $key => $value) {
-        debug_to_console($key . " : " . $value);
+    foreach($_POST as $key => $value) {
+        debug_to_console($key." : ".$value);
     }
 
-    if (!is_dir("assets/murid/" . $_SESSION["ic"] . "/")) {
-        mkdir("assets/murid/" . $_SESSION["ic"] . "/");
+    if(!is_dir("assets/murid/".$_SESSION["ic"]."/")) {
+        mkdir("assets/murid/".$_SESSION["ic"]."/");
     }
     $ic = $_SESSION['ic'];
 
-    if (isset($_POST['a'])) {
+    if(isset($_POST['a'])) {
         $geran = 1;
     } else {
         $geran = 0;
@@ -533,18 +532,18 @@ if (isset($_POST['borangkemasukan-d'])) {
     // debug_to_console($_FILES["bahagianc"]["tmp_name"]);
     // debug_to_console($_FILES["bahagianc"]["name"]);
     $file_ext = substr($_FILES["gambarpassport"]["name"], strripos($_FILES["gambarpassport"]["name"], '.'));
-    move_uploaded_file($_FILES["gambarpassport"]["tmp_name"], "assets/murid/" . $ic . "/" . "gambar" . $file_ext);
-    $filename1 = "gambar" . $file_ext;
+    move_uploaded_file($_FILES["gambarpassport"]["tmp_name"], "assets/murid/".$ic."/"."gambar".$file_ext);
+    $filename1 = "gambar".$file_ext;
 
-    move_uploaded_file($_FILES["mykid"]["tmp_name"], "assets/murid/" . $ic . "/" . "mykid.pdf");
+    move_uploaded_file($_FILES["mykid"]["tmp_name"], "assets/murid/".$ic."/"."mykid.pdf");
     $filename2 = "mykid.pdf";
 
-    move_uploaded_file($_FILES["sijillahir"]["tmp_name"], "assets/murid/" . $ic . "/" . "sijillahir.pdf");
+    move_uploaded_file($_FILES["sijillahir"]["tmp_name"], "assets/murid/".$ic."/"."sijillahir.pdf");
     $filename3 = "sijillahir.pdf";
 
 
 
-    move_uploaded_file($_FILES["kesihatan"]["tmp_name"], "assets/murid/" . $ic . "/" . "kesihatan.pdf");
+    move_uploaded_file($_FILES["kesihatan"]["tmp_name"], "assets/murid/".$ic."/"."kesihatan.pdf");
     $filename5 = "kesihatan.pdf";
 
 
@@ -561,7 +560,7 @@ if (isset($_POST['borangkemasukan-d'])) {
 }
 
 
-if (isset($_POST['kemasukan-layak'])) {
+if(isset($_POST['kemasukan-layak'])) {
     $ic = $_POST['ic'];
     $query = "UPDATE murid SET status_kemasukan='1' WHERE no_kad_pengenalan='$ic'";
     $result = mysqli_query($db, $query);
@@ -571,7 +570,7 @@ if (isset($_POST['kemasukan-layak'])) {
 
 
 }
-if (isset($_POST['kemasukan-tidaklayak'])) {
+if(isset($_POST['kemasukan-tidaklayak'])) {
     $ic = $_POST['ic'];
 
     $query = "UPDATE murid SET status_kemasukan='2' WHERE no_kad_pengenalan='$ic'";
@@ -580,14 +579,14 @@ if (isset($_POST['kemasukan-tidaklayak'])) {
     exit();
 }
 
-if (isset($_POST['tahunpemarkahan'])) {
-    if (isset($_POST['tahun'])) {
+if(isset($_POST['tahunpemarkahan'])) {
+    if(isset($_POST['tahun'])) {
         $_SESSION['tahundipilih'] = $_POST['tahun'];
     }
 
 }
 
-if (isset($_POST['download-pdf'])) {
+if(isset($_POST['download-pdf'])) {
     require('assets/vendor/fpdf/fpdf.php');
     require('assets/vendor/fpdi/src/autoload.php');
 
@@ -624,7 +623,7 @@ if (isset($_POST['download-pdf'])) {
     $tarikh2 = $_POST['tahun'];
     $query = "SELECT * FROM murid WHERE id='$id'  LIMIT 1 ";
     $result = mysqli_query($db, $query);
-    while ($row = mysqli_fetch_assoc($result)) {
+    while($row = mysqli_fetch_assoc($result)) {
         $icmurid = $row['no_kad_pengenalan'];
 
         $tablea->easyCell('Nama', 'valign:M; bgcolor:#d9d8d4;  align:L');
@@ -648,7 +647,7 @@ if (isset($_POST['download-pdf'])) {
 
     $query = "SELECT * FROM pemarkahan WHERE murid_id='$id' AND tarikh LIKE '%$tarikh%' LIMIT 1 ";
     $result = mysqli_query($db, $query);
-    while ($row = mysqli_fetch_assoc($result)) {
+    while($row = mysqli_fetch_assoc($result)) {
 
         $tablea->easyCell('Nama Guru', 'valign:M; bgcolor:#d9d8d4;  align:L');
         $tablea->easyCell($row['idpengguna'], 'valign:M;, 255;align:L');
@@ -785,7 +784,7 @@ if (isset($_POST['download-pdf'])) {
         $tablec->endTable();
 
         $tarikh2 = date("Y", strtotime($tarikh2));
-        $pdf->Output('D', $tarikh2 . '-' . $icmurid . '-pemarkahan.pdf');
+        $pdf->Output('D', $tarikh2.'-'.$icmurid.'-pemarkahan.pdf');
     }
 
 
@@ -795,7 +794,7 @@ if (isset($_POST['download-pdf'])) {
 
 
 
-if (isset($_POST['download-pdf-borang'])) {
+if(isset($_POST['download-pdf-borang'])) {
     require('assets/vendor/fpdf/fpdf.php');
     require('assets/vendor/fpdi/src/autoload.php');
 
@@ -817,7 +816,7 @@ if (isset($_POST['download-pdf-borang'])) {
     // for($i=1;$i<=40;$i++)
 
     $tableb = new easyTable($pdf, '%{70,30}', 'border:0;font-size:8;');
-    while ($row = mysqli_fetch_assoc($result)) {
+    while($row = mysqli_fetch_assoc($result)) {
 
 
         $nama = $row['name'];
@@ -855,7 +854,7 @@ if (isset($_POST['download-pdf-borang'])) {
     $tableb->printRow();
 
     $tableb->easyCell("BORANG PENDAFTARAN\nKANAK-KANAK TABIKA KEMAS\nJABATAN KEMAJUAN MASYARAKAT\nKEMENTERIAN KEMAJUAN DESA DAN WILAYAH\nTAHUN 2024/2025", 'valign:M;  align:C');
-    $tableb->easyCell('', 'img:assets/murid/' . $ic . "/" . $gambar . ',w40;valign:M;  align:C');
+    $tableb->easyCell('', 'img:assets/murid/'.$ic."/".$gambar.',w40;valign:M;  align:C');
     $tableb->printRow();
 
     $tableb->endTable(10);
@@ -871,22 +870,22 @@ if (isset($_POST['download-pdf-borang'])) {
 
     $tablebahA1 = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
 
-    $tablebahA1->easyCell('Nama Kanak-Kanak : ' . $nama, 'valign:L;  align:L;paddingY:2');
-    $tablebahA1->easyCell('Warganegara : ' . $warganegara, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->easyCell('Nama Kanak-Kanak : '.$nama, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->easyCell('Warganegara : '.$warganegara, 'valign:L;  align:L;paddingY:2');
     $tablebahA1->printRow();
 
-    $tablebahA1->easyCell('Bangsa/Keturunan : ' . $bangsa, 'valign:L;  align:L;paddingY:2');
-    $tablebahA1->easyCell('Tarikh Lahir : ' . $tarikh_lahir, 'valign:L;  align:L;paddingY:2');
-    $tablebahA1->easyCell('Umur : ' . $umur, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->easyCell('Bangsa/Keturunan : '.$bangsa, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->easyCell('Tarikh Lahir : '.$tarikh_lahir, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->easyCell('Umur : '.$umur, 'valign:L;  align:L;paddingY:2');
     $tablebahA1->printRow();
 
-    $tablebahA1->easyCell('No. Sijil Lahir : ' . $no_sijil_lahir, 'valign:L;  align:L;paddingY:2');
-    $tablebahA1->easyCell('Tempat Lahir : ' . $tempat_lahir, 'valign:L;  align:L;paddingY:2');
-    $tablebahA1->easyCell('Jantina : ' . $jantina, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->easyCell('No. Sijil Lahir : '.$no_sijil_lahir, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->easyCell('Tempat Lahir : '.$tempat_lahir, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->easyCell('Jantina : '.$jantina, 'valign:L;  align:L;paddingY:2');
     $tablebahA1->printRow();
 
-    $tablebahA1->easyCell('Alamat Rumah : ' . $alamat_rumah, 'valign:L;  align:L;colspan:2;paddingY:2');
-    $tablebahA1->easyCell('Saiz Baju : ' . $saizbaju, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->easyCell('Alamat Rumah : '.$alamat_rumah, 'valign:L;  align:L;colspan:2;paddingY:2');
+    $tablebahA1->easyCell('Saiz Baju : '.$saizbaju, 'valign:L;  align:L;paddingY:2');
     $tablebahA1->printRow();
     $tablebahA1->endTable(5);
 
@@ -901,11 +900,11 @@ if (isset($_POST['download-pdf-borang'])) {
     $tablebahA2->printRow();
 
     $tablebahA2->easyCell('Fizikal Kanak-Kanak : ', 'valign:L;  align:L;paddingY:2;rowspan:2');
-    $tablebahA2->easyCell('Tinggi : ' . $tinggi . 'cm', 'valign:L;  align:L;paddingY:2');
+    $tablebahA2->easyCell('Tinggi : '.$tinggi.'cm', 'valign:L;  align:L;paddingY:2');
     $tablebahA2->printRow();
 
     $tablebahA2->easyCell('');
-    $tablebahA2->easyCell('Berat : ' . $berat . 'kg', 'valign:L;  align:L;paddingY:2');
+    $tablebahA2->easyCell('Berat : '.$berat.'kg', 'valign:L;  align:L;paddingY:2');
     $tablebahA2->printRow();
 
     $tablebahA2->easyCell('Masalah makanan/alahan', 'valign:L;  align:L;paddingY:2');
@@ -958,10 +957,10 @@ if (isset($_POST['download-pdf-borang'])) {
     $query2 = "SELECT * FROM keluarga WHERE no_kad_pengenalan_murid='$ic' ORDER BY id ASC ";
     $result2 = mysqli_query($db, $query2);
 
-    $Rows = array ();
+    $Rows = array();
     $countrows = mysqli_num_rows($result2);
     $ds = 0;
-    while ($row = mysqli_fetch_array($result2)) {
+    while($row = mysqli_fetch_array($result2)) {
         $Rows[$ds] = $row;
         $ds++;
     }
@@ -969,8 +968,8 @@ if (isset($_POST['download-pdf-borang'])) {
     $tablebahB1 = new easyTable($pdf, '%{4,48,48}', 'border:1;font-size:8; ');
     $tablebahB1->easyCell('Bil', 'bgcolor:#BFBFBF');
 
-    foreach ($Rows as $row1) {
-        $tablebahB1->easyCell('Maklumat : ' . $row1["hubungan"], 'valign:L;  align:L;colspan:1;bgcolor:#BFBFBF');
+    foreach($Rows as $row1) {
+        $tablebahB1->easyCell('Maklumat : '.$row1["hubungan"], 'valign:L;  align:L;colspan:1;bgcolor:#BFBFBF');
 
     }
 
@@ -983,92 +982,92 @@ if (isset($_POST['download-pdf-borang'])) {
 
     $tablebahB1->easyCell('a', 'valign:M;  align:C;paddingY:2');
 
-    foreach ($Rows as $row1) {
-        $tablebahB1->easyCell('Nama : ' . $row1['nama'], 'valign:L;  align:L;paddingY:2');
+    foreach($Rows as $row1) {
+        $tablebahB1->easyCell('Nama : '.$row1['nama'], 'valign:L;  align:L;paddingY:2');
 
     }
     $tablebahB1->printRow();
 
     $tablebahB1->easyCell('b', 'valign:M;  align:C;paddingY:2');
 
-    foreach ($Rows as $row1) {
-        $tablebahB1->easyCell('No. K.P : ' . $row1["kad_pengenalan"], 'valign:L;  align:L;paddingY:2');
+    foreach($Rows as $row1) {
+        $tablebahB1->easyCell('No. K.P : '.$row1["kad_pengenalan"], 'valign:L;  align:L;paddingY:2');
 
     }
     $tablebahB1->printRow();
 
     $tablebahB1->easyCell('c', 'valign:M;  align:C;paddingY:2;rowspan:2');
 
-    foreach ($Rows as $row1) {
-        $tablebahB1->easyCell('Tarikh Lahir : ' . $row1["tarikh_lahir"], 'valign:L;  align:L;paddingY:2;colspan:1');
+    foreach($Rows as $row1) {
+        $tablebahB1->easyCell('Tarikh Lahir : '.$row1["tarikh_lahir"], 'valign:L;  align:L;paddingY:2;colspan:1');
     }
-    if ($countrows != "2") {
+    if($countrows != "2") {
         $tablebahB1->easyCell('', 'border:0');
     }
     $tablebahB1->printRow();
 
 
-    foreach ($Rows as $row1) {
-        $tablebahB1->easyCell('Tempat Lahir : ' . $row1["tempat_lahir"], 'valign:L;  align:L;paddingY:2;');
+    foreach($Rows as $row1) {
+        $tablebahB1->easyCell('Tempat Lahir : '.$row1["tempat_lahir"], 'valign:L;  align:L;paddingY:2;');
     }
     $tablebahB1->printRow();
 
     $tablebahB1->easyCell('d', 'valign:M;  align:C;paddingY:2');
-    foreach ($Rows as $row1) {
-        $tablebahB1->easyCell('Warganegara : ' . $row1["warganegara"], 'valign:L;  align:L;paddingY:2');
+    foreach($Rows as $row1) {
+        $tablebahB1->easyCell('Warganegara : '.$row1["warganegara"], 'valign:L;  align:L;paddingY:2');
     }
     $tablebahB1->printRow();
 
     $tablebahB1->easyCell('e', 'valign:M;  align:C;paddingY:2');
 
-    foreach ($Rows as $row1) {
-        $tablebahB1->easyCell('Keturunan : ' . $row1["keturunan"], 'valign:L;  align:L;paddingY:2');
+    foreach($Rows as $row1) {
+        $tablebahB1->easyCell('Keturunan : '.$row1["keturunan"], 'valign:L;  align:L;paddingY:2');
     }
     $tablebahB1->printRow();
 
     $tablebahB1->easyCell('f', 'valign:M;  align:C;paddingY:2');
 
-    foreach ($Rows as $row1) {
-        $tablebahB1->easyCell('Pekerjaan : ' . $row1["pekerjaan"], 'valign:L;  align:L;paddingY:2');
+    foreach($Rows as $row1) {
+        $tablebahB1->easyCell('Pekerjaan : '.$row1["pekerjaan"], 'valign:L;  align:L;paddingY:2');
     }
     $tablebahB1->printRow();
 
     $tablebahB1->easyCell('g', 'valign:M;  align:C;paddingY:2');
 
-    foreach ($Rows as $row1) {
-        $tablebahB1->easyCell('Status : ' . $row1["status"], 'valign:L;  align:L;paddingY:2');
+    foreach($Rows as $row1) {
+        $tablebahB1->easyCell('Status : '.$row1["status"], 'valign:L;  align:L;paddingY:2');
     }
     $tablebahB1->printRow();
 
     $tablebahB1->easyCell('h', 'valign:M;  align:C;paddingY:2');
 
-    foreach ($Rows as $row1) {
-        $tablebahB1->easyCell('Pendapatan Sebulan : RM ' . $row1["pendapatan_sebulan"], 'valign:L;  align:L;paddingY:2');
+    foreach($Rows as $row1) {
+        $tablebahB1->easyCell('Pendapatan Sebulan : RM '.$row1["pendapatan_sebulan"], 'valign:L;  align:L;paddingY:2');
     }
     $tablebahB1->printRow();
 
 
     $tablebahB1->easyCell('h', 'valign:M;  align:C;paddingY:2');
 
-    foreach ($Rows as $row1) {
-        $tablebahB1->easyCell('No. Telefon Pejabat : ' . $row1["no_telefon_pejabat"], 'valign:L;  align:L;paddingY:2');
+    foreach($Rows as $row1) {
+        $tablebahB1->easyCell('No. Telefon Pejabat : '.$row1["no_telefon_pejabat"], 'valign:L;  align:L;paddingY:2');
     }
     $tablebahB1->printRow();
 
 
     $tablebahB1->easyCell('j', 'valign:M;  align:C;paddingY:2;rowspan:2');
-    foreach ($Rows as $row1) {
-        $tablebahB1->easyCell('Nama Majikan : ' . $row1["nama_majikan"], 'valign:L;  align:L;paddingY:2;');
+    foreach($Rows as $row1) {
+        $tablebahB1->easyCell('Nama Majikan : '.$row1["nama_majikan"], 'valign:L;  align:L;paddingY:2;');
     }
 
-    if ($countrows != "2") {
+    if($countrows != "2") {
         $tablebahB1->easyCell('', 'border:0');
     }
     $tablebahB1->printRow();
 
 
-    foreach ($Rows as $row1) {
-        $tablebahB1->easyCell('Alamat Majikan : ' . $row1["alamat_majikan"], 'valign:L;  align:L;paddingY:2;');
+    foreach($Rows as $row1) {
+        $tablebahB1->easyCell('Alamat Majikan : '.$row1["alamat_majikan"], 'valign:L;  align:L;paddingY:2;');
     }
     $tablebahB1->printRow();
 
@@ -1086,7 +1085,7 @@ if (isset($_POST['download-pdf-borang'])) {
     $tablebahB1->easyCell('Nilai Biasiswa/ Bantuan Setahun', 'valign:M;  align:C;colspan:1;bgcolor:#BFBFBF');
     $tablebahB1->printRow(true);
     $i = 1;
-    while ($row3 = mysqli_fetch_array($result3)) {
+    while($row3 = mysqli_fetch_array($result3)) {
 
 
         $tablebahB1->easyCell($i, 'valign:L;  align:C;paddingY:2');
@@ -1094,7 +1093,7 @@ if (isset($_POST['download-pdf-borang'])) {
         $tablebahB1->easyCell($row3["umur"], 'valign:M;  align:C;colspan:1');
         $tablebahB1->easyCell($row3["perhubungan"], 'valign:M;  align:C;colspan:1');
         $tablebahB1->easyCell($row3["nama_institusi"], 'valign:M;  align:C;colspan:1');
-        $tablebahB1->easyCell("RM" . $row3["nilai_biasiswa"], 'valign:M;  align:C;colspan:1');
+        $tablebahB1->easyCell("RM".$row3["nilai_biasiswa"], 'valign:M;  align:C;colspan:1');
         $tablebahB1->printRow();
         $i += 1;
     }
@@ -1124,7 +1123,7 @@ if (isset($_POST['download-pdf-borang'])) {
     $tablebahB1->printRow();
 
     $tablebahB1->easyCell('1');
-    if ($geran == "1") {
+    if($geran == "1") {
         $tablebahB1->easyCell('Saya memperakui bahawa saya <b>memenuhi syarat</b> kelayakan penerima bantuan Geran Perkapita', 'valign:L;  align:L;colspan:1');
     } else {
         $tablebahB1->easyCell('Saya memperakui bahawa saya <b>tidak memenuhi syarat</b> kelayakan penerima bantuan Geran Perkapita', 'valign:L;  align:L;colspan:1');
@@ -1157,23 +1156,23 @@ if (isset($_POST['download-pdf-borang'])) {
 
 
     $pdf->AddPage();
-    $pdf->setSourceFile("assets/murid/" . $ic . "/kesihatan.pdf");
+    $pdf->setSourceFile("assets/murid/".$ic."/kesihatan.pdf");
     $tplId = $pdf->importPage(1);
     $pdf->useTemplate($tplId, 0, 0);
 
 
     $pdf->AddPage();
-    $pdf->setSourceFile("assets/murid/" . $ic . "/mykid.pdf");
+    $pdf->setSourceFile("assets/murid/".$ic."/mykid.pdf");
     $tplId = $pdf->importPage(1);
     $pdf->useTemplate($tplId, 0, 0);
 
     $pdf->AddPage();
-    $pdf->setSourceFile("assets/murid/" . $ic . "/sijillahir.pdf");
+    $pdf->setSourceFile("assets/murid/".$ic."/sijillahir.pdf");
     $tplId = $pdf->importPage(1);
     $pdf->useTemplate($tplId, 0, 0);
 
     $pdf->AddPage();
-    $pdf->setSourceFile("assets/murid/" . $ic . "/slipgaji.pdf");
+    $pdf->setSourceFile("assets/murid/".$ic."/slipgaji.pdf");
     $tplId = $pdf->importPage(1);
     $pdf->useTemplate($tplId, 0, 0);
     $pdf->Output();
@@ -1182,6 +1181,29 @@ if (isset($_POST['download-pdf-borang'])) {
 
 
 
+}
+
+
+if(isset($_POST['edit-profile'])) {
+
+    $ic = $_POST['ic'];
+
+    $alamat_rumah = $_POST['alamat_rumah'];
+    $nama_penjaga = $_POST['nama_penjaga'];
+    $alamat_rumah_penjaga = $_POST['alamat_rumah_penjaga'];
+    $telefon_penjaga = $_POST['telefon_penjaga'];
+    $hubungan_penjaga = $_POST['hubungan_penjaga'];
+
+
+    $query = "UPDATE murid SET 
+    alamat_rumah='$alamat_rumah', 
+    nama_penjaga='$nama_penjaga', 
+    alamat_rumah_penjaga='$alamat_rumah_penjaga', 
+    telefon_penjaga='$telefon_penjaga',
+    hubungan_penjaga='$hubungan_penjaga'  
+    WHERE no_kad_pengenalan='$ic' ";
+    $result = mysqli_query($db, $query);
+    debug_to_console($result);
 }
 
 ?>
