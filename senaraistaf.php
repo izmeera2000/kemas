@@ -59,7 +59,11 @@
                     <th scope="col">Nama</th>
                     <th scope="col">Umur</th>
                     <th scope="col">Tarikh Mula</th>
-                    <th scope="col">Action</th>
+                    <?php if (($_SESSION['level']) == 1) {
+                      ?>
+                      <th scope="col">Action</th>
+                    <?php } ?>
+
                   </tr>
                 </thead>
                 <tbody>
@@ -98,15 +102,20 @@
                       <td>
                         <?php echo $row['tarikh'] ?>
                       </td>
-                      <td>
-                        <form method="post" action="?profilmurid">
-                          <input type="hidden" id="studentid" name="studentid" value="<?php echo $row['id'] ?>">
-                          <!-- <button type="submit" name="profilmurid" class="btn btn-primary"><i
+                      <?php if (($_SESSION['level']) == 1) {
+                        ?>
+
+
+                        <td>
+                          <form method="post" action="?deletestaf">
+                            <input type="hidden" id="idstaf" name="idstaf" value="<?php echo $row['id'] ?>">
+                            <!-- <button type="submit" name="profilmurid" class="btn btn-primary"><i
                               class="bi bi-person"></i></button> -->
-                          <button type="submit" name="deletestaf" class="btn btn-primary"><i
-                              class="bi bi-trash"></i></button>
-                        </form>
-                      </td>
+                            <button type="submit" name="deletestaf" class="btn btn-primary"><i
+                                class="bi bi-trash"></i></button>
+                          </form>
+                        </td>
+                      <?php } ?>
                     </tr>
 
                     <?php
@@ -132,9 +141,9 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body profile-card">
-            
 
-            
+
+
               <h5 class="card-title mt-3">ID Pengguna</h5>
               <div class="col-12 mt-1">
                 <div class="input-group has-validation">

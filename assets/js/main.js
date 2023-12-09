@@ -5,6 +5,27 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+function previewImage(event) {
+  var input = event.target;
+  var image = document.getElementById('preview');
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      image.src = e.target.result;
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function removeImage() {
+  var imageinput = document.getElementById('uploadpic');
+  imageinput.value = null;
+  var image = document.getElementById('preview');
+  image.src = "";
+
+
+}
 (function() {
   "use strict";
 
@@ -317,5 +338,7 @@
       }).observe(mainContainer);
     }, 200);
   }
+
+  
 
 })();

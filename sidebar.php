@@ -18,13 +18,13 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="senaraimurid.php">
-          <i class="bi bi-circle"></i><span>Senarai Murid</span>
+          <i class="bi bi-people"></i><span>Senarai Murid</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="senaraikemasukan.php">
-          <i class="bi bi-circle"></i><span>Senarai Kemasukan</span>
+          <i class="bi bi-people-fill"></i><span>Senarai Kemasukan</span>
         </a>
       </li>
       <!-- End Dashboard Nav -->
@@ -205,11 +205,11 @@
     </li> -->
       <!-- End Icons Nav -->
 
-      <li class="nav-heading">Pages</li>
+      <li class="nav-heading">Staf</li>
 
       <li class="nav-item">
       <a class="nav-link collapsed" href="senaraistaf.php">
-          <i class="bi bi-person"></i>
+          <i class="bi bi-person-badge"></i>
           <span>Staf</span>
         </a>
       </li>

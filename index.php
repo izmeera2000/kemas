@@ -1,4 +1,4 @@
-<?php include('functions.php') ;
+<?php include('functions.php');
 if (!isset($_SESSION['username'])) {
   // $_SESSION['msg'] = "You must log in first";
   header('location: lamanutama.php');
@@ -16,17 +16,17 @@ if (!isset($_SESSION['username'])) {
   <meta content="" name="keywords">
 
 
-<?php include('head.php') ?>
+  <?php include('head.php') ?>
 
 
 </head>
 
 <body>
 
-<?php include('topnav.php') ?>
+  <?php include('topnav.php') ?>
 
   <!-- ======= Sidebar ======= -->
-<?php  include('sidebar.php')?>
+  <?php include('sidebar.php') ?>
 
   <main id="main" class="main">
 
@@ -58,19 +58,20 @@ if (!isset($_SESSION['username'])) {
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-people"></i>
+                      <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <?php 
-                          $query = "SELECT COUNT(*) FROM  murid   WHERE status_kemasukan='1' ";
-                          $result = mysqli_query($db, $query);
-                          while ($row = mysqli_fetch_assoc($result)) {
+                      <?php
+                      $query = "SELECT COUNT(*) FROM  murid   WHERE status_kemasukan='1' ";
+                      $result = mysqli_query($db, $query);
+                      while ($row = mysqli_fetch_assoc($result)) {
 
-                            $jumlahmurid = $row['COUNT(*)'];
-                          }
+                        $jumlahmurid = $row['COUNT(*)'];
+                      }
                       ?>
-                      <h6><?php  echo $jumlahmurid?>
-</h6>
+                      <h6>
+                        <?php echo $jumlahmurid ?>
+                      </h6>
 
                       <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
 
@@ -83,9 +84,9 @@ if (!isset($_SESSION['username'])) {
 
             <!-- Revenue Card -->
             <div class="col-xxl-4 col-md-6">
-              <div class="card info-card revenue-card">
+              <div class="card info-card customers-card">
 
-             
+
 
                 <div class="card-body">
                   <h5 class="card-title">Kemasukan <span>| Menunggu</span></h5>
@@ -95,16 +96,17 @@ if (!isset($_SESSION['username'])) {
                       <i class="bi bi-person-check"></i>
                     </div>
                     <div class="ps-3">
-                    <?php 
-                          $query = "SELECT COUNT(*) FROM  murid WHERE status_kemasukan='0'  ";
-                          $result = mysqli_query($db, $query);
-                          while ($row = mysqli_fetch_assoc($result)) {
+                      <?php
+                      $query = "SELECT COUNT(*) FROM  murid WHERE status_kemasukan='0'  ";
+                      $result = mysqli_query($db, $query);
+                      while ($row = mysqli_fetch_assoc($result)) {
 
-                            $jumlahmurid = $row['COUNT(*)'];
-                          }
+                        $jumlahmurid = $row['COUNT(*)'];
+                      }
                       ?>
-                      <h6><?php  echo $jumlahmurid?>
-</h6>
+                      <h6>
+                        <?php echo $jumlahmurid ?>
+                      </h6>
                       <!-- <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
 
                     </div>
@@ -126,7 +128,8 @@ if (!isset($_SESSION['username'])) {
 
 
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>

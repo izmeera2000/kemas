@@ -1,54 +1,81 @@
-  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
 
-    <div class="d-flex align-items-center justify-content-between">
-      <a href="index.php" class="logo d-flex align-items-center">
-        <img src="assets/img/kemaslogo.png" alt="">
-        <!-- <span class="d-none d-lg-block">NiceAdmin</span> -->
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
+  <div class="d-flex align-items-center justify-content-between">
+    <a href="index.php" class="logo d-flex align-items-center">
+      <img src="assets/img/kemaslogo.png" alt="">
+      <!-- <span class="d-none d-lg-block">NiceAdmin</span> -->
+    </a>
+    <i class="bi bi-list toggle-sidebar-btn"></i>
+  </div><!-- End Logo -->
 
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
+  <div class="search-bar">
+    <form class="search-form d-flex align-items-center" method="POST" action="#">
+      <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+      <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+    </form>
+  </div><!-- End Search Bar -->
 
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
+  <nav class="header-nav ms-auto">
+    <ul class="d-flex align-items-center">
 
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li><!-- End Search Icon-->
+      <li class="nav-item d-block d-lg-none">
+        <a class="nav-link nav-icon search-bar-toggle " href="#">
+          <i class="bi bi-search"></i>
+        </a>
+      </li><!-- End Search Icon-->
 
 
-        <li class="nav-item dropdown pe-3">
+      <li class="nav-item dropdown pe-3">
 
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <!-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
-            <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $_SESSION['username'] ?></span>
-          </a><!-- End Profile Iamge Icon -->
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+          <?php if (($_SESSION['level']) >= 1) {
+            $username = $_SESSION['username'];
+            $query = "SELECT * FROM staf_profile WHERE idpengguna='$username' ";
+            $results = mysqli_query($db, $query);
+            while ($row = mysqli_fetch_assoc($results)) {
+              $gambar = $row['gambar'];
+              $nama = $row['nama'];
+            }
+            if ($gambar) { ?>
+              <img src="assets/img/staf/<?php echo $username; ?>/<?php echo $gambar; ?>" alt="Profile" class="rounded-circle">
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <!-- <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
+            <?php }
+            ?>
+
+
+          <?php } ?>
+
+
+          <span class="d-none d-md-block dropdown-toggle ps-2">
+            <?php echo $_SESSION['username'] ?>
+          </span>
+        </a><!-- End Profile Iamge Icon -->
+
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+          <?php if (($_SESSION['level']) >= 1) {
+            ?>
+            <li class="dropdown-header">
+              <h6>
+                <?php echo $nama; ?>
+              </h6>
+              <span>Level
+                <?php echo $_SESSION['level']; ?>
+              </span>
             </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+          <?php } ?>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="profil.php">
+              <i class="bi bi-person"></i>
+              <span>My Profile</span>
+            </a>
+          </li>
+          <!-- <li>
               <hr class="dropdown-divider">
             </li>
 
@@ -72,17 +99,17 @@
               <hr class="dropdown-divider">
             </li> -->
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="?logout=1">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="?logout=1">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Sign Out</span>
+            </a>
+          </li>
 
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
+        </ul><!-- End Profile Dropdown Items -->
+      </li><!-- End Profile Nav -->
 
-      </ul>
-    </nav><!-- End Icons Navigation -->
+    </ul>
+  </nav><!-- End Icons Navigation -->
 
-  </header><!-- End Header -->
+</header><!-- End Header -->
