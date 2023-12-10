@@ -1231,3 +1231,21 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+
+div.qrcode{
+  margin: 1em;
+  /* width: 300px; */
+}
+
+/* rows */
+div.qrcode > div {
+  height: 10px;
+}
+
+/* modules */
+div.qrcode > div > span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+}
