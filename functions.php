@@ -871,5 +871,15 @@ if (isset($_POST['qrcodescan'])) {
     foreach ($_POST as $key => $value) {
         debug_to_console($key . " : " . $value);
     }
+    $idmurid = $_POST['idmurid'];
+    $qrcode = $_POST['qrcodescan'];
+
+    // $qrcode2 = str_replace("kemas_mesyuarat://"," ",$qrcode);
+
+    $qrcode2 = substr($qrcode, 18);
+
+    $query = "INSERT INTO meeting_kehadiran (id_murid,nama_meeting) 
+    VALUES ('$idmurid','$qrcode2')";
+    $result = mysqli_query($db, $query);
 }
 ?>

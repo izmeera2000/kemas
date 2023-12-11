@@ -235,7 +235,7 @@ while ($row = mysqli_fetch_assoc($results)) {
                         <?php echo $row['id'] ?>
                       </th>
                       <td>
-                        <?php echo $row['nama'] ?>
+                        <?php echo $row['nama_meeting'] ?>
                       </td>
                       <td>
                         <?php echo "sds"; ?>
@@ -361,6 +361,7 @@ while ($row = mysqli_fetch_assoc($results)) {
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/html5-qrcode/minified/html5-qrcode.min.js"></script>
+  <script src="assets/vendor/jquery/jquery-3.7.1.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
@@ -375,17 +376,9 @@ while ($row = mysqli_fetch_assoc($results)) {
         // Handle on success condition with the decoded message.
         console.log(`Scan result ${decodedText}`, decodedResult);
 
+        $.post('functions.php', { qrcodescan: decodedText, idmurid: "<?php echo $_SESSION['username'] ?>" });
+        console.log("testpost");
 
-        $.ajax({
-            type : "POST",  //type of method
-            url  : "functions.php",  //your page
-            data : { qrcode : decodedText },
-            qrcodescan: "qrcodescan",// passing the values
-            success: function(res){  
-                                    //do what you want here...
-                    }
-        });
-        
       }
     }
 
