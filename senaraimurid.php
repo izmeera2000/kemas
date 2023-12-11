@@ -48,9 +48,9 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">Nama</th>
                     <th scope="col">IC</th>
-                    <th scope="col">Start Date</th>
+                    <th scope="col">Tarikh Mula</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>

@@ -284,6 +284,11 @@
           <i class="bi bi-card-checklist"></i><span>Pemarkahan</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="mesyuarat.php">
+          <i class="bi bi-person-lines-fill"></i><span>Mesyuarat</span>
+        </a>
+      </li>
       <?php
     }
 
