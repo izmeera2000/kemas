@@ -267,32 +267,7 @@ while ($row = mysqli_fetch_assoc($results)) {
 
         </div>
       </div>
-      <div class="row">
-        <div class="col-xxl-4 col-md-6">
-          <div class="card info-card customers-card">
 
-
-
-            <div class="card-body">
-              <h5 class="card-title">Mesyuarat <span>| Nama</span></h5>
-
-              <div class="d-flex align-items-center">
-                <!-- <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-person-check"></i>
-                    </div> -->
-                <div class="ps-3">
-
-                  <div id="qr-reader" style="width:100%"></div>
-                  <div id="qr-reader-results"></div>
-
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div><!-- End Revenue Card -->
-
-      </div>
     </section>
 
 
@@ -350,36 +325,7 @@ while ($row = mysqli_fetch_assoc($results)) {
 
   <?php include('footerscript.php') ?>
 
-  <script>
-    var resultContainer = document.getElementById('qr-reader-results');
-    var lastResult, countResults = 0;
-
-    function onScanSuccess(decodedText, decodedResult) {
-      if (decodedText !== lastResult) {
-        ++countResults;
-        lastResult = decodedText;
-        // Handle on success condition with the decoded message.
-        console.log(`Scan result ${decodedText}`, decodedResult);
-
-        $.post('functions.php', { qrcodescan: decodedText, idmurid: "<?php echo $_SESSION['username'] ?>" });
-        console.log("testpost");
-
-      }
-    }
-    const config = { fps: 10, qrbox: { width: 250, height: 250 } };
-
-    var html5QrcodeScanner = new Html5QrcodeScanner(
-      "qr-reader", { 
-        fps: 24,
-        qrbox: 250,
-        supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
-        rememberLastUsedCamera: true, 
-      
-      
-      });
-    html5QrcodeScanner.render(onScanSuccess);
-
-  </script>
+  
 </body>
 
 </html>

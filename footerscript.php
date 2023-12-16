@@ -1,6 +1,5 @@
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
-      <script src="assets/vendor/datatables/datatables.js"></script>
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -13,6 +12,7 @@
   
   <script src="assets/vendor/html5-qrcode/minified/html5-qrcode.min.js"></script>
   <script src="assets/vendor/jquery/jquery-3.7.1.min.js"></script>
+  <script src="assets/vendor/datatables/datatables.js"></script>
 
 
   <!-- Template Main JS File -->
