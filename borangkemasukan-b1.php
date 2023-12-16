@@ -4,7 +4,7 @@
 $user_check_query = "SELECT * FROM keluarga WHERE no_kad_pengenalan_murid='$ic'";
 $resulta = mysqli_query($db, $user_check_query);
 $usera = mysqli_num_rows($resulta);
-debug_to_console($usera);
+// debug_to_console($usera);
 if ($usera >= 2) {
   header('location: borangkemasukan-b2.php');
 
