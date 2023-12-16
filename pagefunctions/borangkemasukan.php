@@ -62,6 +62,8 @@ if (isset($_POST['borangkemasukan-a'])) {
 
     // debug_to_console($ageofthem);
     if ($usera) {
+        $_SESSION['ic'] = $ic;
+
         if ($usera["status_kemasukan_text"] == "a") {
             header('location: borangkemasukan-b1.php');
             exit();
