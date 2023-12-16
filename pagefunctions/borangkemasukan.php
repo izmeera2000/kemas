@@ -180,7 +180,7 @@ if (isset($_POST['borangkemasukan-b1'])) {
 
         }
         $query4 = "UPDATE murid SET status_kemasukan_text='b1' WHERE no_kad_pengenalan='$ic'";
-        echo ("Error description: " . mysqli_error($db));
+        // echo ("Error description: " . mysqli_error($db));
         $result4 = mysqli_query($db, $query4);
         header('location: borangkemasukan-b1.php');
 
@@ -216,7 +216,7 @@ if (isset($_POST['borangkemasukan-b2-tambah'])) {
 
     }
     $query4 = "UPDATE murid SET status_kemasukan_text='b2' WHERE no_kad_pengenalan='$ic'";
-    echo ("Error description: " . mysqli_error($db));
+    // echo ("Error description: " . mysqli_error($db));
     $result4 = mysqli_query($db, $query4);
     header('location: borangkemasukan-b2.php');
     exit();
