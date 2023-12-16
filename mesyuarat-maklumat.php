@@ -366,9 +366,17 @@ while ($row = mysqli_fetch_assoc($results)) {
 
       }
     }
+    const config = { fps: 10, qrbox: { width: 250, height: 250 } };
 
     var html5QrcodeScanner = new Html5QrcodeScanner(
-      "qr-reader", { fps: 10, qrbox: 250 });
+      "qr-reader", { 
+        fps: 24,
+        qrbox: 250,
+        supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
+        rememberLastUsedCamera: true, 
+      
+      
+      });
     html5QrcodeScanner.render(onScanSuccess);
 
   </script>
