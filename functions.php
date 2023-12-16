@@ -577,7 +577,7 @@ if (isset($_POST['download-pdf-borang'])) {
     $tablebahA2->printRow();
 
     $tablebahA2->easyCell('Masalah makanan/alahan', 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->easyCell($masalah_makanan, 'valign:L;  align:L;paddingY:2;colspan:2');
+    // $tablebahA2->easyCell($masalah_makanan, 'valign:L;  align:L;paddingY:2;colspan:2');
     $tablebahA2->printRow();
 
     // $tablebahA2->easyCell('Kecacatan', 'valign:L;  align:L;paddingY:2');
