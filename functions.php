@@ -591,12 +591,12 @@ if (isset($_POST['download-pdf-borang'])) {
     $tablebahA3 = new easyTable($pdf, '%{5,33,33,29}', 'border:0;font-size:8;');
     $tablebahA3->easyCell('<b>Orang yang boleh dihubungi jika berlaku kecemasan:</b>', 'valign:L;  align:L;colspan:3');
     $tablebahA3->printRow();
-    $tablebahA3->easyCell('asd');
 
-    $tablebahA3->easyCell('Nama : ', 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->easyCell($nama_penjaga, 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->printRow();
-    $tablebahA3->easyCell('asd');
+    // $tablebahA3->easyCell('asd');
+    // $tablebahA3->easyCell('Nama : ', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->easyCell($nama_penjaga, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->printRow();
+    // $tablebahA3->easyCell('asd');
 
     // $tablebahA3->easyCell('Alamat : ', 'valign:L;  align:L;paddingY:2');
     // $tablebahA3->easyCell($alamat_rumah_penjaga, 'valign:L;  align:L;paddingY:2');
