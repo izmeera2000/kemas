@@ -4,10 +4,7 @@
 
 if (isset($_POST['borangkemasukan-a'])) {
     // $_SESSION['idmurid'] =$_POST['studentid'];
-    foreach ($_POST as $key => $value) {
-        // echo "Field ".htmlspecialchars($key)." is ".htmlspecialchars($value)."<br>";
-        debug_to_console($key . " : " . $value);
-    }
+
 
     $tahunlahir = substr($_POST['ic'], 0, 2);
     $bulanlahir = substr($_POST['ic'], 2, 2);
@@ -40,9 +37,9 @@ if (isset($_POST['borangkemasukan-a'])) {
 
 
 
-    debug_to_console($tahunlahir);
-    debug_to_console($bulanlahir);
-    debug_to_console($harilahir);
+    // debug_to_console($tahunlahir);
+    // debug_to_console($bulanlahir);
+    // debug_to_console($harilahir);
 
     $datenow = new DateTime(date('Y'));
     // debug_to_console($datenow);
@@ -52,7 +49,7 @@ if (isset($_POST['borangkemasukan-a'])) {
     // debug_to_console($datebirth);
     $umur = (date_diff($datenow, $datebirth))->y;
 
-    debug_to_console($umur);
+    // debug_to_console($umur);
 
 
     $datebirth = date("Y-m-d", strtotime("$tahunlahir-$bulanlahir-$harilahir"));
