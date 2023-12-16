@@ -239,8 +239,8 @@ if (isset($_POST['borangkemasukan-c'])) {
     }
     $ic = $_SESSION['ic'];
 
-    debug_to_console($_FILES["bahagianc"]["tmp_name"]);
-    debug_to_console($_FILES["bahagianc"]["name"]);
+    // debug_to_console($_FILES["bahagianc"]["tmp_name"]);
+    // debug_to_console($_FILES["bahagianc"]["name"]);
     move_uploaded_file($_FILES["bahagianc"]["tmp_name"], "assets/murid/" . $ic . "/" . "bahagianc.pdf");
     $filename = "bahagianc.pdf";
 
