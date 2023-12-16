@@ -598,19 +598,19 @@ if (isset($_POST['download-pdf-borang'])) {
     $tablebahA3->printRow();
     $tablebahA3->easyCell('asd');
 
-    $tablebahA3->easyCell('Alamat : ', 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->easyCell($alamat_rumah_penjaga, 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->printRow();
-    $tablebahA3->easyCell('asd');
+    // $tablebahA3->easyCell('Alamat : ', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->easyCell($alamat_rumah_penjaga, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->printRow();
+    // $tablebahA3->easyCell('asd');
 
-    $tablebahA3->easyCell('No. Telefon : ', 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->easyCell($telefon_penjaga, 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->printRow();
+    // $tablebahA3->easyCell('No. Telefon : ', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->easyCell($telefon_penjaga, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->printRow();
 
-    $tablebahA3->easyCell('asd');
-    $tablebahA3->easyCell('Hubungan : ', 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->easyCell($hubungan_penjaga, 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->printRow();
+    // $tablebahA3->easyCell('asd');
+    // $tablebahA3->easyCell('Hubungan : ', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->easyCell($hubungan_penjaga, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->printRow();
 
     $tablebahA3->endTable(5);
 
