@@ -502,11 +502,11 @@ if (isset($_POST['download-pdf-borang'])) {
     $pdf->SetTextColor(0);
     $pdf->SetFont('Arial', '', 8);
 
-    // $tablebahA = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
+    $tablebahA = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
 
-    // $tablebahA->easyCell('<b>BAHAGIAN A : BUTIRAN DIRI KANAK-KANAK (Diisi oleh ibu/bapa atau penjaga)</b>', 'valign:L;  align:L;colspan:3');
-    // $tablebahA->printRow();
-    // $tablebahA->endTable();
+    $tablebahA->easyCell('<b>BAHAGIAN A : BUTIRAN DIRI KANAK-KANAK (Diisi oleh ibu/bapa atau penjaga)</b>', 'valign:L;  align:L;colspan:3');
+    $tablebahA->printRow();
+    $tablebahA->endTable();
 
     // $tablebahA1 = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
 
