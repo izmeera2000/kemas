@@ -487,159 +487,159 @@ if (isset($_POST['download-pdf-borang'])) {
     while ($row = mysqli_fetch_assoc($result)) {
 
 
-        if ($name != "") {
+        if ($row['name'] != "") {
             $nama = $row['name'];
         } else {
             $nama = "-";
 
         }
-        if ($umur != "") {
+        if ($row['age'] != "") {
             $umur = $row['age'];
         }else {
             $umur = "-";
 
         }
-        if ($ic != "") {
+        if ($row['no_kad_pengenalan'] != "") {
             $ic = $row['no_kad_pengenalan'];
         }else {
             $ic = "-";
 
         }
 
-        if ($tarikh_mula != "") {
+        if ( $row['tarikh_mula'] != "") {
             $tarikh_mula = $row['tarikh_mula'];
         }else {
             $tarikh_mula = "-";
 
         }
-        if ($warganegara != "") {
+        if ($row['warganegara'] != "") {
             $warganegara = $row['warganegara'];
         }else {
             $warganegara = "-";
 
         }
-        if ($bangsa != "") {
+        if ($row['bangsa'] != "") {
             $bangsa = $row['bangsa'];
         }else {
             $bangsa = "-";
 
         }
-        if ($tarikh_lahir != "") {
+        if ($row['tarikh_lahir'] != "") {
             $tarikh_lahir = $row['tarikh_lahir'];
         }else {
             $tarikh_lahir = "-";
 
         }
-        if ($no_sijil_lahir != "") {
+        if ($row['no_sijil_lahir'] != "") {
             $no_sijil_lahir = $row['no_sijil_lahir'];
         }else {
             $no_sijil_lahir = "-";
 
         }
-        if ($tempat_lahir != "") {
+        if ($row['tempat_lahir'] != "") {
             $tempat_lahir = $row['tempat_lahir'];
         }else {
             $tempat_lahir = "-";
 
         }
-        if ($jantina != "") {
+        if ($row['jantina'] != "") {
             $jantina = $row['jantina'];
         }else {
             $jantina = "-";
 
         }
-        if ($alamat_rumah != "") {
+        if ($row['alamat_rumah'] != "") {
             $alamat_rumah = $row['alamat_rumah'];
         }else {
             $alamat_rumah = "-";
 
         }
-        if ($saizbaju != "") {
+        if ($row['saizbaju'] != "") {
             $saizbaju = $row['saizbaju'];
         }else {
             $saizbaju = "-";
 
         }
-        if ($penyakit != "") {
+        if ($row['penyakit'] != "") {
             $penyakit = $row['penyakit'];
         }else {
             $penyakit = "-";
 
         }
-        if ($tinggi != "") {
+        if ($row['tinggi'] != "") {
             $tinggi = $row['tinggi'];
         }else {
             $tinggi = "-";
 
         }
-        if ($berat != "") {
+        if ($row['berat'] != "") {
             $berat = $row['berat'];
         }else {
             $berat = "-";
 
         }
-        if ($masalah_makanan != "") {
+        if ($row['masalah_makanan'] != "") {
             $masalah_makanan = $row['masalah_makanan'];
         }else {
             $masalah_makanan = "-";
 
         }
-        if ($kecacatan != "") {
+        if ($row['kecacatan'] != "") {
             $kecacatan = $row['kecacatan'];
         }else {
             $kecacatan = "-";
 
         }
-        if ($nama_penjaga != "") {
+        if ($row['nama_penjaga'] != "") {
             $nama_penjaga = $row['nama_penjaga'];
         }else {
             $nama_penjaga = "-";
 
         }
-        if ($alamat_rumah_penjaga != "") {
+        if ($row['alamat_rumah_penjaga'] != "") {
             $alamat_rumah_penjaga = $row['alamat_rumah_penjaga'];
         }else {
             $alamat_rumah_penjaga = "-";
 
         }
-        if ($telefon_penjaga != "") {
+        if ($row['telefon_penjaga'] != "") {
             $telefon_penjaga = $row['telefon_penjaga'];
         }else {
             $telefon_penjaga = "-";
 
         }
-        if ($hubungan_penjaga != "") {
+        if ($row['hubungan_penjaga'] != "") {
             $hubungan_penjaga = $row['hubungan_penjaga'];
         }else {
             $hubungan_penjaga = "-";
 
         }
 
-        if ($gambar != "") {
+        if ($row['gambar'] != "") {
             $gambar = $row['gambar'];
         }else {
             $gambar = "-";
 
         }
-        if ($file_mykid != "") {
+        if ($row['file_mykid'] != "") {
             $file_mykid = $row['file_mykid'];
         }else {
             $file_mykid = "-";
 
         }
-        if ($file_sijil != "") {
+        if ($row['file_sijil'] != "") {
             $file_sijil = $row['file_sijil'];
         }else {
             $file_sijil = "-";
 
         }
-        if ($file_rekod_kesihatan != "") {
+        if ($row['file_rekod_kesihatan'] != "") {
             $file_rekod_kesihatan = $row['file_rekod_kesihatan'];
         }else {
             $file_rekod_kesihatan = "-";
 
         }
-        if ($geran != "") {
+        if ($row['geran'] != "") {
             $geran = $row['geran'];
         }else {
             $geran = "-";
