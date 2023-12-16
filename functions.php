@@ -572,6 +572,7 @@ if (isset($_POST['download-pdf-borang'])) {
     $tablebahA2->easyCell('Tinggi : ' . $tinggi . 'cm', 'valign:L;  align:L;paddingY:2');
     $tablebahA2->printRow();
 
+    $tablebahA2->easyCell('?');
     $tablebahA2->easyCell('Berat : ' . $berat . 'kg', 'valign:L;  align:L;paddingY:2;rowspan:2');
     $tablebahA2->printRow();
 
