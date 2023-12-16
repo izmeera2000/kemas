@@ -1009,9 +1009,7 @@ if (isset($_POST['edit-profile'])) {
 
 if (isset($_POST['tambahmesyuarat'])) {
 
-    foreach ($_POST as $key => $value) {
-        debug_to_console($key . " : " . $value);
-    }
+
     $user = $_SESSION['username'];
 
     $nama = $_POST['nama'];
@@ -1033,9 +1031,7 @@ if (isset($_POST['meetingdetail'])) {
 }
 if (isset($_POST['qrcodescan'])) {
 
-    foreach ($_POST as $key => $value) {
-        debug_to_console($key . " : " . $value);
-    }
+
     $idmurid = $_POST['idmurid'];
     $qrcode = $_POST['qrcodescan'];
 
