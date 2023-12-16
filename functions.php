@@ -502,90 +502,319 @@ if (isset($_POST['download-pdf-borang'])) {
     $pdf->SetTextColor(0);
     $pdf->SetFont('Arial', '', 8);
 
-    $tablebahA = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
+    // $tablebahA = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
 
-    $tablebahA->easyCell('<b>BAHAGIAN A : BUTIRAN DIRI KANAK-KANAK (Diisi oleh ibu/bapa atau penjaga)</b>', 'valign:L;  align:L;colspan:3');
-    $tablebahA->printRow();
-    $tablebahA->endTable();
+    // $tablebahA->easyCell('<b>BAHAGIAN A : BUTIRAN DIRI KANAK-KANAK (Diisi oleh ibu/bapa atau penjaga)</b>', 'valign:L;  align:L;colspan:3');
+    // $tablebahA->printRow();
+    // $tablebahA->endTable();
 
-    $tablebahA1 = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
+    // $tablebahA1 = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
 
-    $tablebahA1->easyCell('Nama Kanak-Kanak : ' . $nama, 'valign:L;  align:L;paddingY:2');
-    $tablebahA1->easyCell('Warganegara : ' . $warganegara, 'valign:L;  align:L;paddingY:2');
-    $tablebahA1->printRow();
+    // $tablebahA1->easyCell('Nama Kanak-Kanak : ' . $nama, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA1->easyCell('Warganegara : ' . $warganegara, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA1->printRow();
 
-    $tablebahA1->easyCell('Bangsa/Keturunan : ' . $bangsa, 'valign:L;  align:L;paddingY:2');
-    $tablebahA1->easyCell('Tarikh Lahir : ' . $tarikh_lahir, 'valign:L;  align:L;paddingY:2');
-    $tablebahA1->easyCell('Umur : ' . $umur, 'valign:L;  align:L;paddingY:2');
-    $tablebahA1->printRow();
+    // $tablebahA1->easyCell('Bangsa/Keturunan : ' . $bangsa, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA1->easyCell('Tarikh Lahir : ' . $tarikh_lahir, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA1->easyCell('Umur : ' . $umur, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA1->printRow();
 
-    $tablebahA1->easyCell('No. Sijil Lahir : ' . $no_sijil_lahir, 'valign:L;  align:L;paddingY:2');
-    $tablebahA1->easyCell('Tempat Lahir : ' . $tempat_lahir, 'valign:L;  align:L;paddingY:2');
-    $tablebahA1->easyCell('Jantina : ' . $jantina, 'valign:L;  align:L;paddingY:2');
-    $tablebahA1->printRow();
+    // $tablebahA1->easyCell('No. Sijil Lahir : ' . $no_sijil_lahir, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA1->easyCell('Tempat Lahir : ' . $tempat_lahir, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA1->easyCell('Jantina : ' . $jantina, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA1->printRow();
 
-    $tablebahA1->easyCell('Alamat Rumah : ' . $alamat_rumah, 'valign:L;  align:L;colspan:2;paddingY:2');
-    $tablebahA1->easyCell('Saiz Baju : ' . $saizbaju, 'valign:L;  align:L;paddingY:2');
-    $tablebahA1->printRow();
-    $tablebahA1->endTable(5);
-
-
-    $tablebahA2 = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
-
-    $tablebahA2->easyCell('<b>A Kesihatan Kanak-kanak</b>', 'valign:L;  align:L;colspan:3');
-    $tablebahA2->printRow();
-
-    $tablebahA2->easyCell('Jenis Penyakit yang dihidapi : ', 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->easyCell($penyakit, 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->printRow();
-
-    $tablebahA2->easyCell('Fizikal Kanak-Kanak : ', 'valign:L;  align:L;paddingY:2;rowspan:2');
-    $tablebahA2->easyCell('Tinggi : ' . $tinggi . 'cm', 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->printRow();
-
-    $tablebahA2->easyCell('');
-    $tablebahA2->easyCell('Berat : ' . $berat . 'kg', 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->printRow();
-
-    $tablebahA2->easyCell('Masalah makanan/alahan', 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->easyCell($masalah_makanan, 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->printRow();
-
-    $tablebahA2->easyCell('Kecacatan', 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->easyCell($kecacatan, 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->printRow();
-    $tablebahA2->endTable(5);
+    // $tablebahA1->easyCell('Alamat Rumah : ' . $alamat_rumah, 'valign:L;  align:L;colspan:2;paddingY:2');
+    // $tablebahA1->easyCell('Saiz Baju : ' . $saizbaju, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA1->printRow();
+    // $tablebahA1->endTable(5);
 
 
+    // $tablebahA2 = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
+
+    // $tablebahA2->easyCell('<b>A Kesihatan Kanak-kanak</b>', 'valign:L;  align:L;colspan:3');
+    // $tablebahA2->printRow();
+
+    // $tablebahA2->easyCell('Jenis Penyakit yang dihidapi : ', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->easyCell($penyakit, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->printRow();
+
+    // $tablebahA2->easyCell('Fizikal Kanak-Kanak : ', 'valign:L;  align:L;paddingY:2;rowspan:2');
+    // $tablebahA2->easyCell('Tinggi : ' . $tinggi . 'cm', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->printRow();
+
+    // $tablebahA2->easyCell('');
+    // $tablebahA2->easyCell('Berat : ' . $berat . 'kg', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->printRow();
+
+    // $tablebahA2->easyCell('Masalah makanan/alahan', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->easyCell($masalah_makanan, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->printRow();
+
+    // $tablebahA2->easyCell('Kecacatan', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->easyCell($kecacatan, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->printRow();
+    // $tablebahA2->endTable(5);
 
 
-    $tablebahA3 = new easyTable($pdf, '%{5,33,33,29}', 'border:0;font-size:8;');
-    $tablebahA3->easyCell('<b>Orang yang boleh dihubungi jika berlaku kecemasan:</b>', 'valign:L;  align:L;colspan:3');
-    $tablebahA3->printRow();
-    $tablebahA3->easyCell('');
-
-    $tablebahA3->easyCell('Nama : ', 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->easyCell($nama_penjaga, 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->printRow();
-    $tablebahA3->easyCell('');
-
-    $tablebahA3->easyCell('Alamat : ', 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->easyCell($alamat_rumah_penjaga, 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->printRow();
-    $tablebahA3->easyCell('');
-
-    $tablebahA3->easyCell('No. Telefon : ', 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->easyCell($telefon_penjaga, 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->printRow();
-
-    $tablebahA3->easyCell('');
-    $tablebahA3->easyCell('Hubungan : ', 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->easyCell($hubungan_penjaga, 'valign:L;  align:L;paddingY:2');
-    $tablebahA3->printRow();
-
-    $tablebahA3->endTable(5);
 
 
+    // $tablebahA3 = new easyTable($pdf, '%{5,33,33,29}', 'border:0;font-size:8;');
+    // $tablebahA3->easyCell('<b>Orang yang boleh dihubungi jika berlaku kecemasan:</b>', 'valign:L;  align:L;colspan:3');
+    // $tablebahA3->printRow();
+    // $tablebahA3->easyCell('');
+
+    // $tablebahA3->easyCell('Nama : ', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->easyCell($nama_penjaga, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->printRow();
+    // $tablebahA3->easyCell('');
+
+    // $tablebahA3->easyCell('Alamat : ', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->easyCell($alamat_rumah_penjaga, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->printRow();
+    // $tablebahA3->easyCell('');
+
+    // $tablebahA3->easyCell('No. Telefon : ', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->easyCell($telefon_penjaga, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->printRow();
+
+    // $tablebahA3->easyCell('');
+    // $tablebahA3->easyCell('Hubungan : ', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->easyCell($hubungan_penjaga, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA3->printRow();
+
+    // $tablebahA3->endTable(5);
+
+    // $pdf->AddPage();
+
+
+    // $tablebahB = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
+
+    // $tablebahB->easyCell('<b>BAHAGIAN B : PENDAPATAN KELUARGA (Diisi oleh ibu/bapa atau penjaga)</b>', 'valign:L;  align:L;colspan:3');
+    // $tablebahB->printRow();
+    // $tablebahB->endTable();
+
+    // $query2 = "SELECT * FROM keluarga WHERE no_kad_pengenalan_murid='$ic' ORDER BY id ASC ";
+    // $result2 = mysqli_query($db, $query2);
+
+    // $Rows = array();
+    // $countrows = mysqli_num_rows($result2);
+    // $ds = 0;
+    // while ($row = mysqli_fetch_array($result2)) {
+    //     $Rows[$ds] = $row;
+    //     $ds++;
+    // }
+
+    // $tablebahB1 = new easyTable($pdf, '%{4,48,48}', 'border:1;font-size:8; ');
+    // $tablebahB1->easyCell('Bil', 'bgcolor:#BFBFBF');
+
+    // foreach ($Rows as $row1) {
+    //     $tablebahB1->easyCell('Maklumat : ' . $row1["hubungan"], 'valign:L;  align:L;colspan:1;bgcolor:#BFBFBF');
+
+    // }
+
+    // $tablebahB1->printRow(true);
+
+
+
+
+
+
+    // $tablebahB1->easyCell('a', 'valign:M;  align:C;paddingY:2');
+
+    // foreach ($Rows as $row1) {
+    //     $tablebahB1->easyCell('Nama : ' . $row1['nama'], 'valign:L;  align:L;paddingY:2');
+
+    // }
+    // $tablebahB1->printRow();
+
+    // $tablebahB1->easyCell('b', 'valign:M;  align:C;paddingY:2');
+
+    // foreach ($Rows as $row1) {
+    //     $tablebahB1->easyCell('No. K.P : ' . $row1["kad_pengenalan"], 'valign:L;  align:L;paddingY:2');
+
+    // }
+    // $tablebahB1->printRow();
+
+    // $tablebahB1->easyCell('c', 'valign:M;  align:C;paddingY:2;rowspan:2');
+
+    // foreach ($Rows as $row1) {
+    //     $tablebahB1->easyCell('Tarikh Lahir : ' . $row1["tarikh_lahir"], 'valign:L;  align:L;paddingY:2;colspan:1');
+    // }
+    // if ($countrows != "2") {
+    //     $tablebahB1->easyCell('', 'border:0');
+    // }
+    // $tablebahB1->printRow();
+
+
+    // foreach ($Rows as $row1) {
+    //     $tablebahB1->easyCell('Tempat Lahir : ' . $row1["tempat_lahir"], 'valign:L;  align:L;paddingY:2;');
+    // }
+    // $tablebahB1->printRow();
+
+    // $tablebahB1->easyCell('d', 'valign:M;  align:C;paddingY:2');
+    // foreach ($Rows as $row1) {
+    //     $tablebahB1->easyCell('Warganegara : ' . $row1["warganegara"], 'valign:L;  align:L;paddingY:2');
+    // }
+    // $tablebahB1->printRow();
+
+    // $tablebahB1->easyCell('e', 'valign:M;  align:C;paddingY:2');
+
+    // foreach ($Rows as $row1) {
+    //     $tablebahB1->easyCell('Keturunan : ' . $row1["keturunan"], 'valign:L;  align:L;paddingY:2');
+    // }
+    // $tablebahB1->printRow();
+
+    // $tablebahB1->easyCell('f', 'valign:M;  align:C;paddingY:2');
+
+    // foreach ($Rows as $row1) {
+    //     $tablebahB1->easyCell('Pekerjaan : ' . $row1["pekerjaan"], 'valign:L;  align:L;paddingY:2');
+    // }
+    // $tablebahB1->printRow();
+
+    // $tablebahB1->easyCell('g', 'valign:M;  align:C;paddingY:2');
+
+    // foreach ($Rows as $row1) {
+    //     $tablebahB1->easyCell('Status : ' . $row1["status"], 'valign:L;  align:L;paddingY:2');
+    // }
+    // $tablebahB1->printRow();
+
+    // $tablebahB1->easyCell('h', 'valign:M;  align:C;paddingY:2');
+
+    // foreach ($Rows as $row1) {
+    //     $tablebahB1->easyCell('Pendapatan Sebulan : RM ' . $row1["pendapatan_sebulan"], 'valign:L;  align:L;paddingY:2');
+    // }
+    // $tablebahB1->printRow();
+
+
+    // $tablebahB1->easyCell('h', 'valign:M;  align:C;paddingY:2');
+
+    // foreach ($Rows as $row1) {
+    //     $tablebahB1->easyCell('No. Telefon Pejabat : ' . $row1["no_telefon_pejabat"], 'valign:L;  align:L;paddingY:2');
+    // }
+    // $tablebahB1->printRow();
+
+
+    // $tablebahB1->easyCell('j', 'valign:M;  align:C;paddingY:2;rowspan:2');
+    // foreach ($Rows as $row1) {
+    //     $tablebahB1->easyCell('Nama Majikan : ' . $row1["nama_majikan"], 'valign:L;  align:L;paddingY:2;');
+    // }
+
+    // if ($countrows != "2") {
+    //     $tablebahB1->easyCell('', 'border:0');
+    // }
+    // $tablebahB1->printRow();
+
+
+    // foreach ($Rows as $row1) {
+    //     $tablebahB1->easyCell('Alamat Majikan : ' . $row1["alamat_majikan"], 'valign:L;  align:L;paddingY:2;');
+    // }
+    // $tablebahB1->printRow();
+
+    // $tablebahB1->endTable(5);
+
+    // $query3 = "SELECT * FROM keluarga_tanggungan WHERE no_kad_pengenalan_murid='$ic' ORDER BY id ASC ";
+    // $result3 = mysqli_query($db, $query3);
+
+    // $tablebahB1 = new easyTable($pdf, '%{4,30,9,13,25,19}', 'border:1;font-size:8;');
+    // $tablebahB1->easyCell('Bil', 'valign:M;  align:C;colspan:1;bgcolor:#BFBFBF');
+    // $tablebahB1->easyCell('Nama', 'valign:M;  align:C;colspan:1;bgcolor:#BFBFBF');
+    // $tablebahB1->easyCell('Umur', 'valign:M;  align:C;colspan:1;bgcolor:#BFBFBF');
+    // $tablebahB1->easyCell('Perhubungan', 'valign:M;  align:C;colspan:1;bgcolor:#BFBFBF');
+    // $tablebahB1->easyCell('Nama Institusi', 'valign:M;  align:C;colspan:1;bgcolor:#BFBFBF');
+    // $tablebahB1->easyCell('Nilai Biasiswa/ Bantuan Setahun', 'valign:M;  align:C;colspan:1;bgcolor:#BFBFBF');
+    // $tablebahB1->printRow(true);
+    // $i = 1;
+    // while ($row3 = mysqli_fetch_array($result3)) {
+
+
+    //     $tablebahB1->easyCell($i, 'valign:L;  align:C;paddingY:2');
+    //     $tablebahB1->easyCell($row3["nama"], 'valign:M;  align:C;colspan:1');
+    //     $tablebahB1->easyCell($row3["umur"], 'valign:M;  align:C;colspan:1');
+    //     $tablebahB1->easyCell($row3["perhubungan"], 'valign:M;  align:C;colspan:1');
+    //     $tablebahB1->easyCell($row3["nama_institusi"], 'valign:M;  align:C;colspan:1');
+    //     $tablebahB1->easyCell("RM" . $row3["nilai_biasiswa"], 'valign:M;  align:C;colspan:1');
+    //     $tablebahB1->printRow();
+    //     $i += 1;
+    // }
+
+    // $tablebahB1->endTable(5);
+
+
+
+
+
+    // $pdf->AddPage();
+
+    // $pdf->setSourceFile("assets/murid/000723140251/bahagianc.pdf");
+    // $tplId = $pdf->importPage(1);
+    // // use the imported page and place it at point 10,10 with a width of 100 mm
+    // $pdf->useTemplate($tplId, 0, 0);
+    // $pdf->AddPage();
+    // $tablebahB = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
+
+    // $tablebahB->easyCell('<b>BAHAGIAN D : PERAKUAN IBU/BAPA/PENJAGA</b>', 'valign:L;  align:L;colspan:3');
+    // $tablebahB->printRow();
+    // $tablebahB->endTable();
+
+    // $tablebahB1 = new easyTable($pdf, '%{4,96}', 'border:0;font-size:8;');
+    // $tablebahB1->easyCell('');
+    // $tablebahB1->easyCell('Sekiranya anak saya diterima:', 'valign:L;  align:L;colspan:1');
+    // $tablebahB1->printRow();
+
+    // $tablebahB1->easyCell('1');
+    // if ($geran == "1") {
+    //     $tablebahB1->easyCell('Saya memperakui bahawa saya <b>memenuhi syarat</b> kelayakan penerima bantuan Geran Perkapita', 'valign:L;  align:L;colspan:1');
+    // } else {
+    //     $tablebahB1->easyCell('Saya memperakui bahawa saya <b>tidak memenuhi syarat</b> kelayakan penerima bantuan Geran Perkapita', 'valign:L;  align:L;colspan:1');
+    // }
+
+    // $tablebahB1->printRow();
+
+    // $tablebahB1->easyCell('2');
+    // $tablebahB1->easyCell('Saya akan membantu melibatkan diri secara aktif dalam pelaksanaan program dan aktiviti Tabika Kemas', 'valign:L;  align:L;colspan:1');
+    // $tablebahB1->printRow();
+
+    // $tablebahB1->easyCell('3');
+    // $tablebahB1->easyCell("Saya menjamin anak saya akan hadir ke TABIKA KEMAS pada hari-hari yang ditetapkan.\nSekiranya anak saya TIDAK HADIR adalah menjadi tanggungjawab saya untuk memaklumkan kepada pihak TABIKA.\nKetidakhadiran akan disokong dengan dokumen sokongan.", 'valign:L;  align:L;colspan:1');
+    // $tablebahB1->printRow();
+
+    // $tablebahB1->easyCell('4');
+    // $tablebahB1->easyCell('Saya membenarkan anak saya menerima rawatan perkhidmatan kesihatan/ disuntik/ tanam cacar (jika belum) dan lain-lain rawatan yang dirasakan perlu.', 'valign:L;  align:L;colspan:1');
+    // $tablebahB1->printRow();
+
+
+    // $tablebahB1->easyCell('5');
+    // $tablebahB1->easyCell('Saya membenarkan anak saya dibawa melawat oleh guru bersama-sama dengan kanak-kanak lain semasa waktu belajar', 'valign:L;  align:L;colspan:1');
+    // $tablebahB1->printRow();
+
+    // $tablebahB1->easyCell('6');
+    // $tablebahB1->easyCell('Sesuatu kemalangan yang berlaku kepada kanak-kanak diluar sesi persekolahan dan kawasan TABIKA adalah tanggungjawab ibu/bapa/penjaga', 'valign:L;  align:L;colspan:1');
+    // $tablebahB1->printRow();
+
+    // $tablebahB1->endTable();
+
+
+    // $pdf->AddPage();
+    // $pdf->setSourceFile("assets/murid/" . $ic . "/kesihatan.pdf");
+    // $tplId = $pdf->importPage(1);
+    // $pdf->useTemplate($tplId, 0, 0);
+
+
+    // $pdf->AddPage();
+    // $pdf->setSourceFile("assets/murid/" . $ic . "/mykid.pdf");
+    // $tplId = $pdf->importPage(1);
+    // $pdf->useTemplate($tplId, 0, 0);
+
+    // $pdf->AddPage();
+    // $pdf->setSourceFile("assets/murid/" . $ic . "/sijillahir.pdf");
+    // $tplId = $pdf->importPage(1);
+    // $pdf->useTemplate($tplId, 0, 0);
+
+    // $pdf->AddPage();
+    // $pdf->setSourceFile("assets/murid/" . $ic . "/slipgaji.pdf");
+    // $tplId = $pdf->importPage(1);
+    // $pdf->useTemplate($tplId, 0, 0);
     $pdf->Output();
 
 
