@@ -7,7 +7,12 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRGdImagePNG, QRCodeOutputException};
 use chillerlan\QRCode\Output\QROutputInterface;
 use setasign\Fpdi\Fpdi;
+use Dotenv\Dotenv;
 
+$filesec = __DIR__ . '/../';
+// echo $filesec;
+$dotenv = Dotenv::createImmutable($filesec);
+$dotenv->load($filesec);
 
 session_start();
 // initializing variables
@@ -17,7 +22,7 @@ $errors = array();
 $errors2 = array();
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'kemas');
+$db = mysqli_connect($_ENV['DB_HOST_KEMAS'], $_ENV['DB_USER_KEMAS'], $_ENV['DB_PASSWORD_KEMAS'],$_ENV['DB_DATABASE_KEMAS']);
 
 
 
