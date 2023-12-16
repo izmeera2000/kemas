@@ -559,31 +559,31 @@ if (isset($_POST['download-pdf-borang'])) {
     $tablebahA1->endTable(5);
 
 
-    $tablebahA2 = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
+    // $tablebahA2 = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
 
-    $tablebahA2->easyCell('<b>A Kesihatan Kanak-kanak</b>', 'valign:L;  align:L;colspan:3');
-    $tablebahA2->printRow();
+    // $tablebahA2->easyCell('<b>A Kesihatan Kanak-kanak</b>', 'valign:L;  align:L;colspan:3');
+    // $tablebahA2->printRow();
 
-    $tablebahA2->easyCell('Jenis Penyakit yang dihidapi : ', 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->easyCell($penyakit, 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->printRow();
+    // $tablebahA2->easyCell('Jenis Penyakit yang dihidapi : ', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->easyCell($penyakit, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->printRow();
 
-    $tablebahA2->easyCell('Fizikal Kanak-Kanak : ', 'valign:L;  align:L;paddingY:2;rowspan:2');
-    $tablebahA2->easyCell('Tinggi : ' . $tinggi . 'cm', 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->printRow();
+    // $tablebahA2->easyCell('Fizikal Kanak-Kanak : ', 'valign:L;  align:L;paddingY:2;rowspan:2');
+    // $tablebahA2->easyCell('Tinggi : ' . $tinggi . 'cm', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->printRow();
 
-    $tablebahA2->easyCell('');
-    $tablebahA2->easyCell('Berat : ' . $berat . 'kg', 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->printRow();
+    // $tablebahA2->easyCell('');
+    // $tablebahA2->easyCell('Berat : ' . $berat . 'kg', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->printRow();
 
-    $tablebahA2->easyCell('Masalah makanan/alahan', 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->easyCell($masalah_makanan, 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->printRow();
+    // $tablebahA2->easyCell('Masalah makanan/alahan', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->easyCell($masalah_makanan, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->printRow();
 
-    $tablebahA2->easyCell('Kecacatan', 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->easyCell($kecacatan, 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->printRow();
-    $tablebahA2->endTable(5);
+    // $tablebahA2->easyCell('Kecacatan', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->easyCell($kecacatan, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->printRow();
+    // $tablebahA2->endTable(5);
 
 
 
