@@ -455,33 +455,32 @@ if (isset($_POST['download-pdf-borang'])) {
     $pdf->SetFont('Arial', 'B', 10);
     // for($i=1;$i<=40;$i++)
 
-    $nama = "-";
-    $umur = "-";
-    $ic = "-";
-    $tarikh_mula = "-";
-    $warganegara = "-";
-    $bangsa = "-";
-    $tarikh_lahir = "-";
-    $no_sijil_lahir = "-";
-    $tempat_lahir = "-";
-    $jantina = "-";
-    $alamat_rumah = "-";
-    $saizbaju = "-";
-    $penyakit = "-";
-    $tinggi = "-";
-    $berat = "-";
-    $masalah_makanan = "-";
-    $kecacatan = "-";
-    $nama_penjaga = "-";
-    $alamat_rumah_penjaga = "-";
-    $telefon_penjaga = "-";
-    $hubungan_penjaga = "-";
+    // $umur = "-";
+    // $ic = "-";
+    // $tarikh_mula = "-";
+    // $warganegara = "-";
+    // $bangsa = "-";
+    // $tarikh_lahir = "-";
+    // $no_sijil_lahir = "-";
+    // $tempat_lahir = "-";
+    // $jantina = "-";
+    // $alamat_rumah = "-";
+    // $saizbaju = "-";
+    // $penyakit = "-";
+    // $tinggi = "-";
+    // $berat = "-";
+    // $masalah_makanan = "-";
+    // $kecacatan = "-";
+    // $nama_penjaga = "-";
+    // $alamat_rumah_penjaga = "-";
+    // $telefon_penjaga = "-";
+    // $hubungan_penjaga = "-";
 
-    $gambar = "-";
-    $file_mykid = "-";
-    $file_sijil = "-";
-    $file_rekod_kesihatan = "-";
-    $geran = "-";
+    // $gambar = "-";
+    // $file_mykid = "-";
+    // $file_sijil = "-";
+    // $file_rekod_kesihatan = "-";
+    // $geran = "-";
 
 
     $tableb = new easyTable($pdf, '%{70,30}', 'border:0;font-size:8;');
@@ -490,83 +489,161 @@ if (isset($_POST['download-pdf-borang'])) {
 
         if ($name != "") {
             $nama = $row['name'];
+        } else {
+            $nama = "-";
+
         }
         if ($umur != "") {
             $umur = $row['age'];
+        }else {
+            $umur = "-";
+
         }
         if ($ic != "") {
             $ic = $row['no_kad_pengenalan'];
+        }else {
+            $ic = "-";
+
         }
 
         if ($tarikh_mula != "") {
             $tarikh_mula = $row['tarikh_mula'];
+        }else {
+            $tarikh_mula = "-";
+
         }
         if ($warganegara != "") {
             $warganegara = $row['warganegara'];
+        }else {
+            $warganegara = "-";
+
         }
         if ($bangsa != "") {
             $bangsa = $row['bangsa'];
+        }else {
+            $bangsa = "-";
+
         }
         if ($tarikh_lahir != "") {
             $tarikh_lahir = $row['tarikh_lahir'];
+        }else {
+            $tarikh_lahir = "-";
+
         }
         if ($no_sijil_lahir != "") {
             $no_sijil_lahir = $row['no_sijil_lahir'];
+        }else {
+            $no_sijil_lahir = "-";
+
         }
         if ($tempat_lahir != "") {
             $tempat_lahir = $row['tempat_lahir'];
+        }else {
+            $tempat_lahir = "-";
+
         }
         if ($jantina != "") {
             $jantina = $row['jantina'];
+        }else {
+            $jantina = "-";
+
         }
         if ($alamat_rumah != "") {
             $alamat_rumah = $row['alamat_rumah'];
+        }else {
+            $alamat_rumah = "-";
+
         }
         if ($saizbaju != "") {
             $saizbaju = $row['saizbaju'];
+        }else {
+            $saizbaju = "-";
+
         }
         if ($penyakit != "") {
             $penyakit = $row['penyakit'];
+        }else {
+            $penyakit = "-";
+
         }
         if ($tinggi != "") {
             $tinggi = $row['tinggi'];
+        }else {
+            $tinggi = "-";
+
         }
         if ($berat != "") {
             $berat = $row['berat'];
+        }else {
+            $berat = "-";
+
         }
         if ($masalah_makanan != "") {
             $masalah_makanan = $row['masalah_makanan'];
+        }else {
+            $masalah_makanan = "-";
+
         }
         if ($kecacatan != "") {
             $kecacatan = $row['kecacatan'];
+        }else {
+            $kecacatan = "-";
+
         }
         if ($nama_penjaga != "") {
             $nama_penjaga = $row['nama_penjaga'];
+        }else {
+            $nama_penjaga = "-";
+
         }
         if ($alamat_rumah_penjaga != "") {
             $alamat_rumah_penjaga = $row['alamat_rumah_penjaga'];
+        }else {
+            $alamat_rumah_penjaga = "-";
+
         }
         if ($telefon_penjaga != "") {
             $telefon_penjaga = $row['telefon_penjaga'];
+        }else {
+            $telefon_penjaga = "-";
+
         }
         if ($hubungan_penjaga != "") {
             $hubungan_penjaga = $row['hubungan_penjaga'];
+        }else {
+            $hubungan_penjaga = "-";
+
         }
 
         if ($gambar != "") {
             $gambar = $row['gambar'];
+        }else {
+            $gambar = "-";
+
         }
         if ($file_mykid != "") {
             $file_mykid = $row['file_mykid'];
+        }else {
+            $file_mykid = "-";
+
         }
         if ($file_sijil != "") {
             $file_sijil = $row['file_sijil'];
+        }else {
+            $file_sijil = "-";
+
         }
         if ($file_rekod_kesihatan != "") {
             $file_rekod_kesihatan = $row['file_rekod_kesihatan'];
+        }else {
+            $file_rekod_kesihatan = "-";
+
         }
         if ($geran != "") {
             $geran = $row['geran'];
+        }else {
+            $geran = "-";
+
         }
     }
 
