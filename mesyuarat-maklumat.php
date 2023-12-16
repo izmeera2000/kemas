@@ -347,7 +347,9 @@ while ($row = mysqli_fetch_assoc($results)) {
   </main><!-- End #main -->
 
 
+
   <?php include('footerscript.php') ?>
+
   <script>
     var resultContainer = document.getElementById('qr-reader-results');
     var lastResult, countResults = 0;
