@@ -508,26 +508,26 @@ if (isset($_POST['download-pdf-borang'])) {
     $tablebahA->printRow();
     $tablebahA->endTable();
 
-    // $tablebahA1 = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
+    $tablebahA1 = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
 
-    // $tablebahA1->easyCell('Nama Kanak-Kanak : ' . $nama, 'valign:L;  align:L;paddingY:2');
-    // $tablebahA1->easyCell('Warganegara : ' . $warganegara, 'valign:L;  align:L;paddingY:2');
-    // $tablebahA1->printRow();
+    $tablebahA1->easyCell('Nama Kanak-Kanak : ' . $nama, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->easyCell('Warganegara : ' . $warganegara, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->printRow();
 
-    // $tablebahA1->easyCell('Bangsa/Keturunan : ' . $bangsa, 'valign:L;  align:L;paddingY:2');
-    // $tablebahA1->easyCell('Tarikh Lahir : ' . $tarikh_lahir, 'valign:L;  align:L;paddingY:2');
-    // $tablebahA1->easyCell('Umur : ' . $umur, 'valign:L;  align:L;paddingY:2');
-    // $tablebahA1->printRow();
+    $tablebahA1->easyCell('Bangsa/Keturunan : ' . $bangsa, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->easyCell('Tarikh Lahir : ' . $tarikh_lahir, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->easyCell('Umur : ' . $umur, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->printRow();
 
-    // $tablebahA1->easyCell('No. Sijil Lahir : ' . $no_sijil_lahir, 'valign:L;  align:L;paddingY:2');
-    // $tablebahA1->easyCell('Tempat Lahir : ' . $tempat_lahir, 'valign:L;  align:L;paddingY:2');
-    // $tablebahA1->easyCell('Jantina : ' . $jantina, 'valign:L;  align:L;paddingY:2');
-    // $tablebahA1->printRow();
+    $tablebahA1->easyCell('No. Sijil Lahir : ' . $no_sijil_lahir, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->easyCell('Tempat Lahir : ' . $tempat_lahir, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->easyCell('Jantina : ' . $jantina, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->printRow();
 
-    // $tablebahA1->easyCell('Alamat Rumah : ' . $alamat_rumah, 'valign:L;  align:L;colspan:2;paddingY:2');
-    // $tablebahA1->easyCell('Saiz Baju : ' . $saizbaju, 'valign:L;  align:L;paddingY:2');
-    // $tablebahA1->printRow();
-    // $tablebahA1->endTable(5);
+    $tablebahA1->easyCell('Alamat Rumah : ' . $alamat_rumah, 'valign:L;  align:L;colspan:2;paddingY:2');
+    $tablebahA1->easyCell('Saiz Baju : ' . $saizbaju, 'valign:L;  align:L;paddingY:2');
+    $tablebahA1->printRow();
+    $tablebahA1->endTable(5);
 
 
     // $tablebahA2 = new easyTable($pdf, '%{33,33,34}', 'border:0;font-size:8;');
