@@ -322,6 +322,7 @@ function removeImage() {
    */
   const datatables = select('.datatable', true)
   datatables.forEach(datatable => {
+    datatable.width("100%");
     new DataTable(datatable,{
       "scrollY": "650px",
       "sScrollX": "100%",
