@@ -569,7 +569,7 @@ if (isset($_POST['download-pdf-borang'])) {
     $tablebahA2->printRow();
 
     $tablebahA2->easyCell('Fizikal Kanak-Kanak : ', 'valign:L;  align:L;paddingY:2;rowspan:2');
-    $tablebahA2->easyCell('Tinggi : ' . $tinggi . 'cm', 'valign:L;  align:L;paddingY:2');
+    $tablebahA2->easyCell('Tinggi : ' . $tinggi . 'cm', 'valign:L;  align:L;paddingY:2;colspan:2');
     $tablebahA2->printRow();
 
     // $tablebahA2->easyCell('');
