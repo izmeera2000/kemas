@@ -322,9 +322,14 @@ function removeImage() {
    */
   const datatables = select('.datatable', true)
   datatables.forEach(datatable => {
-    new simpleDatatables.DataTable(datatable,{
-      "scrollY": "200px",
-      fixedColumns: false,
+    new DataTable(datatable,{
+      "scrollY": "650px",
+      "sScrollX": "100%",
+      "scrollCollapse": true,
+      processing: true,
+      // responsive: true,
+      keys: true,
+
     });
   })
 
