@@ -955,26 +955,26 @@ if (isset($_POST['download-pdf-borang'])) {
     $tablebahB1->endTable();
 
 
-    // $pdf->AddPage();
-    // $pdf->setSourceFile("assets/murid/" . $ic . "/kesihatan.pdf");
-    // $tplId = $pdf->importPage(1);
-    // $pdf->useTemplate($tplId, 0, 0);
+    $pdf->AddPage();
+    $pdf->setSourceFile("assets/murid/" . $ic . "/kesihatan.pdf");
+    $tplId = $pdf->importPage(1);
+    $pdf->useTemplate($tplId, 0, 0);
 
 
-    // $pdf->AddPage();
-    // $pdf->setSourceFile("assets/murid/" . $ic . "/mykid.pdf");
-    // $tplId = $pdf->importPage(1);
-    // $pdf->useTemplate($tplId, 0, 0);
+    $pdf->AddPage();
+    $pdf->setSourceFile("assets/murid/" . $ic . "/mykid.pdf");
+    $tplId = $pdf->importPage(1);
+    $pdf->useTemplate($tplId, 0, 0);
 
-    // $pdf->AddPage();
-    // $pdf->setSourceFile("assets/murid/" . $ic . "/sijillahir.pdf");
-    // $tplId = $pdf->importPage(1);
-    // $pdf->useTemplate($tplId, 0, 0);
+    $pdf->AddPage();
+    $pdf->setSourceFile("assets/murid/" . $ic . "/sijillahir.pdf");
+    $tplId = $pdf->importPage(1);
+    $pdf->useTemplate($tplId, 0, 0);
 
-    // $pdf->AddPage();
-    // $pdf->setSourceFile("assets/murid/" . $ic . "/slipgaji.pdf");
-    // $tplId = $pdf->importPage(1);
-    // $pdf->useTemplate($tplId, 0, 0);
+    $pdf->AddPage();
+    $pdf->setSourceFile("assets/murid/" . $ic . "/slipgaji.pdf");
+    $tplId = $pdf->importPage(1);
+    $pdf->useTemplate($tplId, 0, 0);
     $pdf->Output();
 
 
