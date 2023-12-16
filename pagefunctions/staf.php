@@ -71,8 +71,7 @@ if (isset($_POST['tambahstaf'])) {
             array_push($errors, "ID Pengguna wujud");
         }
     }
-    echo count($errors);
-    echo "thisds";
+
     if (count($errors) == 0) {
         $password = md5($id); //encrypt the password before saving in the database
 
@@ -100,10 +99,7 @@ if (isset($_POST['deletestaf'])) {
 }
 if (isset($_POST['editprofilstaf'])) {
 
-    foreach ($_POST as $key => $value) {
-        // echo "Field ".htmlspecialchars($key)." is ".htmlspecialchars($value)."<br>";
-        debug_to_console($key . " : " . $value);
-    }
+
     $username = $_SESSION['username'];
     $umur = $_POST['umur'];
     $nama = $_POST['nama'];

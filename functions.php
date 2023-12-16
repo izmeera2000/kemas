@@ -157,10 +157,7 @@ if (isset($_POST['pemarkahan'])) {
 if (isset($_POST['tambahpemarkahan'])) {
     // $_SESSION['idmurid'] = $_POST['studentid'];
     // header('location: pemarkahan.php');
-    foreach ($_POST as $key => $value) {
-        // echo "Field ".htmlspecialchars($key)." is ".htmlspecialchars($value)."<br>";
-        debug_to_console($key . " : " . $value);
-    }
+
     $ic = $_POST['murid_id'];
     // $tarikh = $_POST['tarikh'];
 
