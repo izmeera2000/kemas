@@ -887,4 +887,7 @@ if (isset($_POST['qrcodescan'])) {
     VALUES ('$idmurid','$qrcode2')";
     $result = mysqli_query($db, $query);
 }
+
+
+
 ?>

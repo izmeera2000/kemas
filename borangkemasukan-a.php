@@ -92,7 +92,7 @@
                     </ul>
                   </div>
 
-                  <form class="row g-3 needs-validation" method="post" action="?">
+                  <form class="row g-3 needs-validation" method="post" action="">
                     <?php include('errors.php'); ?>
 
                     <h5 class="card-title mt-3">Maklumat Murid</h5>
