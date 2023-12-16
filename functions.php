@@ -488,34 +488,64 @@ if (isset($_POST['download-pdf-borang'])) {
     while ($row = mysqli_fetch_assoc($result)) {
 
 
-        $nama = $row['name'];
+        if ($name != ""){
+            $nama = $row['name'];
+        }
+        if ($umur != ""){
         $umur = $row['age'];
+        }
+        if ($ic != ""){
         $ic = $row['no_kad_pengenalan'];
-        $tarikh_mula = $row['tarikh_mula'];
-        $warganegara = $row['warganegara'];
-        $bangsa = $row['bangsa'];
-        $tarikh_lahir = $row['tarikh_lahir'];
-        $no_sijil_lahir = $row['no_sijil_lahir'];
-        $tempat_lahir = $row['tempat_lahir'];
-        $jantina = $row['jantina'];
-        $alamat_rumah = $row['alamat_rumah'];
-        $saizbaju = $row['saizbaju'];
-        $penyakit = $row['penyakit'];
-        $tinggi = $row['tinggi'];
-        $berat = $row['berat'];
-        $masalah_makanan = $row['masalah_makanan'];
-        $kecacatan = $row['kecacatan'];
-        $nama_penjaga = $row['nama_penjaga'];
-        $alamat_rumah_penjaga = $row['alamat_rumah_penjaga'];
-        $telefon_penjaga = $row['telefon_penjaga'];
-        $hubungan_penjaga = $row['hubungan_penjaga'];
+        }
 
-        $gambar = $row['gambar'];
-        $file_mykid = $row['file_mykid'];
-        $file_sijil = $row['file_sijil'];
-        $file_rekod_kesihatan = $row['file_rekod_kesihatan'];
-        $geran = $row['geran'];
+        if ($tarikh_mula != ""){
+            $tarikh_mula = $row['tarikh_mula'];}
+        if ($warganegara != ""){
+            $warganegara = $row['warganegara'];}
+        if ($bangsa != ""){
+            $bangsa = $row['bangsa'];}
+        if ($tarikh_lahir != ""){
+            $tarikh_lahir = $row['tarikh_lahir'];}
+        if ($no_sijil_lahir != ""){
+            $no_sijil_lahir = $row['no_sijil_lahir'];}
+        if ($tempat_lahir != ""){
+            $tempat_lahir = $row['tempat_lahir'];}
+        if ($jantina != ""){
+            $jantina = $row['jantina'];}
+        if ($alamat_rumah != ""){
+            $alamat_rumah = $row['alamat_rumah'];}
+        if ($saizbaju != ""){
+            $saizbaju = $row['saizbaju'];}
+        if ($penyakit != ""){
+            $penyakit = $row['penyakit'];}
+        if ($tinggi != ""){
+            $tinggi = $row['tinggi'];}
+        if ($berat != ""){
+            $berat = $row['berat'];}
+        if ($masalah_makanan != ""){
+            $masalah_makanan = $row['masalah_makanan'];}
+        if ($kecacatan != ""){
+            $kecacatan = $row['kecacatan'];}
+        if ($nama_penjaga != ""){
+            $nama_penjaga = $row['nama_penjaga'];}
+        if ($alamat_rumah_penjaga != ""){
+            $alamat_rumah_penjaga = $row['alamat_rumah_penjaga'];}
+        if ($telefon_penjaga != ""){
+            $telefon_penjaga = $row['telefon_penjaga'];}
+        if ($hubungan_penjaga != ""){
+            $hubungan_penjaga = $row['hubungan_penjaga'];}
 
+        if ($gambar != ""){
+            $gambar = $row['gambar'];}
+        if ($file_mykid != ""){
+            $file_mykid = $row['file_mykid'];}
+        if ($file_sijil != ""){
+            $file_sijil = $row['file_sijil'];}
+        if ($file_rekod_kesihatan != ""){
+            $file_rekod_kesihatan = $row['file_rekod_kesihatan'];
+        if ($geran != ""){
+            $geran = $row['geran'];
+        }
     }
 
     $tableb->easyCell('', 'img:assets/img/kemaslogo.png,w40;valign:M;  align:C');
@@ -577,7 +607,7 @@ if (isset($_POST['download-pdf-borang'])) {
     $tablebahA2->printRow();
 
     $tablebahA2->easyCell('Masalah makanan/alahan', 'valign:L;  align:L;paddingY:2');
-    // $tablebahA2->easyCell($masalah_makanan, 'valign:L;  align:L;paddingY:2;colspan:2');
+    $tablebahA2->easyCell($masalah_makanan, 'valign:L;  align:L;paddingY:2;colspan:2');
     $tablebahA2->printRow();
 
     // $tablebahA2->easyCell('Kecacatan', 'valign:L;  align:L;paddingY:2');
