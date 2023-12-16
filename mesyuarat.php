@@ -202,9 +202,9 @@ if (!isset($_SESSION['username'])) {
 
               $nama_meeting = $row['nama'];
               $idmurid = $_SESSION['username'];
-              $query2 = "SELECT * FROM  meeting_kehadiran  WHERE nama_meeting='$nama_meeting' AND id_murid='$idmurid' ";
+              $query2 = "SELECT * FROM  meeting_kehadiran  WHERE nama_meeting='$nama_meeting' AND id_murid='$idmurid' ORDER BY id DESC  ";
               $result2 = mysqli_query($db, $query2);
-              while ($row2 = mysqli_fetch_assoc($result2)) {
+              if (mysqli_num_rows($result2) == 1) {
                 $hadir = 1;
               }
 
@@ -223,9 +223,14 @@ if (!isset($_SESSION['username'])) {
                       <div class="ps-3">
 
                         <h6>
-                          Belum Hadir
+                          <?php echo $hadir == 1 ? 'Hadir' : 'Belum Hadir' ?>
                           <span class="text-muted small pt-2 ps-1">
-                            <?php echo $row['status'] ? 'Tamat' : 'Masih Berjalan' ?>
+                            <?php 
+
+                            
+                            
+                            
+                            echo $row['status'] ? 'Tamat' : 'Masih Berjalan' ?>
                           </span>
 
                         </h6>
@@ -348,6 +353,7 @@ if (!isset($_SESSION['username'])) {
 
           $.post('functions.php', { qrcodescan: decodedText, idmurid: "<?php echo $_SESSION['username'] ?>" });
           // console.log("testpost");
+          html5QrcodeScanner.clear();
           myModal.hide();
 
         }
@@ -355,14 +361,14 @@ if (!isset($_SESSION['username'])) {
       const config = { fps: 10, qrbox: { width: 250, height: 250 } };
 
       var html5QrcodeScanner = new Html5QrcodeScanner(
-        "qr-reader", { 
-          fps: 24,
-          qrbox: 250,
-          supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
-          rememberLastUsedCamera: true, 
+        "qr-reader", {
+        fps: 24,
+        qrbox: 250,
+        supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
+        rememberLastUsedCamera: true,
 
 
-        });
+      });
       html5QrcodeScanner.render(onScanSuccess);
     }
   </script>

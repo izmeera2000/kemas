@@ -325,7 +325,7 @@ while ($row = mysqli_fetch_assoc($results)) {
 
   <?php include('footerscript.php') ?>
 
-  
+
 </body>
 
 </html>
