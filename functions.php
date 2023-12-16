@@ -455,33 +455,33 @@ if (isset($_POST['download-pdf-borang'])) {
     $pdf->SetFont('Arial', 'B', 10);
     // for($i=1;$i<=40;$i++)
 
-    $nama =" ";
-    $umur =" ";
-    $ic =" ";
-    $tarikh_mula =" ";
-    $warganegara =" ";
-    $bangsa =" ";
-    $tarikh_lahir =" ";
-    $no_sijil_lahir =" ";
-    $tempat_lahir =" ";
-    $jantina =" ";
-    $alamat_rumah =" ";
-    $saizbaju =" ";
-    $penyakit =" ";
-    $tinggi =" ";
-    $berat =" ";
-    $masalah_makanan =" ";
-    $kecacatan =" ";
-    $nama_penjaga =" ";
-    $alamat_rumah_penjaga =" ";
-    $telefon_penjaga =" ";
-    $hubungan_penjaga =" ";
+    $nama ="-";
+    $umur ="-";
+    $ic ="-";
+    $tarikh_mula ="-";
+    $warganegara ="-";
+    $bangsa ="-";
+    $tarikh_lahir ="-";
+    $no_sijil_lahir ="-";
+    $tempat_lahir ="-";
+    $jantina ="-";
+    $alamat_rumah ="-";
+    $saizbaju ="-";
+    $penyakit ="-";
+    $tinggi ="-";
+    $berat ="-";
+    $masalah_makanan ="-";
+    $kecacatan ="-";
+    $nama_penjaga ="-";
+    $alamat_rumah_penjaga ="-";
+    $telefon_penjaga ="-";
+    $hubungan_penjaga ="-";
 
-    $gambar =" ";
-    $file_mykid =" ";
-    $file_sijil =" ";
-    $file_rekod_kesihatan =" ";
-    $geran =" ";
+    $gambar ="-";
+    $file_mykid ="-";
+    $file_sijil ="-";
+    $file_rekod_kesihatan ="-";
+    $geran ="-";
 
 
     $tableb = new easyTable($pdf, '%{70,30}', 'border:0;font-size:8;');
@@ -576,9 +576,9 @@ if (isset($_POST['download-pdf-borang'])) {
     $tablebahA2->easyCell('Berat : ' . $berat . 'kg', 'valign:L;  align:L;paddingY:2;colspan:2');
     $tablebahA2->printRow();
 
-    $tablebahA2->easyCell('Masalah makanan/alahan', 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->easyCell($masalah_makanan, 'valign:L;  align:L;paddingY:2');
-    $tablebahA2->printRow();
+    // $tablebahA2->easyCell('Masalah makanan/alahan', 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->easyCell($masalah_makanan, 'valign:L;  align:L;paddingY:2');
+    // $tablebahA2->printRow();
 
     // $tablebahA2->easyCell('Kecacatan', 'valign:L;  align:L;paddingY:2');
     // $tablebahA2->easyCell($kecacatan, 'valign:L;  align:L;paddingY:2');
