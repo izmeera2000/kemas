@@ -331,7 +331,6 @@ function removeImage() {
       keys: true,
 
     });
-    datatable.width("100%");
 
   })
 

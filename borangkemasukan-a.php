@@ -229,7 +229,7 @@
                       <label for="yourUsername" class="form-label">Masalah makanan/alahan (jika ada)</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="masalahmakanan" class="form-control" id="masalahmakanan" required>
+                        <input type="text" name="masalahmakanan" class="form-control" id="masalahmakanan" >
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
@@ -238,7 +238,7 @@
                       <label for="yourUsername" class="form-label">Kecacatan (jika ada)</label>
                       <div class="input-group has-validation">
                         <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="kecacatan" class="form-control" id="kecacatan" required>
+                        <input type="text" name="kecacatan" class="form-control" id="kecacatan" >
                         <!-- <div class="invalid-feedback">S</div>   -->
                       </div>
                     </div>
