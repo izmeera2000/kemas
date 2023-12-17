@@ -1073,10 +1073,11 @@ if (isset($_POST['yuranbayar'])) {
         $mail->Password = 'tabikakemas33';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        
 
         //Recipients
         $mail->setFrom('info@tabikakemas.com.my', 'Tabika Kemas');
-        $mail->addAddress('izmeera2000@gmail.com', 'Joe User');     //Add a recipient
+        $mail->addAddress('izmeera2000@gmail.com');     //Add a recipient
         // $mail->addAddress('ellen@example.com');               //Name is optional
         // $mail->addReplyTo('info@example.com', 'Information');
         // $mail->addCC('cc@example.com');
@@ -1094,14 +1095,15 @@ if (isset($_POST['yuranbayar'])) {
 
         $mail->send();
     debug_to_console("sampe");
+    header('location: yuran.php');
+    exit();
 } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     debug_to_console($mail->ErrorInfo);
 
     }
 
-    header('location: yuran.php');
-    exit();
+
 }
 
 if (isset($_POST['yurantidakbayar'])) {
