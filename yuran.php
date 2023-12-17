@@ -3,8 +3,31 @@ if (!isset($_SESSION['username'])) {
   // $_SESSION['msg'] = "You must log in first";
   header('location: lamanutama.php');
 }
+// $arraysds = array();
+// $query = "SELECT * FROM murid  ";
+// $result = mysqli_query($db, $query);
+// while ($row = mysqli_fetch_assoc($result)) {
+//   $arraysds[] = $row['id'];
 
 
+// }
+// $arastring = "";
+// foreach ($arraysds as $x => $val) {
+
+//   if (!next($arraysds)) {
+//     $arastring .= '"' . $val . '"';
+
+//   } else {
+
+//     $arastring .= '"' . $val . '"' . ',';
+//   }
+// }
+if (isset($_POST['tarikhyuran2'])) {
+  $date = $_SESSION['tarikhyuran'];
+} else {
+  $date = date('Y-m');
+}
+// debug_to_console($_SESSION['tarikhyuran']);
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +83,12 @@ if (!isset($_SESSION['username'])) {
 
                   <div class="card-body">
                     <h5 class="card-title">Yuran <span>| Total Sudah Bayar(Bulan
-                        <?php echo date('M Y') ?>)
+                        <?php
+
+
+                        echo date('M Y', strtotime($date));
+
+                        ?>)
                       </span></h5>
 
                     <div class="d-flex align-items-center">
@@ -69,13 +97,12 @@ if (!isset($_SESSION['username'])) {
                       </div>
                       <div class="ps-3">
                         <?php
-                        $date = date('Y-m');
                         $query = "SELECT
                         COUNT(*)
                         FROM
                         murid
-                        LEFT JOIN yuran  ON murid.id = yuran.id_murid
-                        WHERE id_murid IS NULL AND yuran.tarikh LIKE '%$date%'  ORDER BY  yuran.id DESC";
+                        LEFT JOIN yuran  ON murid.id = yuran.id_murid AND yuran.tarikh LIKE '%$date%' 
+                        WHERE id_murid IS NOT NULL ";
                         $result = mysqli_query($db, $query);
                         while ($row = mysqli_fetch_assoc($result)) {
 
@@ -84,9 +111,7 @@ if (!isset($_SESSION['username'])) {
                         ?>
                         <h6>
                           <?php echo $jumlahmurid ?>
-                          <!-- <span class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">Tambah</span> -->
                         </h6>
-                        <!-- <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
 
                       </div>
                     </div>
@@ -107,19 +132,19 @@ if (!isset($_SESSION['username'])) {
                     <div class="d-flex align-items-center">
 
                       <div class="ps-3">
+                        <form method="post">
+                          <div class="row mb-3">
+                            <!-- <label for="inputDate" class="col-sm-2 col-form-label">Date</label> -->
+                            <div class="col-10">
+                              <input type="month" class="form-control" name="tarikhyuran">
+                            </div>
+                            <div class="col-2">
+                              <button class="btn btn-primary" type="submit" name="tarikhyuran2">Tambah</button>
+                              <!-- <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
+                            </div>
 
-                        <div class="row mb-3">
-                          <!-- <label for="inputDate" class="col-sm-2 col-form-label">Date</label> -->
-                          <div class="col-10">
-                            <input type="month" class="form-control">
                           </div>
-                          <div class="col-2">
-
-                            <button class="btn btn-primary" type="submit" name="tarikhyuran">Tambah</button>
-                            <!-- <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
-                          </div>
-
-                        </div>
+                        </form>
 
                       </div>
                     </div>
@@ -145,18 +170,14 @@ if (!isset($_SESSION['username'])) {
                 <div class="card">
                   <div class="card-body">
                     <h5 class="card-title">Senarai Yuran Belum Bayar (
-                      <?php echo date('M Y') ?>)
+                      <?php echo date('M Y', strtotime($date)); ?>)
                     </h5>
-                    <!-- <h5 class="card-title">Datatables</h5>
-              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
 
-                    <!-- Table with stripped rows -->
                     <table class="table datatable" style="width:100%">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
                           <th scope="col">IC</th>
-                          <th scope="col">Tarikh Mula</th>
                           <th scope="col">Action</th>
                         </tr>
                       </thead>
@@ -165,12 +186,12 @@ if (!isset($_SESSION['username'])) {
                         <?php
 
                         $query = "SELECT
-                        *
+                        *, murid.id 
                         FROM
                         murid
-                        LEFT JOIN yuran  ON murid.id = yuran.id_murid
-                        WHERE id_murid IS NULL AND (yuran.tarikh LIKE '%$date%' OR yuran.tarikh IS NULL) ORDER BY  yuran.id DESC";
-                        echo $query;
+                        LEFT JOIN yuran  ON murid.id = yuran.id_murid AND yuran.tarikh LIKE '%$date%' 
+                        WHERE id_murid IS  NULL ";
+                        // echo $query;
                         $result = mysqli_query($db, $query);
                         $counter = 1;
                         while ($row = mysqli_fetch_assoc($result)) {
@@ -185,15 +206,13 @@ if (!isset($_SESSION['username'])) {
                             <td>
                               <?php echo $row['no_kad_pengenalan'] ?>
                             </td>
-                            <td>
-                              <?php echo $row['tarikh'] ?>
-                            </td>
+
 
 
                             <td>
                               <form method="post" action="">
-                                <input type="hidden" id="meetingid" name="meetingid" value="<?php echo $row['id'] ?>">
-                                <button type="submit" name="meetingdetail" class="btn btn-success"><i
+                                <input type="hidden" name="id_murid" value="<?php echo $row['id'] ?>">
+                                <button type="submit" name="yuranbayar" class="btn btn-success"><i
                                     class="bi bi-cash-stack"></i>
                               </form>
                             </td>
@@ -217,18 +236,15 @@ if (!isset($_SESSION['username'])) {
                 <div class="card">
                   <div class="card-body">
                     <h5 class="card-title">Senarai Yuran Sudah Bayar (
-                      <?php echo date('M Y') ?>)
+                      <?php echo date('M Y', strtotime($date)); ?>)
                     </h5>
-                    <!-- <h5 class="card-title">Datatables</h5>
-<p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
 
-                    <!-- Table with stripped rows -->
                     <table class="table datatable" style="width:100%">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
                           <th scope="col">IC</th>
-                          <th scope="col">Tarikh Mula</th>
+                          <th scope="col">Tarikh Bayar</th>
                           <th scope="col">Action</th>
                         </tr>
                       </thead>
@@ -238,12 +254,12 @@ if (!isset($_SESSION['username'])) {
 
                         $query =
                           "SELECT
-                            *
-                            FROM
-                            murid
-                            LEFT JOIN yuran  ON murid.id = yuran.id_murid
-                            WHERE id_murid IS NOT NULL AND yuran.tarikh LIKE '%$date%' ORDER BY  yuran.id DESC";
-                        echo $query;
+                          *
+                          FROM
+                          murid
+                          LEFT JOIN yuran  ON murid.id = yuran.id_murid AND yuran.tarikh LIKE '%$date%' 
+                          WHERE id_murid IS NOT NULL ";
+                        // echo $query;
                         $result = mysqli_query($db, $query);
                         $counter = 1;
                         while ($row = mysqli_fetch_assoc($result)) {
@@ -259,14 +275,15 @@ if (!isset($_SESSION['username'])) {
                               <?php echo $row['no_kad_pengenalan'] ?>
                             </td>
                             <td>
-                              <?php echo $row['tarikh'] ?>
+                              <?php echo date("M Y", strtotime($row['tarikh'])) ?>
                             </td>
 
 
                             <td>
                               <form method="post" action="">
-                                <input type="hidden" id="meetingid" name="meetingid" value="<?php echo $row['id'] ?>">
-                                <button type="submit" name="meetingdetail" class="btn btn-danger"><i
+                                <input type="hidden" id="id_murid" name="id_murid" value="<?php echo $row['id'] ?>">
+                                <input type="hidden" id="tarikh" name="tarikh" value="<?php echo $row['tarikh'] ?>">
+                                <button type="submit" name="yurantidakbayar" class="btn btn-danger"><i
                                     class="bi bi-cash-stack"></i>
                               </form>
                             </td>
@@ -290,84 +307,69 @@ if (!isset($_SESSION['username'])) {
 
               ?>
 
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card customers-card">
+            <div class="col-lg-12">
 
-
-
+              <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Mesyuarat <span>| QR Code Scan</span></h5>
+                  <h5 class="card-title">Senarai Yuran Sudah Bayar
+                  </h5>
 
-                  <div class="d-flex align-items-center">
-                    <!-- <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-person-check"></i>
-                      </div> -->
-                    <div class="ps-3">
+                  <table class="table datatable" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">IC</th>
+                        <th scope="col">Tarikh Bayar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
 
-                      <h6>
-                        <button class="btn btn-primary  btn-lg" onclick="startqrcodescan()">Scan</button>
-                      </h6>
-                      <!-- <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
+                      <?php
+                      $ic = $_SESSION['username'];
+                      $query =
+                        "SELECT
+          *
+          FROM
+          murid
+          LEFT JOIN yuran  ON murid.id = yuran.id_murid
+          WHERE no_kad_pengenalan='$ic' AND id_murid IS NOT NULL ";
+                      // echo $query;
+                      $result = mysqli_query($db, $query);
+                      $counter = 1;
+                      while ($row = mysqli_fetch_assoc($result)) {
 
-                    </div>
-                  </div>
-                </div>
+                        ?>
 
-              </div>
-            </div><!-- End Revenue Card -->
 
-            <?php
-            $hadir = 0;
-            $query = "SELECT * FROM  meeting   ORDER BY id DESC LIMIT 3";
-            $result = mysqli_query($db, $query);
-            while ($row = mysqli_fetch_assoc($result)) {
-
-              $nama_meeting = $row['nama'];
-              $idmurid = $_SESSION['username'];
-              $query2 = "SELECT * FROM  meeting_kehadiran  WHERE nama_meeting='$nama_meeting' AND id_murid='$idmurid' ORDER BY id DESC  ";
-              $result2 = mysqli_query($db, $query2);
-              if (mysqli_num_rows($result2) == 1) {
-                $hadir = 1;
-              }
-
-              ?>
-
-              <div class="col-xxl-4 col-md-6">
-                <div class="card info-card <?php echo $hadir == 1 ? 'revenue-card' : 'customers-card' ?>">
-                  <div class="card-body">
-                    <h5 class="card-title">Mesyuarat
-                      <?php echo $row['nama'] ?>
-                    </h5>
-                    <div class="d-flex align-items-center">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-person-check"></i>
-                      </div>
-                      <div class="ps-3">
-
-                        <h6>
-                          <?php echo $hadir == 1 ? 'Hadir' : 'Belum Hadir' ?>
-                          <span class="text-muted small pt-2 ps-1">
-                            <?php
+                        <tr>
+                          <th scope="row">
+                            <?php echo $counter ?>
+                          </th>
+                          <td>
+                            <?php echo $row['no_kad_pengenalan'] ?>
+                          </td>
+                          <td>
+                            <?php echo date("M Y", strtotime($row['tarikh'])) ?>
+                          </td>
 
 
 
+                        </tr>
 
-                            echo $row['status'] ? 'Tamat' : 'Masih Berjalan' ?>
-                          </span>
+                        <?php
+                        $counter += 1;
+                      }
+                      ?>
 
-                        </h6>
-
-                      </div>
-                    </div>
-                  </div>
+                    </tbody>
+                  </table>
+                  <!-- End Table with stripped rows -->
 
                 </div>
               </div>
-              <?php
 
+            </div>
 
-            }
-            ?>
 
 
 

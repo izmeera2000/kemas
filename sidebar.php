@@ -297,6 +297,11 @@
           <i class="bi bi-person-lines-fill"></i><span>Mesyuarat</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="yuran.php">
+          <i class="bi bi-cash"></i><span>Yuran</span>
+        </a>
+      </li>
       <?php
     }
 

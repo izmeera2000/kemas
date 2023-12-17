@@ -8,6 +8,10 @@ use chillerlan\QRCode\Output\{QRGdImagePNG, QRCodeOutputException};
 use chillerlan\QRCode\Output\QROutputInterface;
 use setasign\Fpdi\Fpdi;
 use Dotenv\Dotenv;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 
 $filesec = __DIR__ . '/../';
 // echo $filesec;
@@ -492,153 +496,153 @@ if (isset($_POST['download-pdf-borang'])) {
         }
         if ($row['age'] != "") {
             $umur = $row['age'];
-        }else {
+        } else {
             $umur = "-";
 
         }
         if ($row['no_kad_pengenalan'] != "") {
             $ic = $row['no_kad_pengenalan'];
-        }else {
+        } else {
             $ic = "-";
 
         }
 
-        if ( $row['tarikh_mula'] != "") {
+        if ($row['tarikh_mula'] != "") {
             $tarikh_mula = $row['tarikh_mula'];
-        }else {
+        } else {
             $tarikh_mula = "-";
 
         }
         if ($row['warganegara'] != "") {
             $warganegara = $row['warganegara'];
-        }else {
+        } else {
             $warganegara = "-";
 
         }
         if ($row['bangsa'] != "") {
             $bangsa = $row['bangsa'];
-        }else {
+        } else {
             $bangsa = "-";
 
         }
         if ($row['tarikh_lahir'] != "") {
             $tarikh_lahir = $row['tarikh_lahir'];
-        }else {
+        } else {
             $tarikh_lahir = "-";
 
         }
         if ($row['no_sijil_lahir'] != "") {
             $no_sijil_lahir = $row['no_sijil_lahir'];
-        }else {
+        } else {
             $no_sijil_lahir = "-";
 
         }
         if ($row['tempat_lahir'] != "") {
             $tempat_lahir = $row['tempat_lahir'];
-        }else {
+        } else {
             $tempat_lahir = "-";
 
         }
         if ($row['jantina'] != "") {
             $jantina = $row['jantina'];
-        }else {
+        } else {
             $jantina = "-";
 
         }
         if ($row['alamat_rumah'] != "") {
             $alamat_rumah = $row['alamat_rumah'];
-        }else {
+        } else {
             $alamat_rumah = "-";
 
         }
         if ($row['saizbaju'] != "") {
             $saizbaju = $row['saizbaju'];
-        }else {
+        } else {
             $saizbaju = "-";
 
         }
         if ($row['penyakit'] != "") {
             $penyakit = $row['penyakit'];
-        }else {
+        } else {
             $penyakit = "-";
 
         }
         if ($row['tinggi'] != "") {
             $tinggi = $row['tinggi'];
-        }else {
+        } else {
             $tinggi = "-";
 
         }
         if ($row['berat'] != "") {
             $berat = $row['berat'];
-        }else {
+        } else {
             $berat = "-";
 
         }
         if ($row['masalah_makanan'] != "") {
             $masalah_makanan = $row['masalah_makanan'];
-        }else {
+        } else {
             $masalah_makanan = "-";
 
         }
         if ($row['kecacatan'] != "") {
             $kecacatan = $row['kecacatan'];
-        }else {
+        } else {
             $kecacatan = "-";
 
         }
         if ($row['nama_penjaga'] != "") {
             $nama_penjaga = $row['nama_penjaga'];
-        }else {
+        } else {
             $nama_penjaga = "-";
 
         }
         if ($row['alamat_rumah_penjaga'] != "") {
             $alamat_rumah_penjaga = $row['alamat_rumah_penjaga'];
-        }else {
+        } else {
             $alamat_rumah_penjaga = "-";
 
         }
         if ($row['telefon_penjaga'] != "") {
             $telefon_penjaga = $row['telefon_penjaga'];
-        }else {
+        } else {
             $telefon_penjaga = "-";
 
         }
         if ($row['hubungan_penjaga'] != "") {
             $hubungan_penjaga = $row['hubungan_penjaga'];
-        }else {
+        } else {
             $hubungan_penjaga = "-";
 
         }
 
         if ($row['gambar'] != "") {
             $gambar = $row['gambar'];
-        }else {
+        } else {
             $gambar = "-";
 
         }
         if ($row['file_mykid'] != "") {
             $file_mykid = $row['file_mykid'];
-        }else {
+        } else {
             $file_mykid = "-";
 
         }
         if ($row['file_sijil'] != "") {
             $file_sijil = $row['file_sijil'];
-        }else {
+        } else {
             $file_sijil = "-";
 
         }
         if ($row['file_rekod_kesihatan'] != "") {
             $file_rekod_kesihatan = $row['file_rekod_kesihatan'];
-        }else {
+        } else {
             $file_rekod_kesihatan = "-";
 
         }
         if ($row['geran'] != "") {
             $geran = $row['geran'];
-        }else {
+        } else {
             $geran = "-";
 
         }
@@ -1041,6 +1045,76 @@ if (isset($_POST['qrcodescan'])) {
     $result = mysqli_query($db, $query);
 }
 
+if (isset($_POST['tarikhyuran2'])) {
 
+    $_SESSION['tarikhyuran'] = $_POST['tarikhyuran'];
+    // $idmurid = $_POST['tarikhyuran'];
+    // debug_to_console($_SESSION['tarikhyuran']);
+
+}
+if (isset($_POST['yuranbayar'])) {
+
+    $id_murid = $_POST['id_murid'];
+    // debug_to_console($_POST['id_murid']);
+
+    $query = "INSERT INTO yuran (id_murid) 
+    VALUES ('$id_murid')";
+    $result = mysqli_query($db, $query);
+
+    $mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host = 'mail.tabikakemas.com.my';                     //Set the SMTP server to send through
+        $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+        $mail->Username = 'info@tabikakemas.com.my';                     //SMTP username
+        $mail->Password = 'tabikakemas33';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+        //Recipients
+        $mail->setFrom('info@tabikakemas.com.my', 'Tabika Kemas');
+        $mail->addAddress('izmeera2000@gmail.com', 'Joe User');     //Add a recipient
+        // $mail->addAddress('ellen@example.com');               //Name is optional
+        // $mail->addReplyTo('info@example.com', 'Information');
+        // $mail->addCC('cc@example.com');
+        // $mail->addBCC('bcc@example.com');
+
+        //Attachments
+        // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Here is the subject';
+        $mail->Body = 'This is the HTML message body <b>in bold!</b>';
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        $mail->send();
+    debug_to_console("sampe");
+} catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    debug_to_console($mail->ErrorInfo);
+
+    }
+
+    header('location: yuran.php');
+    exit();
+}
+
+if (isset($_POST['yurantidakbayar'])) {
+
+    $id_murid = $_POST['id_murid'];
+    $tarikh = $_POST['tarikh'];
+    // debug_to_console($_POST['id_murid']);
+
+    $query = "DELETE FROM yuran WHERE id='$id_murid' AND tarikh='$tarikh' ";
+    $result = mysqli_query($db, $query);
+
+    header('location: yuran.php');
+    exit();
+}
 
 ?>
