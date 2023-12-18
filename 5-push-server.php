@@ -10,17 +10,17 @@ $sub = Subscription::create(json_decode($_POST["sub"], true));
 
 // (C) NEW WEB PUSH OBJECT - CHANGE TO YOUR OWN!
 $push = new WebPush(["VAPID" => [
-  "subject" => "izmeera2000@gmail.com",
+//   "subject" => "izmeera2000@gmail.com",
   "publicKey" => "BJF9s842CaIRdkrZ8Ds5eTktDmDR2GLEhXSQAmXQOmtt9V1T5zCpKfsY_csHYOpU4ksD35tevV9cwPfZdpslTXY",
   "privateKey" => "bRWDz36z1GC7vCSoNtzrxNKyM1d1ElG6bVIBdzHQDmk"
 ]]);
 
 // (D) SEND TEST PUSH NOTIFICATION
 $result = $push->sendOneNotification($sub, json_encode([
-  "title" => "Welcome!",
-  "body" => "Yes, it works!",
+  "title" => "Selamat Datang!",
+  "body" => "Sila Tunggu",
   "icon" => "assets/img/favicon.ico",
-  "image" => "assets/img/android-chrome-192x192.png"
+//   "image" => "assets/img/android-chrome-192x192.png"
 ]));
 $endpoint = $result->getRequest()->getUri()->__toString();
 
