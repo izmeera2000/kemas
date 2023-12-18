@@ -51,81 +51,9 @@
               <!-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
 
               <!-- Table with stripped rows -->
-              <table class="table datatable" style="width:100%">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Umur</th>
-                    <th scope="col">Tarikh Mula</th>
-                    <?php if (($_SESSION['level']) == 1) {
-                      ?>
-                      <th scope="col">Action</th>
-                    <?php } ?>
 
-                  </tr>
-                </thead>
-                <tbody>
-
-                  <?php
-                  $username = $_SESSION['username'];
-                  $query = "SELECT * FROM staf WHERE NOT idpengguna='$username' ";
-                  $result = mysqli_query($db, $query);
-
-                  while ($row = mysqli_fetch_assoc($result)) {
-                    $idpengguna2 = $row['idpengguna'];
-                    ?>
-
-
-                    <tr>
-                      <th scope="row">
-                        <?php echo $row['id'] ?>
-                      </th>
-                      <td>
-                        <?php echo $row['idpengguna'] ?>
-                      </td>
-                      <?php
-                      $query2 = "SELECT * FROM staf_profile WHERE idpengguna='$idpengguna2' ";
-                      $result2 = mysqli_query($db, $query2);
-
-                      while ($row2 = mysqli_fetch_assoc($result2)) { ?>
-
-                        <td>
-                          <?php echo $row2['nama'] ?>
-                        </td>
-                        <td>
-                          <?php echo $row2['umur'] ?>
-                        </td>
-
-                      <?php } ?>
-                      <td>
-                        <?php echo $row['tarikh'] ?>
-                      </td>
-                      <?php if (($_SESSION['level']) == 1) {
-                        ?>
-
-
-                        <td>
-                          <form method="post" action="?deletestaf">
-                            <input type="hidden" id="idstaf" name="idstaf" value="<?php echo $row['id'] ?>">
-                            <!-- <button type="submit" name="profilmurid" class="btn btn-primary"><i
-                              class="bi bi-person"></i></button> -->
-                            <button type="submit" name="deletestaf" class="btn btn-primary"><i
-                                class="bi bi-trash"></i></button>
-                          </form>
-                        </td>
-                      <?php } ?>
-                    </tr>
-
-                    <?php
-                  }
-                  ?>
-
-                </tbody>
-              </table>
               <!-- End Table with stripped rows -->
-<?php var_dump(VAPID::createVapidKeys()); // store the keys afterwards?>
+              <?php var_dump(VAPID::createVapidKeys()); // store the keys afterwards?>
             </div>
           </div>
 

@@ -13,6 +13,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 use Minishlink\WebPush\WebPush;
 use Minishlink\WebPush\Subscription;
+use Minishlink\WebPush\VAPID;
 
 $filesec = __DIR__ . '/../';
 // echo $filesec;
