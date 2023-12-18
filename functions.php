@@ -1048,10 +1048,10 @@ if (isset($_POST['stopmesyuarat'])) {
 
     $query = "SELECT * FROM `meeting` WHERE status='0'";
     $result = mysqli_query($db, $query);
-    $datenow = date('Y-m-d h:i:s');
+    $datenow = date('Y-m-d H:i:s');
     echo $datenow;
     while ($row = mysqli_fetch_assoc($result)) {
-        $date_habis = date("Y-m-d h:i:s", strtotime($row['tarikh_akhir']));
+        $date_habis = date("Y-m-d H:i:s", strtotime($row['tarikh_akhir']));
 
         echo $date_habis;
         if ($datenow >= $date_habis) {
