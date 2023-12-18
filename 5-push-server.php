@@ -19,8 +19,8 @@ $push = new WebPush(["VAPID" => [
 $result = $push->sendOneNotification($sub, json_encode([
   "title" => "Welcome!",
   "body" => "Yes, it works!",
-//   "icon" => "PUSH-php-A.png",
-//   "image" => "PUSH-php-B.png"
+  "icon" => "assets/img/favicon.ico",
+  "image" => "assets/img/android-chrome-192x192.png"
 ]));
 $endpoint = $result->getRequest()->getUri()->__toString();
 
