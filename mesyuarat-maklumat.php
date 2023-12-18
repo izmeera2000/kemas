@@ -9,11 +9,12 @@ $query = "SELECT * FROM meeting WHERE id='$meetingid' ";
 $results = mysqli_query($db, $query);
 
 while ($row = mysqli_fetch_assoc($results)) {
-  $nama = $row['nama'];
+  $nama2 = $row['nama'];
   $maklumat = $row['maklumat'];
   $tarikh_mula = $row['tarikh_mula'];
   $tarikh_akhir = $row['tarikh_akhir'];
 }
+// echo $nama;
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +44,7 @@ while ($row = mysqli_fetch_assoc($results)) {
 
     <div class="pagetitle">
       <h1>Mesyuarat -
-        <?php echo $nama ?>
+        <?php echo $nama2 ?>
       </h1>
       <nav>
         <ol class="breadcrumb">
@@ -79,7 +80,7 @@ while ($row = mysqli_fetch_assoc($results)) {
 
                       <h6>
 
-                        <?php echo $nama ?>
+                        <?php echo $nama2 ?>
                         <!-- <span class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">Tambah</span> -->
                       </h6>
                       <!-- <span class="text-muted small pt-2 ps-1">
@@ -108,7 +109,7 @@ while ($row = mysqli_fetch_assoc($results)) {
 
                       <h6>
 
-                        <?php echo $nama ?>
+                        <?php echo $nama2 ?>
                         <!-- <span class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">Tambah</span> -->
                       </h6>
                       <!-- <span class="text-muted small pt-2 ps-1">
@@ -189,7 +190,7 @@ while ($row = mysqli_fetch_assoc($results)) {
                 <div class="d-flex justify-content-center align-items-center ">
 
 
-                  <img src="<?php createqr('kemas_mesyuarat://' . $nama);
+                  <img src="<?php createqr('kemas_mesyuarat://' . $nama2);
                   ?>" alt="Red dot" class="img-fluid mx-auto " />
 
 
@@ -224,7 +225,7 @@ while ($row = mysqli_fetch_assoc($results)) {
 
                   <?php
 
-                  $query = "SELECT * FROM meeting_kehadiran WHERE nama_meeting='$nama' ";
+                  $query = "SELECT * FROM meeting_kehadiran WHERE nama_meeting='$nama2' ";
                   $result = mysqli_query($db, $query);
 
                   while ($row = mysqli_fetch_assoc($result)) { ?>
@@ -238,7 +239,7 @@ while ($row = mysqli_fetch_assoc($results)) {
                         <?php echo $row['nama_meeting'] ?>
                       </td>
                       <td>
-                        <?php echo "sds"; ?>
+                        <?php echo $row['id_murid']; ?>
                       </td>
                       <td>
                         <?php echo $row['tarikh'] ?>
