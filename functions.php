@@ -13,6 +13,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 use Minishlink\WebPush\WebPush;
 use Minishlink\WebPush\Subscription;
+
 // use Minishlink\WebPush\VAPID;
 $filesec = __DIR__ . '/../';
 // echo $filesec;
@@ -1041,6 +1042,34 @@ if (isset($_POST['tamatmesyuarat'])) {
     exit();
 
 }
+
+if (isset($_POST['stopmesyuarat'])) {
+    date_default_timezone_set('Asia/Kuala_Lumpur');
+
+    $query = "SELECT * FROM `meeting` WHERE status='0'";
+    $result = mysqli_query($db, $query);
+    $datenow = date('Y-m-d h:i:sa');
+    // echo $datenow;
+    while ($row = mysqli_fetch_assoc($result)) {
+        $date_habis = date("Y-m-d h:i:sa", strtotime($row['tarikh_akhir']));
+
+        // echo $date_habis;
+        if ($datenow >= $date_habis) {
+            // echo "habis";
+            $id_meet = $row['id'];
+
+            $query = "UPDATE meeting SET status='1' WHERE id='$id_meet'";
+            $result = mysqli_query($db, $query);
+
+        }
+
+
+
+    }
+    // header('location: mesyuarat-maklumat.php');
+    // exit();
+
+}
 if (isset($_POST['qrcodescan'])) {
 
 
@@ -1074,9 +1103,9 @@ if (isset($_POST['yuranbayar'])) {
     if (mysqli_num_rows($results) == 1) {
         while ($row = mysqli_fetch_assoc($results)) {
 
-        $emailuser = $row['email'];
-        $ic = $row['no_kad_pengenalan'];
-        $nama = $row['name'];
+            $emailuser = $row['email'];
+            $ic = $row['no_kad_pengenalan'];
+            $nama = $row['name'];
         }
     }
 
@@ -1085,7 +1114,7 @@ if (isset($_POST['yuranbayar'])) {
     VALUES ('$id_murid')";
     $result = mysqli_query($db, $query);
 
-    sendmail_yuran($emailuser, $nama,$ic);
+    sendmail_yuran($emailuser, $nama, $ic);
 
 
     header('location: yuran.php');
@@ -1105,7 +1134,7 @@ if (isset($_POST['yurantidakbayar'])) {
     exit();
 }
 
-function sendmail_yuran($receiver, $nama, $ic )
+function sendmail_yuran($receiver, $nama, $ic)
 {
 
 
@@ -1121,12 +1150,12 @@ function sendmail_yuran($receiver, $nama, $ic )
         $mail->Password = 'tabikakemas33';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-        
+
 
         //Recipients
         $mail->setFrom('info@tabikakemas.com.my', 'Tabika Kemas');
         $mail->addAddress($receiver);     //Add a recipient
- 
+
         //Content
         $mail->isHTML(true); //Set email format to HTML
         $tarikh = date('M Y');
@@ -1149,7 +1178,7 @@ function sendmail_yuran($receiver, $nama, $ic )
     }
 }
 
-function sendmail_kemasukan($receiver, $nama, $ic )
+function sendmail_kemasukan($receiver, $nama, $ic)
 {
 
 
@@ -1165,12 +1194,12 @@ function sendmail_kemasukan($receiver, $nama, $ic )
         $mail->Password = 'tabikakemas33';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-        
+
 
         //Recipients
         $mail->setFrom('info@tabikakemas.com.my', 'Tabika Kemas');
         $mail->addAddress($receiver);     //Add a recipient
- 
+
         //Content
         $mail->isHTML(true); //Set email format to HTML
         $tarikh = date('M Y');
@@ -1193,7 +1222,7 @@ function sendmail_kemasukan($receiver, $nama, $ic )
     }
 }
 
-function sendmail_kemasukantak($receiver, $nama, $ic )
+function sendmail_kemasukantak($receiver, $nama, $ic)
 {
 
 
@@ -1209,12 +1238,12 @@ function sendmail_kemasukantak($receiver, $nama, $ic )
         $mail->Password = 'tabikakemas33';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-        
+
 
         //Recipients
         $mail->setFrom('info@tabikakemas.com.my', 'Tabika Kemas');
         $mail->addAddress($receiver);     //Add a recipient
- 
+
         //Content
         $mail->isHTML(true); //Set email format to HTML
         $tarikh = date('M Y');
@@ -1238,37 +1267,38 @@ function sendmail_kemasukantak($receiver, $nama, $ic )
 }
 
 
-function sendnoti(){
+function sendnoti()
+{
 
-// (B) GET SUBSCRIPTION
-$sub = Subscription::create(json_decode($_POST["sub"], true));
-// $endpoint = 'https://fcm.googleapis.com/fcm/send/abcdef...'; // Chrome
+    // (B) GET SUBSCRIPTION
+    $sub = Subscription::create(json_decode($_POST["sub"], true));
+    // $endpoint = 'https://fcm.googleapis.com/fcm/send/abcdef...'; // Chrome
 
-// (C) NEW WEB PUSH OBJECT - CHANGE TO YOUR OWN!
-$push = new WebPush(["VAPID" => [
-  "subject" => "izmeera2000@gmail.com",
-  "publicKey" => "BJF9s842CaIRdkrZ8Ds5eTktDmDR2GLEhXSQAmXQOmtt9V1T5zCpKfsY_csHYOpU4ksD35tevV9cwPfZdpslTXY",
-  "privateKey" => "bRWDz36z1GC7vCSoNtzrxNKyM1d1ElG6bVIBdzHQDmk"
-]]);
+    // (C) NEW WEB PUSH OBJECT - CHANGE TO YOUR OWN!
+    $push = new WebPush(["VAPID" => [
+        "subject" => "izmeera2000@gmail.com",
+        "publicKey" => "BJF9s842CaIRdkrZ8Ds5eTktDmDR2GLEhXSQAmXQOmtt9V1T5zCpKfsY_csHYOpU4ksD35tevV9cwPfZdpslTXY",
+        "privateKey" => "bRWDz36z1GC7vCSoNtzrxNKyM1d1ElG6bVIBdzHQDmk"
+    ]]);
 
-// (D) SEND TEST PUSH NOTIFICATION
-$result = $push->sendOneNotification($sub, json_encode([
-  "title" => "Selamat Datang!",
-  "body" => "Sila Tunggu",
-  "icon" => "assets/img/favicon.ico",
-//   "image" => "assets/img/android-chrome-192x192.png"
-]));
-$endpoint = $result->getRequest()->getUri()->__toString();
+    // (D) SEND TEST PUSH NOTIFICATION
+    $result = $push->sendOneNotification($sub, json_encode([
+        "title" => "Selamat Datang!",
+        "body" => "Sila Tunggu",
+        "icon" => "assets/img/favicon.ico",
+        //   "image" => "assets/img/android-chrome-192x192.png"
+    ]));
+    $endpoint = $result->getRequest()->getUri()->__toString();
 
-// (E) SHOW RESULT - OPTIONAL
-if ($result->isSuccess()) {
-  echo "Successfully sent {$endpoint}.";
-} else {
-  echo "Send failed {$endpoint}: {$result->getReason()}";
-  $result->getRequest();
-  $result->getResponse();
-  $result->isSubscriptionExpired();
-}
+    // (E) SHOW RESULT - OPTIONAL
+    if ($result->isSuccess()) {
+        echo "Successfully sent {$endpoint}.";
+    } else {
+        echo "Send failed {$endpoint}: {$result->getReason()}";
+        $result->getRequest();
+        $result->getResponse();
+        $result->isSubscriptionExpired();
+    }
 
 }
 
