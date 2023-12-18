@@ -2,7 +2,7 @@
 self.addEventListener("install", evt => self.skipWaiting());
  
 // (B) CLAIM CONTROL INSTANTLY
-self.addEventListener('activate', pnSubscribe);
+// self.addEventListener('activate', pnSubscribe);
  
 // (C) LISTEN TO PUSH
-self.addEventListener('push', pnPopupNotification);
+// self.addEventListener('push', pnPopupNotification);
