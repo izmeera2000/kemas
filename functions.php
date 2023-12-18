@@ -13,7 +13,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 use Minishlink\WebPush\WebPush;
 use Minishlink\WebPush\Subscription;
-use Minishlink\WebPush\VAPID;
+// use Minishlink\WebPush\VAPID;
 $filesec = __DIR__ . '/../';
 // echo $filesec;
 $dotenv = Dotenv::createImmutable($filesec);
@@ -1227,22 +1227,41 @@ function sendmail_kemasukantak($receiver, $nama, $ic )
     }
 }
 
-function noti(){
-    $endpoint = 'https://fcm.googleapis.com/fcm/send/abcdef...'; // Chrome
 
-$auth = [
-    'VAPID' => [
-        'subject' => 'mailto:me@website.com', // can be a mailto: or your website address
-        'publicKey' => '~88 chars', // (recommended) uncompressed public key P-256 encoded in Base64-URL
-        'privateKey' => '~44 chars', // (recommended) in fact the secret multiplier of the private key encoded in Base64-URL
-        'pemFile' => 'path/to/pem', // if you have a PEM file and can link to it on your filesystem
-        'pem' => 'pemFileContent', // if you have a PEM file and want to hardcode its content
-    ],
-];
+function sendnoti(){
 
-$webPush = new WebPush($auth);
-$webPush->queueNotification(...);
+// (B) GET SUBSCRIPTION
+$sub = Subscription::create(json_decode($_POST["sub"], true));
+// $endpoint = 'https://fcm.googleapis.com/fcm/send/abcdef...'; // Chrome
+
+// (C) NEW WEB PUSH OBJECT - CHANGE TO YOUR OWN!
+$push = new WebPush(["VAPID" => [
+  "subject" => "izmeera2000@gmail.com",
+  "publicKey" => "BJF9s842CaIRdkrZ8Ds5eTktDmDR2GLEhXSQAmXQOmtt9V1T5zCpKfsY_csHYOpU4ksD35tevV9cwPfZdpslTXY",
+  "privateKey" => "bRWDz36z1GC7vCSoNtzrxNKyM1d1ElG6bVIBdzHQDmk"
+]]);
+
+// (D) SEND TEST PUSH NOTIFICATION
+$result = $push->sendOneNotification($sub, json_encode([
+  "title" => "Selamat Datang!",
+  "body" => "Sila Tunggu",
+  "icon" => "assets/img/favicon.ico",
+//   "image" => "assets/img/android-chrome-192x192.png"
+]));
+$endpoint = $result->getRequest()->getUri()->__toString();
+
+// (E) SHOW RESULT - OPTIONAL
+if ($result->isSuccess()) {
+  echo "Successfully sent {$endpoint}.";
+} else {
+  echo "Send failed {$endpoint}: {$result->getReason()}";
+  $result->getRequest();
+  $result->getResponse();
+  $result->isSubscriptionExpired();
 }
+
+}
+
 
 
 ?>

@@ -59,7 +59,8 @@ if (isset($_POST['borangkemasukan-a'])) {
     $user_check_query = "SELECT * FROM murid WHERE no_kad_pengenalan='$ic'";
     $resulta = mysqli_query($db, $user_check_query);
     $usera = mysqli_fetch_assoc($resulta);
-
+    setcookie("ic", "$ic", time() + (86400 * 7), "/"); 
+    sendnoti();
 
     // debug_to_console($ageofthem);
     if ($usera) {

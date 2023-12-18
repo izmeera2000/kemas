@@ -2,15 +2,7 @@
 self.addEventListener("install", evt => self.skipWaiting());
  
 // (B) CLAIM CONTROL INSTANTLY
-self.addEventListener("activate", evt => self.clients.claim());
+self.addEventListener('activate', pnSubscribe);
  
 // (C) LISTEN TO PUSH
-self.addEventListener("push", evt => {
-    console.log(evt.data);
-  const data = evt.data.json();
-  self.registration.showNotification(data.title, {
-    body: data.body,
-    icon: data.icon,
-    image: data.image
-  });
-});
+self.addEventListener('push', pnPopupNotification);

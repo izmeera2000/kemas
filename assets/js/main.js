@@ -45,7 +45,7 @@ async function regWorker () {
   //     sub => {
   //       var data = new FormData();
   //       data.append("sub", JSON.stringify(sub));
-  //       fetch("5-push-server.php", { method: "POST", body : data })
+  //       fetch("functions.php", { method: "POST", body : data })
   //       .then(res => res.text())
   //       .then(txt => console.log(txt))
   //       .catch(err => console.error(err));
@@ -57,7 +57,55 @@ async function regWorker () {
   // });
 }
 
-
+async function pnSubscribe(event) {
+  console.log('Serviceworker: activate event');
+  try {
+      var appPublicKey = encodeToUint8Array("BJF9s842CaIRdkrZ8Ds5eTktDmDR2GLEhXSQAmXQOmtt9V1T5zCpKfsY_csHYOpU4ksD35tevV9cwPfZdpslTXY");
+      var opt = {
+              applicationServerKey: appPublicKey, 
+              userVisibleOnly: true
+          };
+      
+      self.registration.pushManager.subscribe(opt)
+          .then((sub) => {
+              // subscription succeeded - send to server
+              pnSaveSubscription(sub)
+                  .then((response) => {
+                      console.log(response);
+                  }).catch ((e) => {
+                      // registration failed
+                      console.log('SaveSubscription failed with: ' + e);
+                  });
+          }, ).catch ((e) => {
+              // registration failed
+              console.log('Subscription failed with: ' + e);
+          });
+      
+  } catch (e) {
+      console.log('Error subscribing notifications: ' + e);
+  }
+}
+async function pnSaveSubscription(sub) {
+  // stringify object to post as body with HTTP-request
+  var fetchdata = {
+          method: 'post',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(sub),
+        };
+  // we're using fetch() to post the data to the server
+  var response = await fetch(strSubscriberURL, fetchdata);
+  return response.json();
+}
+function pnPushNotification(event) {
+  console.log('push event: ' + event);
+  var strTitle = 'Notification';
+  var strText = 'empty Notification received!';
+  if (event.data) {
+      strText = event.data.text();
+  }
+  var promise = self.registration.showNotification(strTitle, opt);
+  event.waitUntil(promise);
+}
 function previewImage(event) {
   var input = event.target;
   var image = document.getElementById('preview');
