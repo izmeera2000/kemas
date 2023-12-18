@@ -190,7 +190,7 @@ if (isset($_POST['tarikhyuran2'])) {
                         FROM
                         murid
                         LEFT JOIN yuran  ON murid.id = yuran.id_murid AND yuran.tarikh LIKE '%$date%' 
-                        WHERE id_murid IS  NULL ";
+                        WHERE id_murid IS  NULL AND status_kemasukan='1'";
                         // echo $query;
                         $result = mysqli_query($db, $query);
                         $counter = 1;
@@ -258,7 +258,7 @@ if (isset($_POST['tarikhyuran2'])) {
                           FROM
                           murid
                           LEFT JOIN yuran  ON murid.id = yuran.id_murid AND yuran.tarikh LIKE '%$date%' 
-                          WHERE id_murid IS NOT NULL ";
+                          WHERE id_murid IS NOT NULL AND status_kemasukan='1' ";
                         // echo $query;
                         $result = mysqli_query($db, $query);
                         $counter = 1;

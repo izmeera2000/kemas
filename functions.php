@@ -1057,53 +1057,28 @@ if (isset($_POST['yuranbayar'])) {
     $id_murid = $_POST['id_murid'];
     // debug_to_console($_POST['id_murid']);
 
+    $query = "SELECT * FROM murid WHERE id='$id_murid'";
+    $results = mysqli_query($db, $query);
+
+    if (mysqli_num_rows($results) == 1) {
+        while ($row = mysqli_fetch_assoc($results)) {
+
+        $emailuser = $row['email'];
+        $ic = $row['no_kad_pengenalan'];
+        $nama = $row['name'];
+        }
+    }
+
+
     $query = "INSERT INTO yuran (id_murid) 
     VALUES ('$id_murid')";
     $result = mysqli_query($db, $query);
 
-    $mail = new PHPMailer(true);
+    sendmail_yuran($emailuser, $nama,$ic);
 
-    try {
-        //Server settings
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host = 'mail.tabikakemas.com.my';                     //Set the SMTP server to send through
-        $mail->SMTPAuth = true;                                   //Enable SMTP authentication
-        $mail->Username = 'info@tabikakemas.com.my';                     //SMTP username
-        $mail->Password = 'tabikakemas33';                               //SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-        $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-        
 
-        //Recipients
-        $mail->setFrom('info@tabikakemas.com.my', 'Tabika Kemas');
-        $mail->addAddress('izmeera2000@gmail.com');     //Add a recipient
-        // $mail->addAddress('ellen@example.com');               //Name is optional
-        // $mail->addReplyTo('info@example.com', 'Information');
-        // $mail->addCC('cc@example.com');
-        // $mail->addBCC('bcc@example.com');
-
-        //Attachments
-        // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
-
-        //Content
-        $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = 'Here is the subject';
-        $mail->Body = 'This is the HTML message body <b>in bold!</b>';
-        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-        $mail->send();
-    debug_to_console("sampe");
     header('location: yuran.php');
     exit();
-} catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    debug_to_console($mail->ErrorInfo);
-
-    }
-
-
 }
 
 if (isset($_POST['yurantidakbayar'])) {
@@ -1119,4 +1094,135 @@ if (isset($_POST['yurantidakbayar'])) {
     exit();
 }
 
+function sendmail_yuran($receiver, $nama, $ic )
+{
+
+
+    //Create an instance; passing `true` enables exceptions
+    $mail = new PHPMailer(true);
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host = 'mail.tabikakemas.com.my';                     //Set the SMTP server to send through
+        $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+        $mail->Username = 'info@tabikakemas.com.my';                     //SMTP username
+        $mail->Password = 'tabikakemas33';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        
+
+        //Recipients
+        $mail->setFrom('info@tabikakemas.com.my', 'Tabika Kemas');
+        $mail->addAddress($receiver);     //Add a recipient
+ 
+        //Content
+        $mail->isHTML(true); //Set email format to HTML
+        $tarikh = date('M Y');
+        $mail->Subject = "Resit Pembayaran Yuran";
+        ob_start();
+        require_once 'assets/email/receipt.php';
+        $output = ob_get_clean();
+        $mail->Body = $output;
+
+
+
+
+        $mail->send();
+        // echo 'Message has been sent';
+
+    } catch (Exception $e) {
+        // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        // array_push($errors2, "Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+
+    }
+}
+
+function sendmail_kemasukan($receiver, $nama, $ic )
+{
+
+
+    //Create an instance; passing `true` enables exceptions
+    $mail = new PHPMailer(true);
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host = 'mail.tabikakemas.com.my';                     //Set the SMTP server to send through
+        $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+        $mail->Username = 'info@tabikakemas.com.my';                     //SMTP username
+        $mail->Password = 'tabikakemas33';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        
+
+        //Recipients
+        $mail->setFrom('info@tabikakemas.com.my', 'Tabika Kemas');
+        $mail->addAddress($receiver);     //Add a recipient
+ 
+        //Content
+        $mail->isHTML(true); //Set email format to HTML
+        $tarikh = date('M Y');
+        $mail->Subject = "Kemasukan Diterima";
+        ob_start();
+        require_once 'assets/email/kemasukan.php';
+        $output = ob_get_clean();
+        $mail->Body = $output;
+
+
+
+
+        $mail->send();
+        // echo 'Message has been sent';
+
+    } catch (Exception $e) {
+        // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        // array_push($errors2, "Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+
+    }
+}
+
+function sendmail_kemasukantak($receiver, $nama, $ic )
+{
+
+
+    //Create an instance; passing `true` enables exceptions
+    $mail = new PHPMailer(true);
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host = 'mail.tabikakemas.com.my';                     //Set the SMTP server to send through
+        $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+        $mail->Username = 'info@tabikakemas.com.my';                     //SMTP username
+        $mail->Password = 'tabikakemas33';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        
+
+        //Recipients
+        $mail->setFrom('info@tabikakemas.com.my', 'Tabika Kemas');
+        $mail->addAddress($receiver);     //Add a recipient
+ 
+        //Content
+        $mail->isHTML(true); //Set email format to HTML
+        $tarikh = date('M Y');
+        $mail->Subject = "Kemasukan Tidak Diterima";
+        ob_start();
+        require_once 'assets/email/kemasukantak.php';
+        $output = ob_get_clean();
+        $mail->Body = $output;
+
+
+
+
+        $mail->send();
+        // echo 'Message has been sent';
+
+    } catch (Exception $e) {
+        // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        // array_push($errors2, "Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+
+    }
+}
 ?>

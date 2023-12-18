@@ -17,6 +17,7 @@ if (isset($_POST['borangkemasukan-a'])) {
     // }
 
     $ic = $db->real_escape_string($_POST['ic']);
+    $email = $db->real_escape_string($_POST['email']);
     $nama = $db->real_escape_string($_POST['nama']);
     $warganegara = $db->real_escape_string($_POST['warganegara']);
     $bangsa = $db->real_escape_string($_POST['bangsa']);
@@ -92,8 +93,8 @@ if (isset($_POST['borangkemasukan-a'])) {
 
     } else {
 
-        $query = "INSERT INTO murid (no_kad_pengenalan,name,age,warganegara,bangsa,tarikh_lahir,no_sijil_lahir,tempat_lahir,jantina,alamat_rumah,saizbaju,penyakit,tinggi,berat,kecacatan,nama_penjaga,alamat_rumah_penjaga,telefon_penjaga,hubungan_penjaga,status_kemasukan_text) 
-    VALUES('$ic','$nama','$umur','$warganegara','$bangsa','$datebirth','$nosijillahir','$tempatlahir','$jantina','$alamat','$saizbaju','$penyakit','$tinggi','$berat','$kecacatan','$kecemasannama','$kecemasanalamat','$kecemasantelefon','$kecemasanhubungan','a')";
+        $query = "INSERT INTO murid (no_kad_pengenalan,email,name,age,warganegara,bangsa,tarikh_lahir,no_sijil_lahir,tempat_lahir,jantina,alamat_rumah,saizbaju,penyakit,tinggi,berat,kecacatan,nama_penjaga,alamat_rumah_penjaga,telefon_penjaga,hubungan_penjaga,status_kemasukan_text) 
+    VALUES('$ic','$email','$nama','$umur','$warganegara','$bangsa','$datebirth','$nosijillahir','$tempatlahir','$jantina','$alamat','$saizbaju','$penyakit','$tinggi','$berat','$kecacatan','$kecemasannama','$kecemasanalamat','$kecemasantelefon','$kecemasanhubungan','a')";
         $result = mysqli_query($db, $query);
         if (!empty($result)) {
         } else {

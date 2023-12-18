@@ -142,6 +142,22 @@ if (isset($_POST['kemasukan-layak'])) {
     $ic = $_POST['ic'];
     $query = "UPDATE murid SET status_kemasukan='1' WHERE no_kad_pengenalan='$ic'";
     $result = mysqli_query($db, $query);
+
+
+    $query = "SELECT * FROM murid WHERE no_kad_pengenalan='$ic'";
+    $results = mysqli_query($db, $query);
+
+    if (mysqli_num_rows($results) == 1) {
+        while ($row = mysqli_fetch_assoc($results)) {
+
+        $emailuser = $row['email'];
+        // $ic = $row['no_kad_pengenalan'];
+        $nama = $row['name'];
+        }
+    }
+
+    sendmail_kemasukan($emailuser, $nama, $ic );
+
     header('location: senaraikemasukan.php');
     exit();
 
@@ -150,6 +166,23 @@ if (isset($_POST['kemasukan-layak'])) {
 }
 if (isset($_POST['kemasukan-tidaklayak'])) {
     $ic = $_POST['ic'];
+
+
+    
+
+    $query = "SELECT * FROM murid WHERE no_kad_pengenalan='$ic'";
+    $results = mysqli_query($db, $query);
+
+    if (mysqli_num_rows($results) == 1) {
+        while ($row = mysqli_fetch_assoc($results)) {
+
+        $emailuser = $row['email'];
+        // $ic = $row['no_kad_pengenalan'];
+        $nama = $row['name'];
+        }
+    }
+
+    sendmail_kemasukantak($emailuser, $nama, $ic );
 
     $query = "UPDATE murid SET status_kemasukan='2' WHERE no_kad_pengenalan='$ic'";
     $result = mysqli_query($db, $query);
