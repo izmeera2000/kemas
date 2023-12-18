@@ -1,6 +1,6 @@
 <?php
 
-$ch = curl_init('http://localhost/kemas/functions.php');
+$ch = curl_init('https://tabikakemas.com.my/functions.php');
 curl_setopt($ch, CURLOPT_POSTFIELDS,"stopmesyuarat=stopmesyuarat");
 
 // execute!
