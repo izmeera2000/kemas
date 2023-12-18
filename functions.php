@@ -1031,6 +1031,16 @@ if (isset($_POST['meetingdetail'])) {
     $_SESSION['meetingid'] = $_POST['meetingid'];
     header('location: mesyuarat-maklumat.php');
 }
+
+if (isset($_POST['tamatmesyuarat'])) {
+    $meetingid = $_POST['meetingid'];
+
+    $query = "UPDATE meeting SET status='1' WHERE id='$meetingid'";
+    $result = mysqli_query($db, $query);
+    header('location: mesyuarat-maklumat.php');
+    exit();
+
+}
 if (isset($_POST['qrcodescan'])) {
 
 

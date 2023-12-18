@@ -13,6 +13,7 @@ while ($row = mysqli_fetch_assoc($results)) {
   $maklumat = $row['maklumat'];
   $tarikh_mula = $row['tarikh_mula'];
   $tarikh_akhir = $row['tarikh_akhir'];
+  $status = $row['status'];
 }
 // echo $nama;
 ?>
@@ -109,8 +110,16 @@ while ($row = mysqli_fetch_assoc($results)) {
 
                       <h6>
 
-                        <?php echo $nama2 ?>
-                        <!-- <span class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">Tambah</span> -->
+                        <?php if ($status == "0") { ?>
+                          <form method="post">
+                            <input type="hidden" name="meetingid" value="<?php echo $meetingid ?>">
+                            <button class="btn btn-primary" type="submit" name="tamatmesyuarat">Tamat Mesyuarat</button>
+                          </form>
+                        <?php } else { ?>
+
+                          Tamat
+                        <?php } ?>
+
                       </h6>
                       <!-- <span class="text-muted small pt-2 ps-1">
                         <?php echo $maklumat ?>
