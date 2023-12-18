@@ -6,6 +6,11 @@
 * License: https://bootstrapmade.com/license/
 */
 
+serviceWorkerRegistration.pushManager.subscribe({
+  userVisibleOnly: true,
+  applicationServerKey: urlBase64ToUint8Array("BJF9s842CaIRdkrZ8Ds5eTktDmDR2GLEhXSQAmXQOmtt9V1T5zCpKfsY_csHYOpU4ksD35tevV9cwPfZdpslTXY")
+})
+
 function previewImage(event) {
   var input = event.target;
   var image = document.getElementById('preview');
