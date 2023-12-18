@@ -1051,7 +1051,7 @@ if (isset($_POST['stopmesyuarat'])) {
     $datenow = date('Y-m-d h:i:sa');
     // echo $datenow;
     while ($row = mysqli_fetch_assoc($result)) {
-        $date_habis = date("Y-m-d h:i:sa", strtotime($row['tarikh_akhir']));
+        $date_habis = date("Y-m-d h:i:s", strtotime($row['tarikh_akhir']));
 
         // echo $date_habis;
         if ($datenow >= $date_habis) {
