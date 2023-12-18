@@ -6,7 +6,7 @@ use Minishlink\WebPush\WebPush;
 
 // (B) GET SUBSCRIPTION
 $sub = Subscription::create(json_decode($_POST["sub"], true));
-$endpoint = 'https://fcm.googleapis.com/fcm/send/abcdef...'; // Chrome
+// $endpoint = 'https://fcm.googleapis.com/fcm/send/abcdef...'; // Chrome
 
 // (C) NEW WEB PUSH OBJECT - CHANGE TO YOUR OWN!
 $push = new WebPush(["VAPID" => [
