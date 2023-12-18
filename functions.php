@@ -11,7 +11,8 @@ use Dotenv\Dotenv;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-
+use Minishlink\WebPush\WebPush;
+use Minishlink\WebPush\Subscription;
 
 $filesec = __DIR__ . '/../';
 // echo $filesec;
