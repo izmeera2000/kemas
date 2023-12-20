@@ -1,5 +1,5 @@
 // (A) INSTANT WORKER ACTIVATION
-self.addEventListener("install", evt => self.skipWaiting());
+// self.addEventListener("install", evt => self.skipWaiting());
  
 // (B) CLAIM CONTROL INSTANTLY
 // self.addEventListener('activate', pnSubscribe);

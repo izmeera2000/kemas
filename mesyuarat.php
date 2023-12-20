@@ -163,6 +163,66 @@ if (!isset($_SESSION['username'])) {
                 </div>
 
               </div>
+              <div class="col-lg-12">
+
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Senarai Mesyuarat Lepas</h5>
+                    <!-- <h5 class="card-title">Datatables</h5>
+<p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable" style="width:100%">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Nama</th>
+                          <th scope="col">Dibuat Oleh</th>
+                          <th scope="col">Tarikh Mula</th>
+                          <th scope="col">Tarikh Akhir</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <?php
+
+                        $query = "SELECT * FROM meeting WHERE status='1' ";
+                        $result = mysqli_query($db, $query);
+
+                        while ($row = mysqli_fetch_assoc($result)) { ?>
+
+
+                          <tr>
+                            <th scope="row">
+                              <?php echo $row['id'] ?>
+                            </th>
+                            <td>
+                              <?php echo $row['nama'] ?>
+                            </td>
+                            <td>
+                              <?php echo $row['created_by'] ?>
+                            </td>
+                            <td>
+                              <?php echo $row['tarikh_akhir'] ?>
+                            </td>
+                            <td>
+                              <?php echo $row['tarikh_mula'] ?>
+                            </td>
+            
+                          </tr>
+
+                          <?php
+                        }
+                        ?>
+
+                      </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                  </div>
+                </div>
+
+              </div>
             </div>
           <?php } else {
 
@@ -225,11 +285,11 @@ if (!isset($_SESSION['username'])) {
                         <h6>
                           <?php echo $hadir == 1 ? 'Hadir' : 'Belum Hadir' ?>
                           <span class="text-muted small pt-2 ps-1">
-                            <?php 
+                            <?php
 
-                            
-                            
-                            
+
+
+
                             echo $row['status'] ? 'Tamat' : 'Masih Berjalan' ?>
                           </span>
 
