@@ -60,7 +60,7 @@ if (isset($_POST['borangkemasukan-a'])) {
     $resulta = mysqli_query($db, $user_check_query);
     $usera = mysqli_fetch_assoc($resulta);
     setcookie("ic", "$ic", time() + (86400 * 7), "/"); 
-    sendnoti();
+    // sendnoti();
 
     // debug_to_console($ageofthem);
     if ($usera) {
